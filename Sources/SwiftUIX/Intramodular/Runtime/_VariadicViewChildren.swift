@@ -5,6 +5,7 @@
 import SwiftUI
 
 @frozen
+@_documentation(visibility: internal)
 public struct _VariadicViewChildren: View {
     @usableFromInline
     let base: SwiftUI._VariadicView.Children
@@ -98,7 +99,7 @@ extension _VariadicViewChildren {
     public struct Subview: View, Identifiable {
         @usableFromInline
         var element: SwiftUI._VariadicView.Children.Element
-        
+                
         @usableFromInline
         @_optimize(speed)
         @_transparent

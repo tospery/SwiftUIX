@@ -17,12 +17,12 @@ extension CGImage {
 #if canImport(CoreVideo)
 extension CGImage {
     public func _SwiftUIX_toPixelBuffer() -> CVPixelBuffer? {
-        let imageWidth: Int  = Int(width)
+        let imageWidth: Int = Int(width)
         let imageHeight: Int = Int(height)
         let attributes: [NSObject:AnyObject] = [
             kCVPixelBufferPixelFormatTypeKey: Int(kCVPixelFormatType_32BGRA) as CFNumber,
-            kCVPixelBufferCGImageCompatibilityKey : true as AnyObject,
-            kCVPixelBufferCGBitmapContextCompatibilityKey : true as AnyObject,
+            kCVPixelBufferCGImageCompatibilityKey: true as AnyObject,
+            kCVPixelBufferCGBitmapContextCompatibilityKey: true as AnyObject,
             kCVPixelBufferMetalCompatibilityKey: true as AnyObject,
         ]
         
@@ -53,10 +53,10 @@ extension CGImage {
             height: imageHeight,
             bitsPerComponent: 8,
             bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer),
-            space: CGColorSpaceCreateDeviceRGB(),
+            space: self.colorSpace ?? CGColorSpaceCreateDeviceRGB(),
             bitmapInfo: CGImageAlphaInfo.premultipliedFirst.rawValue
         )
-        
+
         if let context = context {
             context.draw(self, in: CGRect.init(x: 0, y: 0, width: imageWidth, height: imageHeight))
         } else {
@@ -69,6 +69,5 @@ extension CGImage {
         
         return pixelBuffer
     }
-    
 }
 #endif

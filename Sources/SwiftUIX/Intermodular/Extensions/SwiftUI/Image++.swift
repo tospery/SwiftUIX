@@ -8,7 +8,8 @@ import SwiftUI
 extension Image {
     public typealias Encoding = _SwiftUIX_Encoding
     
-    public enum _SwiftUIX_Encoding {
+    @_documentation(visibility: internal)
+public enum _SwiftUIX_Encoding {
         case png
         case jpeg(compressionQuality: CGFloat?)
         
@@ -62,13 +63,11 @@ extension Image {
 }
 
 extension Image {
-    public func resizable(_ resizable: Bool) -> some View {
-        PassthroughView {
-            if resizable {
-                self.resizable()
-            } else {
-                self
-            }
+    public func resizable(_ resizable: Bool?) -> Image {
+        if let resizable, resizable {
+            self.resizable()
+        } else {
+            self
         }
     }
     

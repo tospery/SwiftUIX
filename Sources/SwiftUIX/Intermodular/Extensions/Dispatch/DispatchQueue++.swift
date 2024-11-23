@@ -7,12 +7,38 @@ import Foundation
 import Swift
 
 extension DispatchQueue {
-    @usableFromInline
-    static func asyncOnMainIfNecessary(execute work: @escaping () -> ()) {
-        if Thread.isMainThread {
-            work()
+    @_spi(Internal)
+    @_transparent
+    public static func asyncOnMainIfNecessary(
+        force: Bool? = nil,
+        @_implicitSelfCapture execute work: @MainActor @escaping () -> ()
+    ) {
+        // Check if the code needs to be executed asynchronously on the main
+        let shouldRunAsync = force ?? !Thread.isMainThread
+
+        if shouldRunAsync {
+            DispatchQueue.main.async {
+                MainActor.assumeIsolatedIfPossible(work)
+            }
         } else {
-            DispatchQueue.main.async(execute: work)
+            MainActor.assumeIsolatedIfPossible(work)
+        }
+    }
+}
+
+extension MainActor {
+    /// Compatible with previous system versions of `assumeIsolated` method from iOS 17 
+    @_spi(Internal)
+    @_transparent
+    public static func assumeIsolatedIfPossible(_ work: @MainActor @escaping () -> Void) {
+        if #available(iOS 17.0, *) {
+            assumeIsolated {
+                work()
+            }
+        } else {
+            Task { @MainActor in
+                work()
+            }
         }
     }
 }

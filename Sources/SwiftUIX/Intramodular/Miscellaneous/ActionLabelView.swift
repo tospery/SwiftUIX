@@ -15,7 +15,11 @@ public protocol ActionLabelView: View {
 // MARK: - Implementation-
 
 extension ActionLabelView {
-    public init(action: @escaping () -> Void, @ViewBuilder label: () -> Label) {
+    @_disfavoredOverload
+    public init(
+        action: @escaping () -> Void,
+        @ViewBuilder label: () -> Label
+    ) {
         self.init(action: .init(action), label: label)
     }
 }
@@ -93,20 +97,6 @@ extension ActionLabelView where Label == Text {
     }
 }
 
-// FIXME: Uncomment once Xcode 13.3 fixes this segfault.
-/*@available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
-extension Button where Label == SwiftUI.Label<Text, Image> {
-    public init(
-        _ title: String,
-        systemImage: SFSymbolName,
-        action: @escaping () -> Void
-    ) {
-        self.init(action: action) {
-            Label(title, systemImage: systemImage)
-        }
-    }
-}*/
-
 @available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
 extension Button where Label == SwiftUI.Label<Text, Image> {
     public init(
@@ -120,10 +110,27 @@ extension Button where Label == SwiftUI.Label<Text, Image> {
     }
 }
 
+@available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
+extension Button {
+    public init<Icon: View>(
+        _ title: String,
+        action: @escaping () -> Void,
+        @ViewBuilder icon: () -> Icon
+    ) where Label == SwiftUI.Label<Text, Icon> {
+        self.init(action: action) {
+            Label(title, icon: icon)
+        }
+    }
+}
+
 // MARK: - Conformances
 
 extension Button: ActionLabelView {
-    public init(action: Action, @ViewBuilder label: () -> Label) {
-        self.init(action: action.perform, label: label)
+    @_disfavoredOverload
+    public init(
+        action: Action,
+        @ViewBuilder label: () -> Label
+    ) {
+        self.init(action: { action.perform() }, label: label)
     }
 }

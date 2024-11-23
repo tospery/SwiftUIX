@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-@_spi(Internal)
+@_documentation(visibility: internal)
 public struct _AppKitOrUIKitHostingPopoverPreferences: ExpressibleByNilLiteral, Hashable {
     public var isDetachable: Bool = false
     

@@ -8,6 +8,7 @@ import SwiftUI
 #if (os(iOS) && canImport(CoreTelephony)) || os(tvOS) || targetEnvironment(macCatalyst)
 
 /// A control that displays an editable text interface.
+@_documentation(visibility: internal)
 public struct CocoaTextField<Label: View>: View {
     typealias Rect = ((_ bounds: CGRect, _ original: CGRect) -> CGRect)
     
@@ -206,7 +207,7 @@ fileprivate struct _CocoaTextField<Label: View>: UIViewRepresentable {
             uiView.smartQuotesType = configuration.smartQuotesType ?? .default
             uiView.spellCheckingType = configuration.spellCheckingType ?? .default
             uiView.textAlignment = .init(context.environment.multilineTextAlignment)
-            uiView.textColor = configuration.textColor ?? uiView.textColor
+            uiView.textColor = configuration.textColor
             uiView.textContentType = configuration.textContentType
             uiView.tintColor = context.environment.tintColor?.toUIColor()
             
@@ -418,18 +419,18 @@ extension CocoaTextField {
         then({ $0.configuration.placeholder = placeholder })
     }
     
-    public func foregroundColor(_ foregroundColor: Color) -> Self {
-        then({ $0.configuration.textColor = foregroundColor.toUIColor() })
+    public func foregroundColor(_ foregroundColor: Color?) -> Self {
+        then({ $0.configuration.textColor = foregroundColor?.toUIColor() })
     }
     
     @_disfavoredOverload
-    public func foregroundColor(_ foregroundColor: UIColor) -> Self {
+    public func foregroundColor(_ foregroundColor: UIColor?) -> Self {
         then({ $0.configuration.textColor = foregroundColor })
     }
     
     @available(*, deprecated, renamed: "foregroundColor")
-    public func textColor(_ foregroundColor: Color) -> Self {
-        then({ $0.configuration.textColor = foregroundColor.toUIColor() })
+    public func textColor(_ foregroundColor: Color?) -> Self {
+        then({ $0.configuration.textColor = foregroundColor?.toUIColor() })
     }
 }
 

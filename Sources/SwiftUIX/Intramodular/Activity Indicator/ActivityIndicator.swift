@@ -6,8 +6,10 @@ import Swift
 import SwiftUI
 
 /// A view that shows that a task is in progress.
+@_documentation(visibility: internal)
 public struct ActivityIndicator {
-    public enum Style {
+    @_documentation(visibility: internal)
+public enum Style {
         #if os(macOS)
         case mini
         case small
@@ -186,17 +188,6 @@ extension NSControl.ControlSize {
                 }
             }
         }
-    }
-}
-
-#endif
-
-#if os(iOS) || os(macOS) || os(tvOS) || targetEnvironment(macCatalyst)
-
-struct ActivityIndicator_Previews: PreviewProvider {
-    static var previews: some View {
-        ActivityIndicator()
-            .tintColor(.red)
     }
 }
 

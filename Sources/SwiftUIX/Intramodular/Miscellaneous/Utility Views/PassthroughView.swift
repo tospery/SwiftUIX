@@ -7,9 +7,9 @@ import Swift
 import SwiftUI
 
 @frozen
+@_documentation(visibility: internal)
 public struct PassthroughView<Content: View>: _opaque_View, View {
-    @usableFromInline
-    let content: Content
+    public let content: Content
     
     @_optimize(speed)
     @inlinable

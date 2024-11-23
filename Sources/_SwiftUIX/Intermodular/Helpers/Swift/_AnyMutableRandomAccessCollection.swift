@@ -5,6 +5,7 @@
 import Swift
 import SwiftUI
 
+@_documentation(visibility: internal)
 public struct _AnyMutableRandomAccessCollection<Element>: RandomAccessCollection, MutableCollection {
     public typealias Index = _AnyMutableCollectionIndex
     
@@ -17,7 +18,7 @@ public struct _AnyMutableRandomAccessCollection<Element>: RandomAccessCollection
     public init<C: RandomAccessCollection & MutableCollection>(
         _ collection: C
     ) where C.Element == Element {
-        box = Box(collection)
+        box = MutableRandomAccessCollectionBox(collection)
     }
     
     public var startIndex: Index {
@@ -111,7 +112,7 @@ private class AnyCollectionBox<Element>: NSCopying {
 }
 
 // Concrete subclass of AnyCollectionBox for specific collection types
-private final class Box<Base: RandomAccessCollection & MutableCollection>: AnyCollectionBox<Base.Element>  {
+private final class MutableRandomAccessCollectionBox<Base: RandomAccessCollection & MutableCollection>: AnyCollectionBox<Base.Element>  {
     private var base: Base
     
     override var _base: Any {
@@ -175,6 +176,6 @@ private final class Box<Base: RandomAccessCollection & MutableCollection>: AnyCo
     }
     
     override func copy(with zone: NSZone? = nil) -> Any {
-        return Box(base)
+        return MutableRandomAccessCollectionBox(base)
     }
 }
