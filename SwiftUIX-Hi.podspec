@@ -12,10 +12,8 @@ SwiftUIX attempts to fill the gaps of the missing features of SwiftUI, providing
 
   s.requires_arc = true
   s.swift_version = '5.0'
-  s.ios.deployment_target = '13.0'
-
+  s.ios.deployment_target = '16.0'
   s.frameworks = 'Foundation', 'UIKit', 'SwiftUI'
-  s.source_files = 'Sources/**/*.{swift}'
   
   s.subspec 'Core' do |ss|
 	ss.source_files = 'Sources/_SwiftUIX/**/*.{swift}'
