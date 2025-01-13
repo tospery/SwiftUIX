@@ -6,7 +6,6 @@
 
 import Combine
 import Swift
-@_spi(Internal) import _SwiftUIX
 
 @available(*, deprecated, renamed: "_ObservableTextCursor")
 public typealias _TextCursorTracking = _ObservableTextCursor

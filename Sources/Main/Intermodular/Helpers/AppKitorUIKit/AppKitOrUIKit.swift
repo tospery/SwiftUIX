@@ -2,8 +2,6 @@
 // Copyright (c) Vatsal Manot
 //
 
-@_spi(Internal) import _SwiftUIX
-
 import Swift
 import SwiftUI
 
