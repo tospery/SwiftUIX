@@ -11,17 +11,9 @@ SwiftUIX attempts to fill the gaps of the missing features of SwiftUI, providing
   s.source       = { :git => 'https://github.com/tospery/SwiftUIX.git', :tag => s.version.to_s }
 
   s.requires_arc = true
-  s.swift_version = '5.0'
+  s.swift_version = '5.3'
   s.ios.deployment_target = '16.0'
   s.frameworks = 'Foundation', 'UIKit', 'SwiftUI'
-  
-  s.subspec 'Core' do |ss|
-	ss.source_files = 'Sources/_SwiftUIX/**/*.{swift}'
-  end
-  
-  s.subspec 'Main' do |ss|
-	ss.source_files = 'Sources/SwiftUIX/**/*.{swift}'
-	ss.dependency 'SwiftUIX-Hi/Core'
-  end
+  s.source_files = 'Sources/**/*.{swift,h}'
 
 end
