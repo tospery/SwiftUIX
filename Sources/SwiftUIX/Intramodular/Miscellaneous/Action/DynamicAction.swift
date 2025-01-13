@@ -16,9 +16,9 @@ public protocol DynamicAction: DynamicProperty {
 // MARK: - API
 
 extension DynamicAction {
-    public func then(_ action: @escaping () -> Void) -> _ExtendedDynamicAction<Self> {
-        _ExtendedDynamicAction(action: self, additionalAction: Action(action))
-    }
+//    public func then(_ action: @escaping () -> Void) -> _ExtendedDynamicAction<Self> {
+//        _ExtendedDynamicAction(action: self, additionalAction: Action(action))
+//    }
 }
 
 extension _ActionPerformingView {

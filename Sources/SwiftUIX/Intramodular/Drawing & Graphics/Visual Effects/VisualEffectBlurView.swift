@@ -64,13 +64,20 @@ extension VisualEffectBlurView where Content == EmptyView {
 extension VisualEffectBlurView {
     /// Sets the intensity of the blur effect.
     public func intensity(_ intensity: Double) -> Self {
-        then({ $0.intensity = intensity })
+        myThen({ $0.intensity = intensity })
     }
     
     /// Sets the transparency of this view.
     public func opacity(_ opacity: Double) -> Self {
-        then({ $0.opacity = opacity })
+        myThen({ $0.opacity = opacity })
     }
+    
+    internal func myThen(_ body: (inout Self) -> Void) -> Self {
+        var result = self
+        body(&result)
+        return result
+    }
+    
 }
 
 #endif
