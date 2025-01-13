@@ -60,18 +60,12 @@ public struct WebView: View {
 extension WebView {
     /// Sets a web view's foreground elements to use a given style.
     public func foregroundStyle(_ foregroundStyle: Color) -> Self {
-        myThen({ $0.configuration.foregroundStyle = foregroundStyle })
+        then({ $0.configuration.foregroundStyle = foregroundStyle })
     }
     
     /// Sets a web view's foreground elements to use a given style.
     public func foregroundStyle(_ foregroundStyle: Color?) -> Self {
-        myThen({ $0.configuration.foregroundStyle = foregroundStyle })
-    }
-    
-    internal func myThen(_ body: (inout Self) -> Void) -> Self {
-        var result = self
-        body(&result)
-        return result
+        then({ $0.configuration.foregroundStyle = foregroundStyle })
     }
 }
 

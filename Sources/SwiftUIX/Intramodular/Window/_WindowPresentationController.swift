@@ -59,8 +59,8 @@ public enum ContentBacking {
     weak var _sourceAppKitOrUIKitWindow: AppKitOrUIKitWindow?
     
     @Published
-    public var _isVisible: Bool = false
-    public var _externalIsVisibleBinding: Binding<Bool>?
+    package var _isVisible: Bool = false
+    package var _externalIsVisibleBinding: Binding<Bool>?
     
     private var _updateWorkItem: DispatchWorkItem?
 
@@ -319,7 +319,7 @@ extension _WindowPresentationController {
         return contentWindow
     }
     
-    public func _showWasCalledOnWindow() {
+    package func _showWasCalledOnWindow() {
         if let isVisibleBinding = self._externalIsVisibleBinding {
             if !isVisibleBinding.wrappedValue {
                 isVisibleBinding.wrappedValue = true
@@ -329,7 +329,7 @@ extension _WindowPresentationController {
         self._isVisible = true
     }
     
-    public func _windowDidJustClose() {
+    package func _windowDidJustClose() {
         if let isVisibleBinding = self._externalIsVisibleBinding {
             if !isVisibleBinding.wrappedValue {
                 isVisibleBinding.wrappedValue = false
@@ -481,9 +481,8 @@ extension AppKitOrUIKitHostingWindow {
                 if contentView.frame.size.isAreaZero {
                     print("Failed to size window for presentation.")
                     
-                    // TODO
-//                    contentView._SwiftUIX_setNeedsLayout()
-//                    contentView._SwiftUIX_layoutIfNeeded()
+                    contentView._SwiftUIX_setNeedsLayout()
+                    contentView._SwiftUIX_layoutIfNeeded()
                 }
                 
                 action()
