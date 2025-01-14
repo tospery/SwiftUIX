@@ -2,7 +2,6 @@
 // Copyright (c) Vatsal Manot
 //
 
-@_spi(Internal) import _SwiftUIX
 import Combine
 import Foundation
 import Swift
