@@ -26,7 +26,7 @@ extension View {
             }
         }
         
-        return onAppKitOrUIKitViewControllerResolution { viewController in
+        return onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution { viewController in
             _configure(viewController)
         } onAppear: { viewController in
             _configure(viewController)
@@ -63,7 +63,7 @@ extension View {
     @inlinable
     public func navigationBarTint(_ color: Color?) -> some View {
         _configureUINavigationBar { navigationBar in
-            navigationBar.tintColor = color?.toAppKitOrUIKitColor()
+            navigationBar.tintColor = color?.toSwiftUIX_Hi.AppKitOrUIKitColor()
         }
     }
 
@@ -123,7 +123,7 @@ extension View {
                     
                     navigationBar.prefersLargeTitles = false
                 }
-                .onAppKitOrUIKitViewControllerResolution { viewController in
+                .onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution { viewController in
                     viewController.navigationController?.navigationBar.prefersLargeTitles = false
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
@@ -142,7 +142,7 @@ extension View {
                     
                     navigationBar.prefersLargeTitles = false
                 }
-                .onAppKitOrUIKitViewControllerResolution { viewController in
+                .onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution { viewController in
                     viewController.navigationController?.navigationBar.prefersLargeTitles = false
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {

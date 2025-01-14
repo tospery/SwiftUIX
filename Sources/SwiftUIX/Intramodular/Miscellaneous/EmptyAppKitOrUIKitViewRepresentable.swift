@@ -5,7 +5,7 @@
 import SwiftUI
 
 @_documentation(visibility: internal)
-public struct EmptyAppKitOrUIKitViewRepresentable: View {
+public struct EmptySwiftUIX_Hi.AppKitOrUIKitViewRepresentable: View {
     private let update: (any _AppKitOrUIKitViewRepresentableContext) -> Void
     private let dismantle: () -> Void
     
@@ -26,9 +26,9 @@ public struct EmptyAppKitOrUIKitViewRepresentable: View {
 }
 
 #if os(macOS) || os(iOS) || os(tvOS) || os(visionOS)
-extension EmptyAppKitOrUIKitViewRepresentable {
-    private struct Guts: AppKitOrUIKitViewRepresentable {
-        public typealias AppKitOrUIKitViewType = AppKitOrUIKitView
+extension EmptySwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
+    private struct Guts: SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
+        public typealias SwiftUIX_Hi.AppKitOrUIKitViewType = SwiftUIX_Hi.AppKitOrUIKitView
         
         private let update: (any _AppKitOrUIKitViewRepresentableContext) -> Void
         private let dismantle: () -> Void
@@ -41,12 +41,12 @@ extension EmptyAppKitOrUIKitViewRepresentable {
             self.dismantle = dismantle
         }
         
-        public func makeAppKitOrUIKitView(context: Context) -> AppKitOrUIKitViewType {
-            AppKitOrUIKitViewType()
+        public func makeSwiftUIX_Hi.AppKitOrUIKitView(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
+            SwiftUIX_Hi.AppKitOrUIKitViewType()
         }
         
-        public func updateAppKitOrUIKitView(
-            _ view: AppKitOrUIKitViewType,
+        public func updateSwiftUIX_Hi.AppKitOrUIKitView(
+            _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
             context: Context
         ) {
             DispatchQueue.main.async {
@@ -54,7 +54,7 @@ extension EmptyAppKitOrUIKitViewRepresentable {
             }
         }
         
-        /*public static func dismantleAppKitOrUIKitView(
+        /*public static func dismantleSwiftUIX_Hi.AppKitOrUIKitView(
          _ view: Self,
          coordinator: Coordinator
          ) {
@@ -65,7 +65,7 @@ extension EmptyAppKitOrUIKitViewRepresentable {
     }
 }
 #elseif os(watchOS)
-extension EmptyAppKitOrUIKitViewRepresentable {
+extension EmptySwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
     private struct Guts: View {
         private let update: (any _AppKitOrUIKitViewRepresentableContext) -> Void
         private let dismantle: () -> Void

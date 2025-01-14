@@ -26,25 +26,25 @@ extension TextView {
 @available(macOS 11.0, iOS 14.0, watchOS 8.0, tvOS 14.0, *)
 @available(watchOS, unavailable)
 extension TextView {
-    public func _customAppKitOrUIKitClass(
-        _ type: AppKitOrUIKitTextView.Type
+    public func _customSwiftUIX_Hi.AppKitOrUIKitClass(
+        _ type: SwiftUIX_Hi.AppKitOrUIKitTextView.Type
     ) -> Self {
-        then({ $0.customAppKitOrUIKitClassConfiguration = .init(class: type) })
+        then({ $0.customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration = .init(class: type) })
     }
     
-    public func _customAppKitOrUIKitClass<T: AppKitOrUIKitTextView>(
+    public func _customSwiftUIX_Hi.AppKitOrUIKitClass<T: SwiftUIX_Hi.AppKitOrUIKitTextView>(
         _ type: T.Type,
-        update: @escaping _CustomAppKitOrUIKitClassConfiguration.UpdateOperation<T>
+        update: @escaping _CustomSwiftUIX_Hi.AppKitOrUIKitClassConfiguration.UpdateOperation<T>
     ) -> Self {
-        then({ $0.customAppKitOrUIKitClassConfiguration = .init(class: type, update: update) })
+        then({ $0.customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration = .init(class: type, update: update) })
     }
     
     @_disfavoredOverload
-    public func _customAppKitOrUIKitClass<T: AppKitOrUIKitTextView>(
+    public func _customSwiftUIX_Hi.AppKitOrUIKitClass<T: SwiftUIX_Hi.AppKitOrUIKitTextView>(
         _ type: T.Type,
         update: @escaping (T) -> Void
     ) -> Self {
-        _customAppKitOrUIKitClass(type) { view, _ in
+        _customSwiftUIX_Hi.AppKitOrUIKitClass(type) { view, _ in
             update(view)
         }
     }
@@ -98,12 +98,12 @@ extension TextView {
     public func foregroundColor(
         _ foregroundColor: Color
     ) -> Self {
-        then({ $0.textViewConfiguration.cocoaForegroundColor = foregroundColor.toAppKitOrUIKitColor() })
+        then({ $0.textViewConfiguration.cocoaForegroundColor = foregroundColor.toSwiftUIX_Hi.AppKitOrUIKitColor() })
     }
     
     @_disfavoredOverload
     public func foregroundColor(
-        _ foregroundColor: AppKitOrUIKitColor
+        _ foregroundColor: SwiftUIX_Hi.AppKitOrUIKitColor
     ) -> Self {
         then({ $0.textViewConfiguration.cocoaForegroundColor = foregroundColor })
     }
@@ -111,12 +111,12 @@ extension TextView {
     public func placeholderColor(
         _ foregroundColor: Color
     ) -> Self {
-        then({ $0.textViewConfiguration.placeholderColor = foregroundColor.toAppKitOrUIKitColor() })
+        then({ $0.textViewConfiguration.placeholderColor = foregroundColor.toSwiftUIX_Hi.AppKitOrUIKitColor() })
     }
     
     @_disfavoredOverload
     public func placeholderColor(
-        _ placeholderColor: AppKitOrUIKitColor
+        _ placeholderColor: SwiftUIX_Hi.AppKitOrUIKitColor
     ) -> Self {
         then({ $0.textViewConfiguration.placeholderColor = placeholderColor })
     }
@@ -124,12 +124,12 @@ extension TextView {
     public func tint(
         _ tint: Color
     ) -> Self {
-        then({ $0.textViewConfiguration.tintColor = tint.toAppKitOrUIKitColor() })
+        then({ $0.textViewConfiguration.tintColor = tint.toSwiftUIX_Hi.AppKitOrUIKitColor() })
     }
     
     @_disfavoredOverload
     public func tint(
-        _ tint: AppKitOrUIKitColor
+        _ tint: SwiftUIX_Hi.AppKitOrUIKitColor
     ) -> Self {
         then({ $0.textViewConfiguration.tintColor = tint })
     }
@@ -138,7 +138,7 @@ extension TextView {
     public func linkForegroundColor(
         _ linkForegroundColor: Color?
     ) -> Self {
-        then({ $0.textViewConfiguration.linkForegroundColor = linkForegroundColor?.toAppKitOrUIKitColor() })
+        then({ $0.textViewConfiguration.linkForegroundColor = linkForegroundColor?.toSwiftUIX_Hi.AppKitOrUIKitColor() })
     }
 #endif
     
@@ -147,7 +147,7 @@ extension TextView {
     ) -> Self {
         then {
             do {
-                $0.textViewConfiguration.cocoaFont = try font.toAppKitOrUIKitFont()
+                $0.textViewConfiguration.cocoaFont = try font.toSwiftUIX_Hi.AppKitOrUIKitFont()
             } catch {
                 debugPrint(error)
             }
@@ -156,7 +156,7 @@ extension TextView {
     
     @_disfavoredOverload
     public func font(
-        _ font: AppKitOrUIKitFont?
+        _ font: SwiftUIX_Hi.AppKitOrUIKitFont?
     ) -> Self {
         then({ $0.textViewConfiguration.cocoaFont = font })
     }
@@ -169,7 +169,7 @@ extension TextView {
     
     @_disfavoredOverload
     public func textContainerInset(
-        _ textContainerInset: AppKitOrUIKitInsets
+        _ textContainerInset: SwiftUIX_Hi.AppKitOrUIKitInsets
     ) -> Self {
         then({ $0.textViewConfiguration.textContainerInsets = textContainerInset._SwiftUI_edgeInsets })
     }

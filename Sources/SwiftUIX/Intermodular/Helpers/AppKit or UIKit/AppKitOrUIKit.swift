@@ -9,7 +9,7 @@ import SwiftUI
 
 import UIKit
 
-public typealias AppKitOrUIKitHostingView<Content: View> = UIHostingView<Content>
+public typealias SwiftUIX_Hi.AppKitOrUIKitHostingView<Content: View> = UIHostingView<Content>
 
 extension UIColor {
     @_disfavoredOverload
@@ -67,7 +67,7 @@ extension UIUserInterfaceStyle {
 
 import AppKit
 
-public typealias AppKitOrUIKitGraphicsImageRenderer = NSGraphicsImageRenderer
+public typealias SwiftUIX_Hi.AppKitOrUIKitGraphicsImageRenderer = NSGraphicsImageRenderer
 
 extension NSEdgeInsets {
     public var _SwiftUI_edgeInsets: EdgeInsets {
@@ -156,43 +156,43 @@ extension NSWindow.Level {
 
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
 
-private var _isAnimatingAppKitOrUIKit: Bool = false
+private var _isAnimatingSwiftUIX_Hi.AppKitOrUIKit: Bool = false
 
-public func _withAppKitOrUIKitAnimation(
+public func _withSwiftUIX_Hi.AppKitOrUIKitAnimation(
     _ animation: _AppKitOrUIKitViewAnimation? = .default,
     @_implicitSelfCapture body: @escaping () -> ()
 ) {
-    guard !_areAnimationsDisabledGlobally, !_isAnimatingAppKitOrUIKit, let animation else {
+    guard !_areAnimationsDisabledGlobally, !_isAnimatingSwiftUIX_Hi.AppKitOrUIKit, let animation else {
         body()
         
         return
     }
         
-    _isAnimatingAppKitOrUIKit = true
+    _isAnimatingSwiftUIX_Hi.AppKitOrUIKit = true
     
-    AppKitOrUIKitView.animate(
+    SwiftUIX_Hi.AppKitOrUIKitView.animate(
         withDuration: animation.duration ?? 0.3,
         delay: 0,
         options: animation.options ?? [],
         animations: body
     )
     
-    _isAnimatingAppKitOrUIKit = false
+    _isAnimatingSwiftUIX_Hi.AppKitOrUIKit = false
 }
 
 #if os(iOS)
-extension AppKitOrUIKitFontDescriptor.SymbolicTraits {
+extension SwiftUIX_Hi.AppKitOrUIKitFontDescriptor.SymbolicTraits {
     public static let bold: Self = Self.traitBold
     public static let italic: Self = Self.traitItalic
 }
 #elseif os(macOS)
-extension AppKitOrUIKitFontDescriptor.SymbolicTraits {
+extension SwiftUIX_Hi.AppKitOrUIKitFontDescriptor.SymbolicTraits {
     public static let traitBold = Self.bold
     public static let traitItalic = Self.italic
 }
 #endif
 
-extension AppKitOrUIKitViewController {
+extension SwiftUIX_Hi.AppKitOrUIKitViewController {
     public func _SwiftUIX_setNeedsLayout() {
         view._SwiftUIX_setNeedsLayout()
     }
@@ -203,17 +203,17 @@ extension AppKitOrUIKitViewController {
 }
 
 extension EnvironmentValues {
-    struct AppKitOrUIKitViewControllerBoxKey: EnvironmentKey {
-        typealias Value = _SwiftUIX_ObservableWeakReferenceBox<AppKitOrUIKitViewController>?
+    struct SwiftUIX_Hi.AppKitOrUIKitViewControllerBoxKey: EnvironmentKey {
+        typealias Value = _SwiftUIX_ObservableWeakReferenceBox<SwiftUIX_Hi.AppKitOrUIKitViewController>?
         
         static let defaultValue: Value = nil
     }
     
-    var _appKitOrUIKitViewControllerBox: AppKitOrUIKitViewControllerBoxKey.Value {
+    var _appKitOrUIKitViewControllerBox: SwiftUIX_Hi.AppKitOrUIKitViewControllerBoxKey.Value {
         get {
-            self[AppKitOrUIKitViewControllerBoxKey.self]
+            self[SwiftUIX_Hi.AppKitOrUIKitViewControllerBoxKey.self]
         } set {
-            self[AppKitOrUIKitViewControllerBoxKey.self] = newValue
+            self[SwiftUIX_Hi.AppKitOrUIKitViewControllerBoxKey.self] = newValue
         }
     }
 }

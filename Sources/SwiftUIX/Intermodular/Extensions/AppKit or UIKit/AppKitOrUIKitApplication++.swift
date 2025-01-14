@@ -6,16 +6,16 @@
 
 import SwiftUI
 
-extension AppKitOrUIKitApplication {
+extension SwiftUIX_Hi.AppKitOrUIKitApplication {
     public var _SwiftUIX_noRegularWindowDisplaying: Bool {
-        AppKitOrUIKitWindow._SwiftUIX_allInstances.filter({ $0._SwiftUIX_isInRegularDisplay }).isEmpty
+        SwiftUIX_Hi.AppKitOrUIKitWindow._SwiftUIX_allInstances.filter({ $0._SwiftUIX_isInRegularDisplay }).isEmpty
     }
 }
 
 #if os(macOS)
-extension AppKitOrUIKitApplication {
+extension SwiftUIX_Hi.AppKitOrUIKitApplication {
     public func _SwiftUIX_closeAllWindows() {
-        for window in AppKitOrUIKitWindow._SwiftUIX_allInstances {
+        for window in SwiftUIX_Hi.AppKitOrUIKitWindow._SwiftUIX_allInstances {
             guard window._SwiftUIX_isInRegularDisplay else {
                 continue
             }
@@ -27,7 +27,7 @@ extension AppKitOrUIKitApplication {
     
     public func _SwiftUIX_orderFront() {        
         Task.detached { @MainActor in
-            if let window = AppKitOrUIKitWindow._SwiftUIX_allInstances.first(where: { $0._SwiftUIX_isInRegularDisplay }) {
+            if let window = SwiftUIX_Hi.AppKitOrUIKitWindow._SwiftUIX_allInstances.first(where: { $0._SwiftUIX_isInRegularDisplay }) {
                 window.makeKeyAndOrderFront(nil)
                 window.orderFrontRegardless()
                 window.becomeKey()

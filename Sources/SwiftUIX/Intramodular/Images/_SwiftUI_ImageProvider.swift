@@ -77,13 +77,13 @@ public enum _SwiftUI_ImageProvider {
                             return .unspecified
                     }
                 }()
-                let configuration = (try? environment.font?.toAppKitOrUIKitFont()).map {
-                    AppKitOrUIKitImage.SymbolConfiguration(
+                let configuration = (try? environment.font?.toSwiftUIX_Hi.AppKitOrUIKitFont()).map {
+                    SwiftUIX_Hi.AppKitOrUIKitImage.SymbolConfiguration(
                         font: $0,
                         scale: scale
                     )
-                } ?? AppKitOrUIKitImage.SymbolConfiguration(scale: scale)
-                return AppKitOrUIKitImage(
+                } ?? SwiftUIX_Hi.AppKitOrUIKitImage.SymbolConfiguration(scale: scale)
+                return SwiftUIX_Hi.AppKitOrUIKitImage(
                     systemName: name,
                     withConfiguration: configuration
                 )
@@ -136,7 +136,7 @@ extension Image {
     public typealias _AppKitOrUIKitType = UIImage
     #endif
     
-    public func _toAppKitOrUIKitImage(
+    public func _toSwiftUIX_Hi.AppKitOrUIKitImage(
         in environment: EnvironmentValues
     ) -> _AppKitOrUIKitType? {
         _SwiftUI_ImageProvider(for: self)?.resolved(in: environment)

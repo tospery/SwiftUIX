@@ -5,7 +5,7 @@
 import SwiftUI
 
 #if os(iOS) || os(tvOS) || os(visionOS) || os(watchOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitImage {
+extension SwiftUIX_Hi.AppKitOrUIKitImage {
     public var _SwiftUIX_cgImage: CGImage? {
         cgImage
     }
@@ -51,7 +51,7 @@ extension AppKitOrUIKitImage {
 #if canImport(CoreVideo)
 import CoreVideo
 
-extension AppKitOrUIKitImage {
+extension SwiftUIX_Hi.AppKitOrUIKitImage {
     public func _SwiftUIX_toPixelBuffer() -> CVPixelBuffer? {
         _SwiftUIX_cgImage?._SwiftUIX_toPixelBuffer()
     }
@@ -59,7 +59,7 @@ extension AppKitOrUIKitImage {
 #endif
 
 #if os(macOS)
-extension AppKitOrUIKitImage {
+extension SwiftUIX_Hi.AppKitOrUIKitImage {
     public var _SwiftUIX_jpegData: Data? {
         guard let tiffRepresentation = self.tiffRepresentation, let bitmapImage = NSBitmapImageRep(data: tiffRepresentation) else {
             print("Failed to get TIFF representation or create bitmap image")

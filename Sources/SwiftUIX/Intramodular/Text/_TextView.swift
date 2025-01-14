@@ -26,7 +26,7 @@ struct _TextView<Label: View>: Equatable {
     let data: _TextViewDataBinding
     let unresolvedTextViewConfiguration: _TextViewConfiguration
     
-    @_SwiftUIX_RenderIgnored var customAppKitOrUIKitClassConfiguration: TextView<Label>._CustomAppKitOrUIKitClassConfiguration
+    @_SwiftUIX_RenderIgnored var customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration: TextView<Label>._CustomSwiftUIX_Hi.AppKitOrUIKitClassConfiguration
     
     var textViewConfiguration: Configuration {
         var result = unresolvedTextViewConfiguration
@@ -40,35 +40,35 @@ struct _TextView<Label: View>: Equatable {
         updater: EmptyObservableObject,
         data: _TextViewDataBinding,
         textViewConfiguration: _TextViewConfiguration,
-        customAppKitOrUIKitClassConfiguration: TextView<Label>._CustomAppKitOrUIKitClassConfiguration
+        customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration: TextView<Label>._CustomSwiftUIX_Hi.AppKitOrUIKitClassConfiguration
     ) {
         self.updater = updater
         self.data = data
         self.unresolvedTextViewConfiguration = textViewConfiguration
-        self.customAppKitOrUIKitClassConfiguration = customAppKitOrUIKitClassConfiguration
+        self.customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration = customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration
     }
     
     static func == (lhs: Self, rhs: Self) -> Bool {
         true
             && (lhs.data.wrappedValue == rhs.data.wrappedValue)
             && (lhs.unresolvedTextViewConfiguration == rhs.unresolvedTextViewConfiguration)
-            && (lhs.$customAppKitOrUIKitClassConfiguration == rhs.$customAppKitOrUIKitClassConfiguration)
+            && (lhs.$customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration == rhs.$customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration)
     }
 }
 
 @available(iOS 13.0, macOS 11.0, tvOS 13.0, *)
 @available(watchOS, unavailable)
-extension _TextView: AppKitOrUIKitViewRepresentable {
-    typealias AppKitOrUIKitViewType = AppKitOrUIKitTextView
+extension _TextView: SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
+    typealias SwiftUIX_Hi.AppKitOrUIKitViewType = SwiftUIX_Hi.AppKitOrUIKitTextView
     
-    func makeAppKitOrUIKitView(
+    func makeSwiftUIX_Hi.AppKitOrUIKitView(
         context: Context
-    ) -> AppKitOrUIKitViewType {
-        let view: AppKitOrUIKitViewType
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
+        let view: SwiftUIX_Hi.AppKitOrUIKitViewType
         
         if case .cocoaTextStorage(let textStorage) = data {
             if let textStorage = textStorage() {
-                if let type = customAppKitOrUIKitClassConfiguration.class as? _PlatformTextView<Label>.Type {
+                if let type = customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration.class as? _PlatformTextView<Label>.Type {
                     view = type.init(
                         usingTextLayoutManager: false,
                         textStorage: textStorage
@@ -79,7 +79,7 @@ extension _TextView: AppKitOrUIKitViewRepresentable {
                     let textContainer = NSTextContainer(size: .zero)
                     layoutManager.addTextContainer(textContainer)
                     
-                    view = customAppKitOrUIKitClassConfiguration.class.init(
+                    view = customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration.class.init(
                         frame: .zero,
                         textContainer: textContainer
                     )
@@ -87,20 +87,20 @@ extension _TextView: AppKitOrUIKitViewRepresentable {
             } else {
                 assertionFailure()
                 
-                view = customAppKitOrUIKitClassConfiguration.class.init()
+                view = customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration.class.init()
             }
         } else {
-            view = customAppKitOrUIKitClassConfiguration.class.init()
+            view = customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration.class.init()
         }
         
         if let _view = view as? _PlatformTextView<Label> {
             _view.representableUpdater = updater
         }
         
-        customAppKitOrUIKitClassConfiguration.update(view, context)
+        customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration.update(view, context)
         
         if let view = view as? _PlatformTextView<Label> {
-            view.customAppKitOrUIKitClassConfiguration = customAppKitOrUIKitClassConfiguration
+            view.customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration = customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration
             view.data = data
             view.configuration = textViewConfiguration
             
@@ -128,18 +128,18 @@ extension _TextView: AppKitOrUIKitViewRepresentable {
         return view
     }
     
-    func updateAppKitOrUIKitView(
-        _ view: AppKitOrUIKitViewType,
+    func updateSwiftUIX_Hi.AppKitOrUIKitView(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) {
         donateProxy(view, context: context)
         
-        customAppKitOrUIKitClassConfiguration.update(view, context)
+        customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration.update(view, context)
         
         if let view = view as? _PlatformTextView<Label> {
             assert(view.representatableStateFlags.contains(.updateInProgress))
             
-            view.customAppKitOrUIKitClassConfiguration = customAppKitOrUIKitClassConfiguration
+            view.customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration = customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration
             
             view.representableDidUpdate(
                 data: self.data,
@@ -147,7 +147,7 @@ extension _TextView: AppKitOrUIKitViewRepresentable {
                 context: context
             )
         } else {
-            _PlatformTextView<Label>.updateAppKitOrUIKitTextView(
+            _PlatformTextView<Label>.updateSwiftUIX_Hi.AppKitOrUIKitTextView(
                 view,
                 data: self.data,
                 configuration: textViewConfiguration,
@@ -156,8 +156,8 @@ extension _TextView: AppKitOrUIKitViewRepresentable {
         }
     }
     
-    static func dismantleAppKitOrUIKitView(
-        _ view: AppKitOrUIKitViewType,
+    static func dismantleSwiftUIX_Hi.AppKitOrUIKitView(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         coordinator: Coordinator
     ) {
         guard let view = (view as? (any _PlatformTextViewType)) else {
@@ -170,7 +170,7 @@ extension _TextView: AppKitOrUIKitViewRepresentable {
     }
     
     private func donateProxy(
-        _ view: AppKitOrUIKitViewType,
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) {
         guard let proxyBinding = context.environment._textViewProxyBinding.wrappedValue, let view = view as? _PlatformTextView<Label> else {
@@ -361,7 +361,7 @@ extension _TextView {
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
     public func sizeThatFits(
         _ proposal: ProposedViewSize,
-        view: AppKitOrUIKitViewType,
+        view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) -> CGSize? {
         guard let view = view as? _PlatformTextView<Label> else {
@@ -373,7 +373,7 @@ extension _TextView {
         }
         
         guard let size = view._sizeThatFits(
-            proposal: AppKitOrUIKitLayoutSizeProposal(
+            proposal: SwiftUIX_Hi.AppKitOrUIKitLayoutSizeProposal(
                 proposal,
                 fixedSize: textViewConfiguration._fixedSize?.value
             )

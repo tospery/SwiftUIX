@@ -177,7 +177,7 @@ extension UIHostingAlignTransitioningDelegate.Transition {
             let transitionDuration = self.transitionDuration(using: transitionContext)
             
             if isPresenting {
-                let toSize = (to as? AppKitOrUIKitHostingControllerProtocol)?.sizeThatFits(in: containerView.frame.size) ?? to.view.sizeThatFits(containerView.frame.size)
+                let toSize = (to as? SwiftUIX_Hi.AppKitOrUIKitHostingControllerProtocol)?.sizeThatFits(in: containerView.frame.size) ?? to.view.sizeThatFits(containerView.frame.size)
                 
                 let fromFrame = CGRect(
                     size: toSize,
@@ -261,8 +261,8 @@ extension UIHostingAlignTransitioningDelegate {
         
         var dismissalInteractionController: Transition
         
-        var _presentedViewController: AppKitOrUIKitHostingControllerProtocol {
-            presentedViewController as! AppKitOrUIKitHostingControllerProtocol
+        var _presentedViewController: SwiftUIX_Hi.AppKitOrUIKitHostingControllerProtocol {
+            presentedViewController as! SwiftUIX_Hi.AppKitOrUIKitHostingControllerProtocol
         }
         
         override var frameOfPresentedViewInContainerView: CGRect {

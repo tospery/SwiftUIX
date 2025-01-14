@@ -46,7 +46,7 @@ extension EnvironmentValues {
     /// Encapsulated access to a navigation controller, if present.
     ///
     /// To resolve this environment value:
-    /// - You must add `._resolveAppKitOrUIKitViewControllerIfAvailable()` _outside_ of the view using this via `@Environment(\.navigator)`. This allows SwiftUIX to introspect, grab and provide the nearest `UINavigationController` at runtime.
+    /// - You must add `._resolveSwiftUIX_Hi.AppKitOrUIKitViewControllerIfAvailable()` _outside_ of the view using this via `@Environment(\.navigator)`. This allows SwiftUIX to introspect, grab and provide the nearest `UINavigationController` at runtime.
     /// - There must be a navigation view present in the view hierarchy. Without a navigation view, this property will always be `nil`.
     public var navigator: Navigator? {
         get {

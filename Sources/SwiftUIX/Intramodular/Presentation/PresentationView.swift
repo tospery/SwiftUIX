@@ -21,8 +21,8 @@ public struct PresentationView<Content: View>: View {
         #if os(iOS) || os(macOS) || os(tvOS) || targetEnvironment(macCatalyst)
         content
             .environment(\.presenter, presenter)
-            ._resolveAppKitOrUIKitViewControllerIfAvailable()
-            .onAppKitOrUIKitViewControllerResolution {
+            ._resolveSwiftUIX_Hi.AppKitOrUIKitViewControllerIfAvailable()
+            .onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution {
                 self.presenter = $0
             }
         #else

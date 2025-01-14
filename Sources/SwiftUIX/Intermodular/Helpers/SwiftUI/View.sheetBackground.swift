@@ -29,7 +29,7 @@ struct _UpdateSheetBackground: ViewModifier {
     }
 
     func body(content: Content) -> some View {
-        content.onAppKitOrUIKitViewControllerResolution { viewController in
+        content.onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution { viewController in
             guard !didSet else {
                 return
             }

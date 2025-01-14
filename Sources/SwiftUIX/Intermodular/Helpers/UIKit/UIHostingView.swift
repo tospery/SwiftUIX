@@ -26,7 +26,7 @@ open class UIHostingView<Content: View>: UIView {
                     parent.view.invalidateIntrinsicContentSize()
                 }
             }
-            .frame(max: AppKitOrUIKitView.layoutFittingExpandedSize)
+            .frame(max: SwiftUIX_Hi.AppKitOrUIKitView.layoutFittingExpandedSize)
         }
     }
         

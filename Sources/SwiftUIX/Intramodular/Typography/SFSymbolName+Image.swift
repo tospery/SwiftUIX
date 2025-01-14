@@ -40,7 +40,7 @@ extension UIImage {
 }
 #elseif os(macOS)
 @_spi(Internal)
-extension AppKitOrUIKitImage {
+extension SwiftUIX_Hi.AppKitOrUIKitImage {
     public convenience init?(
         _SwiftUIX_systemName systemName: String
     ) {

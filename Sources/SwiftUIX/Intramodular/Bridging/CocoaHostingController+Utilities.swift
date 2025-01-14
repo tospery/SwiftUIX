@@ -24,7 +24,7 @@ public struct CocoaHostingControllerContent<Content: View>: View  {
     
     public var body: some View {
         content
-            ._resolveAppKitOrUIKitViewController(with: (parent as? CocoaViewController))
+            ._resolveSwiftUIX_Hi.AppKitOrUIKitViewController(with: (parent as? CocoaViewController))
             .modifiers(parentConfiguration.preferenceValueObservers)
             ._measureAndRecordSize(parentConfiguration._isMeasuringSize) { [weak parent] in
                 parent?._configuration._measuredSizePublisher.send($0)
@@ -64,13 +64,13 @@ extension _CocoaHostingViewWrapped {
 }
 
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension _CocoaHostingViewWrapped: AppKitOrUIKitViewControllerRepresentable {
-    typealias AppKitOrUIKitViewControllerType = CocoaHostingController<Content>
+extension _CocoaHostingViewWrapped: SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable {
+    typealias SwiftUIX_Hi.AppKitOrUIKitViewControllerType = CocoaHostingController<Content>
     
-    func makeAppKitOrUIKitViewController(
+    func makeSwiftUIX_Hi.AppKitOrUIKitViewController(
         context: Context
-    ) -> AppKitOrUIKitViewControllerType {
-        let viewController = AppKitOrUIKitViewControllerType(mainView: mainView)
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType {
+        let viewController = SwiftUIX_Hi.AppKitOrUIKitViewControllerType(mainView: mainView)
         
         #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
         viewController.view.backgroundColor = .clear
@@ -83,15 +83,15 @@ extension _CocoaHostingViewWrapped: AppKitOrUIKitViewControllerRepresentable {
         return viewController
     }
     
-    func updateAppKitOrUIKitViewController(
-        _ viewController: AppKitOrUIKitViewControllerType,
+    func updateSwiftUIX_Hi.AppKitOrUIKitViewController(
+        _ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         context: Context
     ) {
         viewController.mainView = mainView
     }
     
-    static func dismantleAppKitOrUIKitViewController(
-        _ view: AppKitOrUIKitViewControllerType,
+    static func dismantleSwiftUIX_Hi.AppKitOrUIKitViewController(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         coordinator: Coordinator
     ) {
         

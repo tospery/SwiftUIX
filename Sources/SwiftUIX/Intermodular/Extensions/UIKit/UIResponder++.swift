@@ -17,7 +17,7 @@ extension UIResponder {
     }
 }
 
-extension AppKitOrUIKitResponder {
+extension SwiftUIX_Hi.AppKitOrUIKitResponder {
     public func _nearestResponder<Responder: UIResponder>(ofKind kind: Responder.Type) -> Responder? {
         guard !isKind(of: kind) else {
             return (self as! Responder)

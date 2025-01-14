@@ -45,7 +45,7 @@ fileprivate struct _NavigationSearchBarConfigurator<SearchResultsContent: View>:
 @available(tvOSApplicationExtension, unavailable)
 extension _NavigationSearchBarConfigurator {
     fileprivate class SearchController: UISearchController {
-        private var customSearchBarType: AppKitOrUIKitSearchBar.Type?
+        private var customSearchBarType: SwiftUIX_Hi.AppKitOrUIKitSearchBar.Type?
         private var customSearchBar: UISearchBar?
         
         override var searchBar: UISearchBar {
@@ -62,7 +62,7 @@ extension _NavigationSearchBarConfigurator {
         
         init(
             searchResultsController: UIViewController?,
-            customSearchBarType: AppKitOrUIKitSearchBar.Type?
+            customSearchBarType: SwiftUIX_Hi.AppKitOrUIKitSearchBar.Type?
         ) {
             self.customSearchBarType = customSearchBarType
             
@@ -116,7 +116,7 @@ extension _NavigationSearchBarConfigurator {
             
             searchController = SearchController(
                 searchResultsController: searchResultsController,
-                customSearchBarType: base.searchBar.customAppKitOrUIKitClass
+                customSearchBarType: base.searchBar.customSwiftUIX_Hi.AppKitOrUIKitClass
             )
             searchController.definesPresentationContext = true
             searchController.obscuresBackgroundDuringPresentation = false

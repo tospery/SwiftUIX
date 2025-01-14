@@ -9,8 +9,8 @@ import SwiftUI
 
 @available(iOS 13.0, macOS 11.0, tvOS 13.0, *)
 extension _PlatformTextView {
-    public static func updateAppKitOrUIKitTextView(
-        _ view: AppKitOrUIKitTextView,
+    public static func updateSwiftUIX_Hi.AppKitOrUIKitTextView(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitTextView,
         data: _TextViewDataBinding,
         configuration: TextView<Label>._Configuration,
         context: some _AppKitOrUIKitViewRepresentableContext
@@ -41,14 +41,14 @@ extension _PlatformTextView {
             _assignIfNotEqual(!automaticQuoteSubstitutionDisabled, to: \.isAutomaticQuoteSubstitutionEnabled)
         }
         
-        if let font = try? configuration.cocoaFont ?? context.environment.font?.toAppKitOrUIKitFont() {
+        if let font = try? configuration.cocoaFont ?? context.environment.font?.toSwiftUIX_Hi.AppKitOrUIKitFont() {
             _assignIfNotEqual(font, to: \.self.font)
             
             if let textStorage = _SwiftUIX_textStorage {
                 textStorage._assignIfNotEqual(font, to: \.font)
             }
             
-            if let typingAttribute = typingAttributes[NSAttributedString.Key.font] as? AppKitOrUIKitFont, typingAttribute != font {
+            if let typingAttribute = typingAttributes[NSAttributedString.Key.font] as? SwiftUIX_Hi.AppKitOrUIKitFont, typingAttribute != font {
                 typingAttributes[NSAttributedString.Key.font] = font
                 typingAttributes[NSAttributedString.Key.paragraphStyle] = defaultParagraphStyle
             }
@@ -61,7 +61,7 @@ extension _PlatformTextView {
                 textStorage._assignIfNotEqual(foregroundColor, to: \.foregroundColor)
             }
             
-            if let typingAttribute = typingAttributes[NSAttributedString.Key.foregroundColor] as? AppKitOrUIKitColor, typingAttribute != foregroundColor {
+            if let typingAttribute = typingAttributes[NSAttributedString.Key.foregroundColor] as? SwiftUIX_Hi.AppKitOrUIKitColor, typingAttribute != foregroundColor {
                 typingAttributes[NSAttributedString.Key.foregroundColor] = foregroundColor
                 typingAttributes[NSAttributedString.Key.paragraphStyle] = defaultParagraphStyle
             }
@@ -148,13 +148,13 @@ extension _PlatformTextView {
         }
         
         let oldIntrinsicContentSize: CGSize? = self.intrinsicContentSize
-        let proposal = AppKitOrUIKitLayoutSizeProposal(width: frame.size.width, height: nil)
+        let proposal = SwiftUIX_Hi.AppKitOrUIKitLayoutSizeProposal(width: frame.size.width, height: nil)
         let intrinsicContentSize: CGSize?
         
         if let cached = representableCache.sizeThatFits(proposal: proposal) {
-            intrinsicContentSize = cached.toAppKitOrUIKitIntrinsicContentSize()
+            intrinsicContentSize = cached.toSwiftUIX_Hi.AppKitOrUIKitIntrinsicContentSize()
         } else {
-            intrinsicContentSize = _sizeThatFits(proposal: proposal)?.toAppKitOrUIKitIntrinsicContentSize()
+            intrinsicContentSize = _sizeThatFits(proposal: proposal)?.toSwiftUIX_Hi.AppKitOrUIKitIntrinsicContentSize()
             
             if let oldIntrinsicContentSize, let intrinsicContentSize {
                 if intrinsicContentSize.width == oldIntrinsicContentSize.width || intrinsicContentSize.width == frame.width {

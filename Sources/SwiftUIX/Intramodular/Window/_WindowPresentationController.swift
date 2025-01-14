@@ -23,9 +23,9 @@ public final class _WindowPresentationController<Content: View>: _AnyWindowPrese
     @_documentation(visibility: internal)
 public enum ContentBacking {
         case view(Content)
-        case hostingController(AppKitOrUIKitHostingWindow<Content>._ContentViewControllerType)
+        case hostingController(SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>._ContentViewControllerType)
         
-        var hostingController: AppKitOrUIKitHostingWindow<Content>._ContentViewControllerType? {
+        var hostingController: SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>._ContentViewControllerType? {
             guard case .hostingController(let result) = self else {
                 return nil
             }
@@ -56,7 +56,7 @@ public enum ContentBacking {
         }
     }
     
-    weak var _sourceAppKitOrUIKitWindow: AppKitOrUIKitWindow?
+    weak var _sourceSwiftUIX_Hi.AppKitOrUIKitWindow: SwiftUIX_Hi.AppKitOrUIKitWindow?
     
     @Published
     package var _isVisible: Bool = false
@@ -133,7 +133,7 @@ public enum ContentBacking {
     }
         
     @_spi(Internal)
-    public var _contentWindow: AppKitOrUIKitHostingWindow<Content>? {
+    public var _contentWindow: SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>? {
         didSet {
             if _contentWindow !== oldValue {
                 oldValue?._SwiftUIX_dismiss()
@@ -151,7 +151,7 @@ public enum ContentBacking {
         }
     }
             
-    public var contentWindow: AppKitOrUIKitHostingWindow<Content>{
+    public var contentWindow: SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>{
         self._contentWindow ?? _makeContentWindowUnconditionally()
     }
     
@@ -237,7 +237,7 @@ extension _WindowPresentationController {
             
             #if os(macOS)
             if contentWindow._SwiftUIX_windowConfiguration.canBecomeKey == true, !contentWindow.isKeyWindow {
-                if let appKeyWindow = AppKitOrUIKitApplication.shared.firstKeyWindow, appKeyWindow !== contentWindow {
+                if let appKeyWindow = SwiftUIX_Hi.AppKitOrUIKitApplication.shared.firstKeyWindow, appKeyWindow !== contentWindow {
                     contentWindow._assignIfNotEqual(NSWindow.Level(rawValue: appKeyWindow.level.rawValue + 1), to: \.level)
                 }
             }
@@ -248,7 +248,7 @@ extension _WindowPresentationController {
         
         if isVisible {
             #if !os(macOS)
-            guard let keyAppWindow = AppKitOrUIKitWindow._firstKeyInstance else {
+            guard let keyAppWindow = SwiftUIX_Hi.AppKitOrUIKitWindow._firstKeyInstance else {
                 return
             }
             #endif
@@ -295,16 +295,16 @@ extension _WindowPresentationController {
         }
     }
     
-    private func _makeContentWindowUnconditionally() -> AppKitOrUIKitHostingWindow<Content> {
+    private func _makeContentWindowUnconditionally() -> SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content> {
         #if os(macOS)
-        let contentWindow = AppKitOrUIKitHostingWindow(
+        let contentWindow = SwiftUIX_Hi.AppKitOrUIKitHostingWindow(
             rootView: content,
             style: windowStyle,
             contentViewController: _content.hostingController
         )
         #else
-        let contentWindow = AppKitOrUIKitHostingWindow(
-            windowScene: AppKitOrUIKitWindow._firstKeyInstance!.windowScene!,
+        let contentWindow = SwiftUIX_Hi.AppKitOrUIKitHostingWindow(
+            windowScene: SwiftUIX_Hi.AppKitOrUIKitWindow._firstKeyInstance!.windowScene!,
             rootView: content
         )
         #endif
@@ -457,7 +457,7 @@ extension _WindowPresentationController {
 @available(macCatalystApplicationExtension, unavailable)
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
-extension AppKitOrUIKitHostingWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingWindow {
     fileprivate func _sizeWindowToNonZeroFitThenPerform(
         perform action: @escaping () -> Void
     ) {
@@ -467,7 +467,7 @@ extension AppKitOrUIKitHostingWindow {
         
         if contentView.frame.size.isAreaZero {
             #if os(macOS)
-            if let contentWindowController = contentView._SwiftUIX_nearestWindow?.contentViewController as? AppKitOrUIKitHostingControllerProtocol {
+            if let contentWindowController = contentView._SwiftUIX_nearestWindow?.contentViewController as? SwiftUIX_Hi.AppKitOrUIKitHostingControllerProtocol {
                 if #available(macOS 13.0, *) {
                     contentWindowController.sizingOptions = [.minSize, .intrinsicContentSize, .maxSize]
                 }
@@ -500,7 +500,7 @@ extension NSDocument {
     public func addWindowController<T>(
         _ controller: _WindowPresentationController<T>
     ) {
-        guard let windowController = controller._sourceAppKitOrUIKitWindow?.windowController else {
+        guard let windowController = controller._sourceSwiftUIX_Hi.AppKitOrUIKitWindow?.windowController else {
             return
         }
         

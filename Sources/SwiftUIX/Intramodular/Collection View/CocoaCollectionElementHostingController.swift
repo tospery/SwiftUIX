@@ -79,7 +79,7 @@ class CocoaCollectionElementHostingController<
         }
 
         return sizeThatFits(
-            AppKitOrUIKitLayoutSizeProposal(
+            SwiftUIX_Hi.AppKitOrUIKitLayoutSizeProposal(
                 targetSize: newTargetSize,
                 maximumSize: rootView.configuration.contentConfiguration.maximumSize ?? nil,
                 horizontalFittingPriority: nil,

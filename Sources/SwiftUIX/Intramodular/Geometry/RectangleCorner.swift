@@ -71,7 +71,7 @@ extension RectangleCorner {
 
 #if os(iOS) || os(macOS) || os(tvOS) || targetEnvironment(macCatalyst)
 
-extension AppKitOrUIKitRectCorner {
+extension SwiftUIX_Hi.AppKitOrUIKitRectCorner {
     public init<S: Sequence>(_ corners: S) where S.Element == RectangleCorner {
         self.init()
         
@@ -91,7 +91,7 @@ extension AppKitOrUIKitRectCorner {
 }
 
 extension RangeReplaceableCollection where Element == RectangleCorner {
-    public init(_ corners: AppKitOrUIKitRectCorner) {
+    public init(_ corners: SwiftUIX_Hi.AppKitOrUIKitRectCorner) {
         self.init()
         
         if corners.contains(.topLeft) {

@@ -52,9 +52,9 @@ public struct _TextViewReader<Content: View>: View {
 
 @_documentation(visibility: internal)
 public final class _TextEditorProxy: Hashable, ObservableObject, @unchecked Sendable {
-    public typealias _Base = any _SwiftUIX_AnyIndirectValueBox<AppKitOrUIKitTextView?>
+    public typealias _Base = any _SwiftUIX_AnyIndirectValueBox<SwiftUIX_Hi.AppKitOrUIKitTextView?>
     
-    let _base = WeakReferenceBox<AppKitOrUIKitTextView>(nil)
+    let _base = WeakReferenceBox<SwiftUIX_Hi.AppKitOrUIKitTextView>(nil)
     
     private var _fakeTextCursor = _ObservableTextCursor(owner: nil)
     

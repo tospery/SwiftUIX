@@ -9,8 +9,8 @@ import UIKit
 
 @available(iOS 13.0, macOS 11.0, tvOS 13.0, *)
 extension _PlatformTextView {
-    public static func updateAppKitOrUIKitTextView(
-        _ view: AppKitOrUIKitTextView,
+    public static func updateSwiftUIX_Hi.AppKitOrUIKitTextView(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitTextView,
         data: _TextViewDataBinding,
         configuration: TextView<Label>._Configuration,
         context: some _AppKitOrUIKitViewRepresentableContext
@@ -56,7 +56,7 @@ extension _PlatformTextView {
         
         view.autocapitalizationType = configuration.autocapitalization ?? .sentences
         
-        let font: AppKitOrUIKitFont? = configuration.cocoaFont ?? (try? context.environment.font?.toAppKitOrUIKitFont())
+        let font: SwiftUIX_Hi.AppKitOrUIKitFont? = configuration.cocoaFont ?? (try? context.environment.font?.toSwiftUIX_Hi.AppKitOrUIKitFont())
         
         if let textColor = configuration.cocoaForegroundColor {
             view._assignIfNotEqual(textColor, to: \.textColor)
@@ -78,7 +78,7 @@ extension _PlatformTextView {
         
         view.textContainer.lineFragmentPadding = .zero
         view.textContainer.maximumNumberOfLines = context.environment.lineLimit ?? 0
-        view.textContainerInset = AppKitOrUIKitEdgeInsets(configuration.textContainerInsets)
+        view.textContainerInset = SwiftUIX_Hi.AppKitOrUIKitEdgeInsets(configuration.textContainerInsets)
         
         if data.wrappedValue.kind != .cocoaTextStorage {
             if requiresAttributedText {
@@ -173,18 +173,18 @@ extension _PlatformTextView {
                 return sizeThatFits(
                     CGSize(
                         width: preferredMaximumLayoutWidth,
-                        height: AppKitOrUIKitView.layoutFittingCompressedSize.height
+                        height: SwiftUIX_Hi.AppKitOrUIKitView.layoutFittingCompressedSize.height
                     )
                     .clamped(to: preferredMaximumDimensions)
                 )
             } else if !isScrollEnabled {
                 return .init(
                     width: bounds.width,
-                    height: _sizeThatFitsWidth(bounds.width)?.height ?? AppKitOrUIKitView.noIntrinsicMetric
+                    height: _sizeThatFitsWidth(bounds.width)?.height ?? SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric
                 )
             } else {
                 return .init(
-                    width: AppKitOrUIKitView.noIntrinsicMetric,
+                    width: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric,
                     height: min(
                         preferredMaximumDimensions.height ?? contentSize.height,
                         contentSize.height

@@ -12,14 +12,14 @@ import SwiftUI
 @available(tvOSApplicationExtension, unavailable)
 @_documentation(visibility: internal)
 public struct _AppKitOrUIKitHostingWindowContent<Content: View>: View {
-    @PersistentObject private var _windowBox: _SwiftUIX_ObservableWeakReferenceBox<AppKitOrUIKitHostingWindow<Content>>
-    @PersistentObject private var _popoverBox: _SwiftUIX_ObservableWeakReferenceBox<_AnyAppKitOrUIKitHostingPopover>
+    @PersistentObject private var _windowBox: _SwiftUIX_ObservableWeakReferenceBox<SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>>
+    @PersistentObject private var _popoverBox: _SwiftUIX_ObservableWeakReferenceBox<_AnySwiftUIX_Hi.AppKitOrUIKitHostingPopover>
     
     var isEmptyView: Bool {
         Content.self == EmptyView.self
     }
     
-    var _window: AppKitOrUIKitHostingWindow<Content>? {
+    var _window: SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>? {
         get {
             _windowBox.wrappedValue
         } set {
@@ -44,7 +44,7 @@ public struct _AppKitOrUIKitHostingWindowContent<Content: View>: View {
         }
     }
     
-    var _popover: _AnyAppKitOrUIKitHostingPopover? {
+    var _popover: _AnySwiftUIX_Hi.AppKitOrUIKitHostingPopover? {
         get{
             _popoverBox.wrappedValue
         } set {
@@ -57,7 +57,7 @@ public struct _AppKitOrUIKitHostingWindowContent<Content: View>: View {
     
     @State private var wasInitializedWithPopover: Bool
     @State private var popoverWindowDidAppear: Bool = false
-    @State private var queuedWindowUpdates: [(AppKitOrUIKitHostingWindow<Content>) -> Void] = []
+    @State private var queuedWindowUpdates: [(SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>) -> Void] = []
     
     private var presentationManager: _PresentationManager {
         _PresentationManager(
@@ -71,8 +71,8 @@ public struct _AppKitOrUIKitHostingWindowContent<Content: View>: View {
     package var initialized: Bool = true
     
     init(
-        window: AppKitOrUIKitHostingWindow<Content>?,
-        popover: _AnyAppKitOrUIKitHostingPopover?,
+        window: SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>?,
+        popover: _AnySwiftUIX_Hi.AppKitOrUIKitHostingPopover?,
         content: Content,
         isPresented: Bool = false
     ) {
@@ -151,7 +151,7 @@ public struct _AppKitOrUIKitHostingWindowContent<Content: View>: View {
     }
     
     private func _queueWindowUpdate(
-        _ update: @escaping (AppKitOrUIKitHostingWindow<Content>) -> Void
+        _ update: @escaping (SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>) -> Void
     ) {
         if let window = _window {
             update(window)
@@ -191,8 +191,8 @@ extension _AppKitOrUIKitHostingWindowContent {
         let isPresentationInitialized: Bool
         let presentationContentType: any View.Type
         
-        weak var _window: AppKitOrUIKitHostingWindow<Content>?
-        weak var _popover: _AnyAppKitOrUIKitHostingPopover?
+        weak var _window: SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>?
+        weak var _popover: _AnySwiftUIX_Hi.AppKitOrUIKitHostingPopover?
         
         var isPresented: Bool {
             if let _popover {
@@ -219,7 +219,7 @@ extension _AppKitOrUIKitHostingWindowContent {
 }
 
 fileprivate struct _AppKitOrUIKitHostingWindowUpdateQueueing<WindowContent: View>: ViewModifier {
-    let queueWindowUpdate: (@escaping (AppKitOrUIKitHostingWindow<WindowContent>) -> Void) -> Void
+    let queueWindowUpdate: (@escaping (SwiftUIX_Hi.AppKitOrUIKitHostingWindow<WindowContent>) -> Void) -> Void
     
     func body(content: Content) -> some View {
         content

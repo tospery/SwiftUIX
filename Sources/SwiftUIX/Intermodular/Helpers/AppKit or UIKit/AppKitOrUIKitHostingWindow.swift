@@ -8,7 +8,7 @@ import SwiftUI
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
 
 #if os(macOS)
-public protocol AppKitOrUIKitHostingWindowProtocol: AppKitOrUIKitWindow, NSWindowDelegate {
+public protocol SwiftUIX_Hi.AppKitOrUIKitHostingWindowProtocol: SwiftUIX_Hi.AppKitOrUIKitWindow, NSWindowDelegate {
     var _SwiftUIX_hostingPopoverPreferences: _AppKitOrUIKitHostingPopoverPreferences { get set }
     var _SwiftUIX_windowConfiguration: _AppKitOrUIKitHostingWindowConfiguration { get set }
     
@@ -26,7 +26,7 @@ public protocol AppKitOrUIKitHostingWindowProtocol: AppKitOrUIKitWindow, NSWindo
     func moveToBack()
 }
 #else
-public protocol AppKitOrUIKitHostingWindowProtocol: AppKitOrUIKitWindow {
+public protocol SwiftUIX_Hi.AppKitOrUIKitHostingWindowProtocol: SwiftUIX_Hi.AppKitOrUIKitWindow {
     typealias PreferredConfiguration = _AppKitOrUIKitHostingWindowConfiguration
 
     var _SwiftUIX_windowConfiguration: _AppKitOrUIKitHostingWindowConfiguration { get set }
@@ -46,14 +46,14 @@ public protocol AppKitOrUIKitHostingWindowProtocol: AppKitOrUIKitWindow {
 }
 #endif
 
-extension AppKitOrUIKitHostingWindowProtocol {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingWindowProtocol {
     public func refreshPosition() {
         fatalError("unimplemented")
     }
 }
 
 #if !os(macOS)
-extension AppKitOrUIKitHostingWindowProtocol {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingWindowProtocol {
     public func setPosition(_ position: _CoordinateSpaceRelative<CGPoint>) {
         fatalError("unimplemented")
     }
@@ -84,7 +84,7 @@ public struct _AppKitOrUIKitHostingWindowConfiguration: Equatable {
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
 @_documentation(visibility: internal)
-open class AppKitOrUIKitHostingWindow<Content: View>: AppKitOrUIKitWindow, AppKitOrUIKitHostingWindowProtocol {
+open class SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content: View>: SwiftUIX_Hi.AppKitOrUIKitWindow, SwiftUIX_Hi.AppKitOrUIKitHostingWindowProtocol {
     public typealias _ContentViewControllerType = CocoaHostingController<_AppKitOrUIKitHostingWindowContent<Content>>
     
     private var _NSWindow_didWindowJustClose: Bool = false
@@ -289,11 +289,11 @@ open class AppKitOrUIKitHostingWindow<Content: View>: AppKitOrUIKitWindow, AppKi
         refreshPosition()
         
         #if os(iOS) || os(tvOS)
-        if let backgroundColor = _SwiftUIX_windowConfiguration.backgroundColor?.toAppKitOrUIKitColor() {
+        if let backgroundColor = _SwiftUIX_windowConfiguration.backgroundColor?.toSwiftUIX_Hi.AppKitOrUIKitColor() {
             self.backgroundColor = backgroundColor
         }
         #elseif os(macOS)
-        if let backgroundColor = _SwiftUIX_windowConfiguration.backgroundColor?.toAppKitOrUIKitColor() {
+        if let backgroundColor = _SwiftUIX_windowConfiguration.backgroundColor?.toSwiftUIX_Hi.AppKitOrUIKitColor() {
             _assignIfNotEqual(backgroundColor, to: \.backgroundColor)
         }
         
@@ -347,7 +347,7 @@ open class AppKitOrUIKitHostingWindow<Content: View>: AppKitOrUIKitWindow, AppKi
         
         assert(contentViewController.mainView._window == nil)
                 
-        contentViewController._configureSizingOptions(for: AppKitOrUIKitWindow.self)
+        contentViewController._configureSizingOptions(for: SwiftUIX_Hi.AppKitOrUIKitWindow.self)
         
         switch style {
             case .`default`:
@@ -660,7 +660,7 @@ open class AppKitOrUIKitHostingWindow<Content: View>: AppKitOrUIKitWindow, AppKi
             self._contentWindowController = nil
         }
         
-        if let rootHostingViewController = self._rootHostingViewController, let popover = rootHostingViewController._SwiftUIX_parentNSPopover as? _AnyAppKitOrUIKitHostingPopover, popover.isDetached {
+        if let rootHostingViewController = self._rootHostingViewController, let popover = rootHostingViewController._SwiftUIX_parentNSPopover as? _AnySwiftUIX_Hi.AppKitOrUIKitHostingPopover, popover.isDetached {
             popover._SwiftUIX_detachedWindowDidClose()
         }
         #else
@@ -677,7 +677,7 @@ open class AppKitOrUIKitHostingWindow<Content: View>: AppKitOrUIKitWindow, AppKi
     }
 }
 
-extension AppKitOrUIKitHostingWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingWindow {
     public func refreshPosition() {
         guard let windowPosition = _SwiftUIX_windowConfiguration.windowPosition else {
             return
@@ -693,7 +693,7 @@ extension AppKitOrUIKitHostingWindow {
 @available(macCatalystApplicationExtension, unavailable)
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
-extension AppKitOrUIKitHostingWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingWindow {
     public convenience init(
         windowScene: UIWindowScene,
         @ViewBuilder rootView: () -> Content
@@ -705,7 +705,7 @@ extension AppKitOrUIKitHostingWindow {
 @available(macCatalystApplicationExtension, unavailable)
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
-extension AppKitOrUIKitHostingWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingWindow {
     public convenience init(
         @ViewBuilder rootView: () -> Content
     ) {
@@ -774,7 +774,7 @@ extension View {
 @available(macCatalystApplicationExtension, unavailable)
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
-extension AppKitOrUIKitHostingWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingWindow {
     public func setPosition(
         _ position: _CoordinateSpaceRelative<CGPoint>?
     ) {
@@ -803,7 +803,7 @@ extension AppKitOrUIKitHostingWindow {
 @available(macCatalystApplicationExtension, unavailable)
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
-extension AppKitOrUIKitHostingWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingWindow {
     public func setPosition(
         _ position: _CoordinateSpaceRelative<CGPoint>?
     ) {
@@ -818,7 +818,7 @@ extension AppKitOrUIKitHostingWindow {
             _SwiftUIX_windowConfiguration.windowPosition = position
         }
         
-        let sourceWindow: AppKitOrUIKitWindow? = windowPresentationController?._sourceAppKitOrUIKitWindow ?? position._sourceAppKitOrUIKitWindow
+        let sourceWindow: SwiftUIX_Hi.AppKitOrUIKitWindow? = windowPresentationController?._sourceSwiftUIX_Hi.AppKitOrUIKitWindow ?? position._sourceSwiftUIX_Hi.AppKitOrUIKitWindow
         
         if var position = position[.coordinateSpace(.global)] {
             var rect = CGRect(
@@ -859,21 +859,21 @@ extension AppKitOrUIKitHostingWindow {
 #if os(macOS)
 extension NSWindow {
     static var didBecomeVisibleNotification: Notification.Name {
-        Notification.Name("com.vmanot.SwiftUIX.AppKitOrUIKitHostingWindow.didBecomeVisibleNotification")
+        Notification.Name("com.vmanot.SwiftUIX.SwiftUIX_Hi.AppKitOrUIKitHostingWindow.didBecomeVisibleNotification")
     }
 }
 #endif
 
-extension AppKitOrUIKitHostingWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingWindow {
     public func _SwiftUIX_waitForShow() async {
         guard let _rootHostingViewController, _rootHostingViewController._hostingViewStateFlags.contains(.hasAppearedAndIsCurrentlyVisible) else {
             return
         }
         
         await withUnsafeContinuation { continuation in
-            NotificationCenter.default.addObserver(forName: AppKitOrUIKitWindow.didBecomeVisibleNotification, object: self, queue: .main) { _ in
+            NotificationCenter.default.addObserver(forName: SwiftUIX_Hi.AppKitOrUIKitWindow.didBecomeVisibleNotification, object: self, queue: .main) { _ in
                 Task { @MainActor in
-                    NotificationCenter.default.removeObserver(self, name: AppKitOrUIKitWindow.didBecomeVisibleNotification, object: nil)
+                    NotificationCenter.default.removeObserver(self, name: SwiftUIX_Hi.AppKitOrUIKitWindow.didBecomeVisibleNotification, object: nil)
                     
                     continuation.resume()
                 }

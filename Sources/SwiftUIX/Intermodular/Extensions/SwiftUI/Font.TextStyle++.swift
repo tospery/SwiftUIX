@@ -54,7 +54,7 @@ extension Font.TextStyle {
 
 @available(macOS 11.0, *)
 extension Font.TextStyle {
-    public func toAppKitOrUIKitFontTextStyle() -> AppKitOrUIKitFont.TextStyle? {
+    public func toSwiftUIX_Hi.AppKitOrUIKitFontTextStyle() -> SwiftUIX_Hi.AppKitOrUIKitFont.TextStyle? {
         switch self {
             #if !os(tvOS)
             case .largeTitle:

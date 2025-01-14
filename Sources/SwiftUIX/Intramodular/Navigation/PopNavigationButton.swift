@@ -29,6 +29,6 @@ public struct PopNavigationButton<Label: View>: ActionLabelView {
                 label
             }
         }
-        ._resolveAppKitOrUIKitViewControllerIfAvailable()
+        ._resolveSwiftUIX_Hi.AppKitOrUIKitViewControllerIfAvailable()
     }
 }

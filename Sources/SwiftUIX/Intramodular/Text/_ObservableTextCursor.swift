@@ -10,7 +10,7 @@ import Swift
 @available(*, deprecated, renamed: "_ObservableTextCursor")
 public typealias _TextCursorTracking = _ObservableTextCursor
 
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     
 }
 
@@ -144,7 +144,7 @@ extension _ObservableTextCursor {
 
 // MARK: - Auxiliary
 
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     var _caretTextPosition: Int? {
         guard let selectedTextRange = _SwiftUIX_selectedTextRange else {
             return nil
@@ -187,7 +187,7 @@ extension AppKitOrUIKitTextView {
 }
 
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     var _SwiftUIX_caretGeometry: _CoordinateSpaceRelative<CGRect>? {
         guard let selectedRange = selectedTextRange else {
             return nil
@@ -209,7 +209,7 @@ extension AppKitOrUIKitTextView {
     }
 }
 #elseif os(macOS)
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     var _SwiftUIX_caretGeometry: _CoordinateSpaceRelative<CGRect>? {
         guard let window else {
             return nil

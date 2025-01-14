@@ -223,7 +223,7 @@ extension CocoaHostingCollectionViewSupplementaryView {
             _ targetSize: CGSize
         ) -> CGSize {
             sizeThatFits(
-                AppKitOrUIKitLayoutSizeProposal(
+                SwiftUIX_Hi.AppKitOrUIKitLayoutSizeProposal(
                     targetSize: targetSize,
                     maximumSize: base?.configuration?.maximumSize ?? nil,
                     horizontalFittingPriority: nil,
@@ -238,7 +238,7 @@ extension CocoaHostingCollectionViewSupplementaryView {
             verticalFittingPriority: UILayoutPriority
         ) -> CGSize {
             sizeThatFits(
-                AppKitOrUIKitLayoutSizeProposal(
+                SwiftUIX_Hi.AppKitOrUIKitLayoutSizeProposal(
                     targetSize: targetSize,
                     maximumSize: base?.configuration?.maximumSize ?? nil,
                     horizontalFittingPriority: horizontalFittingPriority,

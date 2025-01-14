@@ -11,7 +11,7 @@ public struct AnyPresentationView: View {
     enum Base {
         case native(AnyView)
         #if !os(watchOS)
-        case appKitOrUIKitViewController(AppKitOrUIKitViewController)
+        case appKitOrUIKitViewController(SwiftUIX_Hi.AppKitOrUIKitViewController)
         #endif
     }
     
@@ -32,12 +32,12 @@ public struct AnyPresentationView: View {
                 case .native(let view):
                     view
                         .environment(environmentInsertions)
-                        ._resolveAppKitOrUIKitViewControllerIfAvailable()
+                        ._resolveSwiftUIX_Hi.AppKitOrUIKitViewControllerIfAvailable()
                 #if !os(watchOS)
                 case .appKitOrUIKitViewController(let viewController):
-                    AppKitOrUIKitViewControllerAdaptor(viewController)
+                    SwiftUIX_Hi.AppKitOrUIKitViewControllerAdaptor(viewController)
                         .environment(environmentInsertions)
-                        ._resolveAppKitOrUIKitViewController(with: viewController)
+                        ._resolveSwiftUIX_Hi.AppKitOrUIKitViewController(with: viewController)
                 #endif
             }
         }
@@ -56,7 +56,7 @@ public struct AnyPresentationView: View {
     }
     
     #if !os(watchOS)
-    public init(_ viewController: AppKitOrUIKitViewController) {
+    public init(_ viewController: SwiftUIX_Hi.AppKitOrUIKitViewController) {
         self.base = .appKitOrUIKitViewController(viewController)
         
         #if os(iOS)
@@ -69,7 +69,7 @@ public struct AnyPresentationView: View {
     
     #if os(iOS) || os(macOS) || os(tvOS) || targetEnvironment(macCatalyst)
     /// Convert to an AppKit/UIKit view controller.
-    public func _toAppKitOrUIKitViewController() -> AppKitOrUIKitViewController {
+    public func _toSwiftUIX_Hi.AppKitOrUIKitViewController() -> SwiftUIX_Hi.AppKitOrUIKitViewController {
         switch base {
             case .native:
                 return CocoaHostingController(mainView: self)

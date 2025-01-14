@@ -99,12 +99,12 @@ struct _SetDismissDisabled: ViewModifier {
     let disabled: Bool
     
     #if os(iOS) || targetEnvironment(macCatalyst)
-    @State var viewControllerBox = WeakReferenceBox<AppKitOrUIKitViewController>(nil)
+    @State var viewControllerBox = WeakReferenceBox<SwiftUIX_Hi.AppKitOrUIKitViewController>(nil)
     #endif
     
     func body(content: Content) -> some View {
         #if os(iOS) || targetEnvironment(macCatalyst)
-        return content.onAppKitOrUIKitViewControllerResolution { [weak viewControllerBox] viewController in
+        return content.onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution { [weak viewControllerBox] viewController in
             viewControllerBox?.value = viewController.root ?? viewController
             viewControllerBox?.value?.isModalInPresentation = disabled
         }

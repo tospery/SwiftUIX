@@ -6,7 +6,7 @@ import Swift
 import SwiftUI
 
 #if os(iOS) || os(tvOS) || os(visionOS)
-extension AppKitOrUIKitScrollView {
+extension SwiftUIX_Hi.AppKitOrUIKitScrollView {
     var verticalScrollPosition: CGFloat {
         get {
             contentOffset.y

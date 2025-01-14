@@ -11,7 +11,7 @@ extension View {
     public func _fixSidebarListStyle() -> some View {
         #if os(iOS) || targetEnvironment(macCatalyst)
         return withInlineState(initialValue: false) { isFixed in
-            self.onAppKitOrUIKitViewControllerResolution {
+            self.onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution {
                 guard !isFixed.wrappedValue else {
                     return
                 }

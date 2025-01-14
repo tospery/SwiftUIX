@@ -5,24 +5,24 @@
 import SwiftUI
 
 #if os(iOS) || os(tvOS) || os(visionOS)
-extension AppKitOrUIKitFont {
+extension SwiftUIX_Hi.AppKitOrUIKitFont {
     public var _SwiftUIX_estimatedLineHeight: CGFloat {
         fatalError("unimplemented")
     }
 
     func scaled(
         by ratio: CGFloat
-    ) -> AppKitOrUIKitFont {
+    ) -> SwiftUIX_Hi.AppKitOrUIKitFont {
         let newPointSize = pointSize * ratio
         
-        return AppKitOrUIKitFont(
+        return SwiftUIX_Hi.AppKitOrUIKitFont(
             descriptor: fontDescriptor,
             size: newPointSize
         )
     }
 }
 #elseif os(macOS)
-extension AppKitOrUIKitFont {
+extension SwiftUIX_Hi.AppKitOrUIKitFont {
     public var _SwiftUIX_estimatedLineHeight: CGFloat {
         floor(ascender + abs(descender) + leading)
     }

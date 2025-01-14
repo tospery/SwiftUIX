@@ -63,16 +63,16 @@ extension PopoverAttachmentTarget {
 
 #if os(iOS) || os(macOS)
 extension PopoverAttachmentTarget {
-    public var _sourceAppKitOrUIKitWindow: AppKitOrUIKitWindow? {
+    public var _sourceSwiftUIX_Hi.AppKitOrUIKitWindow: SwiftUIX_Hi.AppKitOrUIKitWindow? {
         get {
             switch self {
                 case .rect(let x):
-                    return x._sourceAppKitOrUIKitWindow
+                    return x._sourceSwiftUIX_Hi.AppKitOrUIKitWindow
             }
         } set {
             switch self {
                 case .rect(var x):
-                    x._sourceAppKitOrUIKitWindow = newValue
+                    x._sourceSwiftUIX_Hi.AppKitOrUIKitWindow = newValue
                     
                     self = .rect(x)
             }

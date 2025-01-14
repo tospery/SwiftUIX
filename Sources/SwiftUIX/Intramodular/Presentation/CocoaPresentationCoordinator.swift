@@ -54,17 +54,17 @@ import SwiftUI
         #endif
     }
     
-    public fileprivate(set) weak var viewController: AppKitOrUIKitViewController?
+    public fileprivate(set) weak var viewController: SwiftUIX_Hi.AppKitOrUIKitViewController?
     
     public init(
         presentation: AnyModalPresentation? = nil,
-        viewController: AppKitOrUIKitViewController? = nil
+        viewController: SwiftUIX_Hi.AppKitOrUIKitViewController? = nil
     ) {
         self.presentation = presentation
         self.viewController = viewController
     }
     
-    func setViewController(_ viewController: AppKitOrUIKitViewController) {
+    func setViewController(_ viewController: SwiftUIX_Hi.AppKitOrUIKitViewController) {
         guard self.viewController == nil else {
             return assertionFailure()
         }

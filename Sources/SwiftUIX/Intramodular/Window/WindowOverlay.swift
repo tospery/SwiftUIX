@@ -11,7 +11,7 @@ import SwiftUI
 @available(macCatalystApplicationExtension, unavailable)
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
-struct WindowOverlay<Content: View>: AppKitOrUIKitViewControllerRepresentable {
+struct WindowOverlay<Content: View>: SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable {
     private let content: Content
     private let canBecomeKey: Bool
     private let isVisible: Binding<Bool>
@@ -26,21 +26,21 @@ struct WindowOverlay<Content: View>: AppKitOrUIKitViewControllerRepresentable {
         self.isVisible = isVisible
     }
     
-    func makeAppKitOrUIKitViewController(
+    func makeSwiftUIX_Hi.AppKitOrUIKitViewController(
         context: Context
-    ) -> AppKitOrUIKitViewControllerType {
-        AppKitOrUIKitViewControllerType(
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType {
+        SwiftUIX_Hi.AppKitOrUIKitViewControllerType(
             content: content,
             canBecomeKey: canBecomeKey,
             isVisible: isVisible.wrappedValue
         )
     }
     
-    func updateAppKitOrUIKitViewController(
-        _ viewController: AppKitOrUIKitViewControllerType,
+    func updateSwiftUIX_Hi.AppKitOrUIKitViewController(
+        _ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         context: Context
     ) {
-        viewController.windowPresentationController._sourceAppKitOrUIKitWindow = viewController.view.window
+        viewController.windowPresentationController._sourceSwiftUIX_Hi.AppKitOrUIKitWindow = viewController.view.window
         
         viewController.windowPresentationController.preferredColorScheme = context.environment.colorScheme
         viewController.windowPresentationController.content = content
@@ -48,8 +48,8 @@ struct WindowOverlay<Content: View>: AppKitOrUIKitViewControllerRepresentable {
         viewController.windowPresentationController._externalIsVisibleBinding = isVisible
     }
     
-    static func dismantleAppKitOrUIKitViewController(
-        _ viewController: AppKitOrUIKitViewControllerType,
+    static func dismantleSwiftUIX_Hi.AppKitOrUIKitViewController(
+        _ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         coordinator: Coordinator
     ) {
         DispatchQueue.asyncOnMainIfNecessary {
@@ -65,7 +65,7 @@ extension WindowOverlay {
     @available(macCatalystApplicationExtension, unavailable)
     @available(iOSApplicationExtension, unavailable)
     @available(tvOSApplicationExtension, unavailable)
-    class AppKitOrUIKitViewControllerType: AppKitOrUIKitViewController {
+    class SwiftUIX_Hi.AppKitOrUIKitViewControllerType: SwiftUIX_Hi.AppKitOrUIKitViewController {
         var windowPresentationController: _WindowPresentationController<Content>
         
         init(content: Content, canBecomeKey: Bool, isVisible: Bool) {

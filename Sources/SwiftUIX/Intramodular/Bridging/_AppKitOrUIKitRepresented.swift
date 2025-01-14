@@ -6,7 +6,7 @@
 
 import SwiftUI
 
-public protocol _AppKitOrUIKitRepresented: AnyObject, AppKitOrUIKitResponder {
+public protocol _AppKitOrUIKitRepresented: AnyObject, SwiftUIX_Hi.AppKitOrUIKitResponder {
     var representatableStateFlags: _AppKitOrUIKitRepresentableStateFlags { get set }
     var representableCache: _AppKitOrUIKitRepresentableCache { get set }
     
@@ -34,7 +34,7 @@ public enum Attribute {
     }
     
     var _cachedIntrinsicContentSize: CGSize? = nil
-    var _sizeThatFitsCache: [AppKitOrUIKitLayoutSizeProposal: CGSize] = [:]
+    var _sizeThatFitsCache: [SwiftUIX_Hi.AppKitOrUIKitLayoutSizeProposal: CGSize] = [:]
     
     public init(nilLiteral: ()) {
         
@@ -48,7 +48,7 @@ public enum Attribute {
         }
     }
     
-    public func sizeThatFits(proposal: AppKitOrUIKitLayoutSizeProposal) -> CGSize? {
+    public func sizeThatFits(proposal: SwiftUIX_Hi.AppKitOrUIKitLayoutSizeProposal) -> CGSize? {
         if let result = _sizeThatFitsCache[proposal] {
             return result
         } else if !_sizeThatFitsCache.isEmpty {
@@ -64,7 +64,7 @@ public enum Attribute {
     }
 }
 
-extension AppKitOrUIKitResponder {
+extension SwiftUIX_Hi.AppKitOrUIKitResponder {
     @objc open func _performOrSchedulePublishingChanges(
         @_implicitSelfCapture _ operation: @escaping () -> Void
     ) {

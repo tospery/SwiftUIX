@@ -6,7 +6,7 @@ import Swift
 import SwiftUI
 
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitEdgeInsets {
+extension SwiftUIX_Hi.AppKitOrUIKitEdgeInsets {
     public init(_ insets: EdgeInsets) {
         self.init(
             top: insets.top,

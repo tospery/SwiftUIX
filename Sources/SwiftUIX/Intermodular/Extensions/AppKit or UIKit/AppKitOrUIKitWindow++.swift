@@ -10,27 +10,27 @@ import SwiftUI
 @available(macCatalystApplicationExtension, unavailable)
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
-extension AppKitOrUIKitWindow {
-    public static var _SwiftUIX_allInstances: [AppKitOrUIKitWindow] {
+extension SwiftUIX_Hi.AppKitOrUIKitWindow {
+    public static var _SwiftUIX_allInstances: [SwiftUIX_Hi.AppKitOrUIKitWindow] {
         #if os(macOS)
-        return AppKitOrUIKitApplication.shared.windows
+        return SwiftUIX_Hi.AppKitOrUIKitApplication.shared.windows
         #else
-        return AppKitOrUIKitApplication.shared.connectedScenes
+        return SwiftUIX_Hi.AppKitOrUIKitApplication.shared.connectedScenes
             .filter({ $0.activationState == .foregroundActive })
             .first(where: { $0 is UIWindowScene })
             .flatMap({ $0 as? UIWindowScene })?.windows ?? []
         #endif
     }
     
-    public static var _SwiftUIX_largestInstanceByArea: AppKitOrUIKitWindow? {
+    public static var _SwiftUIX_largestInstanceByArea: SwiftUIX_Hi.AppKitOrUIKitWindow? {
         _SwiftUIX_allInstances.max(by: { ($0.frame.size.width * $0.frame.size.height) < ($1.frame.size.width * $1.frame.size.height) })
     }
 
-    public static var _firstKeyInstance: AppKitOrUIKitWindow? {
+    public static var _firstKeyInstance: SwiftUIX_Hi.AppKitOrUIKitWindow? {
         #if os(iOS) || os(macOS)
-        return AppKitOrUIKitApplication.shared.firstKeyWindow
+        return SwiftUIX_Hi.AppKitOrUIKitApplication.shared.firstKeyWindow
         #else
-        return AppKitOrUIKitApplication.shared.connectedScenes
+        return SwiftUIX_Hi.AppKitOrUIKitApplication.shared.connectedScenes
             .filter { $0.activationState == .foregroundActive }
             .first(where: { $0 is UIWindowScene })
             .flatMap({ $0 as? UIWindowScene })?.windows
@@ -49,8 +49,8 @@ extension AppKitOrUIKitWindow {
 }
 
 #if os(iOS) || os(tvOS) || os(visionOS)
-extension AppKitOrUIKitWindow {
-    public var _SwiftUIX_contentView: AppKitOrUIKitView? {
+extension SwiftUIX_Hi.AppKitOrUIKitWindow {
+    public var _SwiftUIX_contentView: SwiftUIX_Hi.AppKitOrUIKitView? {
         self
     }
 
@@ -59,8 +59,8 @@ extension AppKitOrUIKitWindow {
     }
 }
 #elseif os(macOS)
-extension AppKitOrUIKitWindow {
-    public var _SwiftUIX_contentView: AppKitOrUIKitView? {
+extension SwiftUIX_Hi.AppKitOrUIKitWindow {
+    public var _SwiftUIX_contentView: SwiftUIX_Hi.AppKitOrUIKitView? {
         contentView
     }
     
@@ -77,7 +77,7 @@ extension AppKitOrUIKitWindow {
 #endif
 
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitWindow {
     @objc open var alphaValue: CGFloat {
         get {
             self.rootViewController?.view.alpha ?? 1
@@ -88,7 +88,7 @@ extension AppKitOrUIKitWindow {
 }
 #endif
 
-extension AppKitOrUIKitWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitWindow {
     public var _SwiftUIX_isInRegularDisplay: Bool {
         guard !isHidden else {
             return false
@@ -128,7 +128,7 @@ extension AppKitOrUIKitWindow {
     }
 }
 
-extension AppKitOrUIKitWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitWindow {
     public struct _TransitionPhasePublisher: Publisher {
         @_documentation(visibility: internal)
 public enum Output {

@@ -7,7 +7,7 @@
 import SwiftUI
 
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     public var _SwiftUIX_textContainer: NSTextContainer? {
         textContainer
     }
@@ -21,7 +21,7 @@ extension AppKitOrUIKitTextView {
     }
 }
 
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     public var _SwiftUIX_selectedTextRange: NSRange? {
         selectedRange
     }
@@ -91,7 +91,7 @@ extension AppKitOrUIKitTextView {
     }
 }
 #elseif os(macOS)
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     public var _SwiftUIX_textContainer: NSTextContainer? {
         textContainer
     }
@@ -105,7 +105,7 @@ extension AppKitOrUIKitTextView {
     }
 }
 
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     public var _SwiftUIX_selectedTextRange: NSRange? {
         guard let range = selectedRanges.first as? NSRange else {
             return nil
@@ -128,7 +128,7 @@ extension AppKitOrUIKitTextView {
 }
 #endif
 
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     var _numberOfHardLineBreaks: Int? {
         let string = self._SwiftUIX_text
         

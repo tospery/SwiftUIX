@@ -9,12 +9,12 @@ import SwiftUI
 #if os(iOS) || os(macOS) || os(tvOS) || targetEnvironment(macCatalyst)
 
 @_documentation(visibility: internal)
-public struct AttributedText: AppKitOrUIKitViewRepresentable {
-    public typealias AppKitOrUIKitViewType = AppKitOrUIKitLabel
+public struct AttributedText: SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
+    public typealias SwiftUIX_Hi.AppKitOrUIKitViewType = SwiftUIX_Hi.AppKitOrUIKitLabel
     
     fileprivate struct Configuration: Hashable {
-        var appKitOrUIKitFont: AppKitOrUIKitFont?
-        var appKitOrUIKitForegroundColor: AppKitOrUIKitColor?
+        var appKitOrUIKitFont: SwiftUIX_Hi.AppKitOrUIKitFont?
+        var appKitOrUIKitForegroundColor: SwiftUIX_Hi.AppKitOrUIKitColor?
     }
     
     @Environment(\.accessibilityEnabled) fileprivate var accessibilityEnabled
@@ -46,14 +46,14 @@ public struct AttributedText: AppKitOrUIKitViewRepresentable {
         self.init(NSAttributedString(string: String(content)))
     }
     
-    public func makeAppKitOrUIKitView(
+    public func makeSwiftUIX_Hi.AppKitOrUIKitView(
         context: Context
-    ) -> AppKitOrUIKitViewType {
-        AppKitOrUIKitViewType()
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
+        SwiftUIX_Hi.AppKitOrUIKitViewType()
     }
     
-    public func updateAppKitOrUIKitView(
-        _ view: AppKitOrUIKitViewType,
+    public func updateSwiftUIX_Hi.AppKitOrUIKitView(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) {
         DispatchQueue.asyncOnMainIfNecessary {
@@ -65,11 +65,11 @@ public struct AttributedText: AppKitOrUIKitViewRepresentable {
 // MARK: - API
 
 extension AttributedText {
-    public func font(_ font: AppKitOrUIKitFont) -> Self {
+    public func font(_ font: SwiftUIX_Hi.AppKitOrUIKitFont) -> Self {
         then({ $0.configuration.appKitOrUIKitFont = font })
     }
     
-    public func foregroundColor(_ foregroundColor: AppKitOrUIKitColor) -> Self {
+    public func foregroundColor(_ foregroundColor: SwiftUIX_Hi.AppKitOrUIKitColor) -> Self {
         then({ $0.configuration.appKitOrUIKitForegroundColor = foregroundColor })
     }
     
@@ -83,7 +83,7 @@ extension AttributedText {
 
 // MARK: - Auxiliary
 
-extension AppKitOrUIKitLabel {
+extension SwiftUIX_Hi.AppKitOrUIKitLabel {
     func configure(with attributedText: AttributedText) {
         #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
         self.allowsDefaultTighteningForTruncation = attributedText.allowsTightening
@@ -101,7 +101,7 @@ extension AppKitOrUIKitLabel {
         #endif
         
         #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-        if let font = try? attributedText.configuration.appKitOrUIKitFont ?? attributedText.font?.toAppKitOrUIKitFont() {
+        if let font = try? attributedText.configuration.appKitOrUIKitFont ?? attributedText.font?.toSwiftUIX_Hi.AppKitOrUIKitFont() {
             let string = NSMutableAttributedString(attributedString: attributedText.content)
             
             string.addAttribute(.font, value: font, range: .init(location: 0, length: string.length))

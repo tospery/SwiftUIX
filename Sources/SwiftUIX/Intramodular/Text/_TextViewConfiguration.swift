@@ -76,13 +76,13 @@ public struct _TextViewConfiguration: Hashable, DynamicProperty {
     #endif
     var automaticQuoteSubstitutionDisabled: Bool?
     @_spi(Internal)
-    public var cocoaFont: AppKitOrUIKitFont?
+    public var cocoaFont: SwiftUIX_Hi.AppKitOrUIKitFont?
     @_spi(Internal)
-    public var cocoaForegroundColor: AppKitOrUIKitColor?
-    var tintColor: AppKitOrUIKitColor?
+    public var cocoaForegroundColor: SwiftUIX_Hi.AppKitOrUIKitColor?
+    var tintColor: SwiftUIX_Hi.AppKitOrUIKitColor?
     var kerning: CGFloat?
-    var linkForegroundColor: AppKitOrUIKitColor?
-    var placeholderColor: AppKitOrUIKitColor?
+    var linkForegroundColor: SwiftUIX_Hi.AppKitOrUIKitColor?
+    var placeholderColor: SwiftUIX_Hi.AppKitOrUIKitColor?
     #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
     var textContentType: UITextContentType?
     #endif
@@ -125,20 +125,20 @@ public struct _TextViewConfiguration: Hashable, DynamicProperty {
 
 @available(iOS 13.0, macOS 11.0, tvOS 13.0, *)
 extension TextView {
-    public struct _CustomAppKitOrUIKitClassConfiguration {
+    public struct _CustomSwiftUIX_Hi.AppKitOrUIKitClassConfiguration {
         public typealias UpdateOperation<T> = (_ view: T, _ context: any _AppKitOrUIKitViewRepresentableContext) -> Void
         
-        let `class`: AppKitOrUIKitTextView.Type
-        let update: UpdateOperation<AppKitOrUIKitTextView>
+        let `class`: SwiftUIX_Hi.AppKitOrUIKitTextView.Type
+        let update: UpdateOperation<SwiftUIX_Hi.AppKitOrUIKitTextView>
         
         init(
-            `class`: AppKitOrUIKitTextView.Type = _PlatformTextView<Label>.self
+            `class`: SwiftUIX_Hi.AppKitOrUIKitTextView.Type = _PlatformTextView<Label>.self
         ) {
             self.class = `class`
             self.update = { _, _ in }
         }
         
-        init<T: AppKitOrUIKitTextView>(
+        init<T: SwiftUIX_Hi.AppKitOrUIKitTextView>(
             `class`: T.Type,
             update: @escaping UpdateOperation<T> = { _, _ in }
         ) {
@@ -157,7 +157,7 @@ extension TextView {
 }
 
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     public func _currentTextViewData(
         kind: _TextViewDataBinding.Value.Kind
     ) -> _TextViewDataBinding.Value {
@@ -219,7 +219,7 @@ extension AppKitOrUIKitTextView {
     }
 }
 #elseif os(macOS)
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     public func _currentTextViewData(
         kind: _TextViewDataBinding.Value.Kind
     ) -> _TextViewDataBinding.Value {

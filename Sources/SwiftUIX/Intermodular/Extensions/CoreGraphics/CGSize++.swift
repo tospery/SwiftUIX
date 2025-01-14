@@ -214,7 +214,7 @@ extension CGSize {
         _isInvalidForIntrinsicContentSize ? nil : self
     }
 
-    /// Whether the size contains a `AppKitOrUIKitView.noIntrinsicMetric` or an infinity.
+    /// Whether the size contains a `SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric` or an infinity.
     @_optimize(speed)
     @inline(__always)
     public var _hasUnspecifiedIntrinsicContentSizeDimensions: Bool {
@@ -227,15 +227,15 @@ extension CGSize {
     
     @_optimize(speed)
     @inline(__always)
-    func toAppKitOrUIKitIntrinsicContentSize() -> CGSize {
+    func toSwiftUIX_Hi.AppKitOrUIKitIntrinsicContentSize() -> CGSize {
         var result = self
         
         if result.width._isInvalidForIntrinsicContentSize {
-            result.width = AppKitOrUIKitView.noIntrinsicMetric
+            result.width = SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric
         }
         
         if result.height._isInvalidForIntrinsicContentSize {
-            result.height = AppKitOrUIKitView.noIntrinsicMetric
+            result.height = SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric
         }
         
         return result
@@ -304,7 +304,7 @@ extension CGFloat {
         }
         
         switch self {
-            case AppKitOrUIKitView.noIntrinsicMetric:
+            case SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric:
                 return false
             case CGFloat.greatestFiniteMagnitude:
                 return true
@@ -322,7 +322,7 @@ extension CGFloat {
     func isPlaceholderDimension(for type: _AppKitOrUIKitPlaceholderDimensionType) -> Bool {
         switch type {
             case .intrinsicContentSize:
-                return self == AppKitOrUIKitView.noIntrinsicMetric
+                return self == SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric
             case .textContainer:
                 return self == 10000000.0 || self == CGFloat.greatestFiniteMagnitude
         }

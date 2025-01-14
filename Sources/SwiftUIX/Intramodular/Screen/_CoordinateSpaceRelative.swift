@@ -17,15 +17,15 @@ import UIKit
 /// A value relative to one or multiple coordinate spaces.
 @_documentation(visibility: internal)
 public struct _CoordinateSpaceRelative<Value: Equatable>: Equatable {
-    private weak var __sourceAppKitOrUIKitWindow: NSObject?
+    private weak var __sourceSwiftUIX_Hi.AppKitOrUIKitWindow: NSObject?
     private var storage: [_ScreenOrCoordinateSpace: Value] = [:]
     
     init(
         storage: [_ScreenOrCoordinateSpace: Value],
-        _sourceAppKitOrUIKitWindow: NSObject?
+        _sourceSwiftUIX_Hi.AppKitOrUIKitWindow: NSObject?
     ) {
         self.storage = storage
-        self.__sourceAppKitOrUIKitWindow = _sourceAppKitOrUIKitWindow
+        self.__sourceSwiftUIX_Hi.AppKitOrUIKitWindow = _sourceSwiftUIX_Hi.AppKitOrUIKitWindow
     }
     
     public init() {
@@ -58,7 +58,7 @@ extension _CoordinateSpaceRelative {
         get {
             .init(
                 storage: self.storage.compactMapValues({ $0[keyPath: keyPath] }),
-                _sourceAppKitOrUIKitWindow: __sourceAppKitOrUIKitWindow
+                _sourceSwiftUIX_Hi.AppKitOrUIKitWindow: __sourceSwiftUIX_Hi.AppKitOrUIKitWindow
             )
         }
     }
@@ -85,11 +85,11 @@ extension _CoordinateSpaceRelative {
 
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS)
 extension _CoordinateSpaceRelative {
-    public var _sourceAppKitOrUIKitWindow: AppKitOrUIKitWindow? {
+    public var _sourceSwiftUIX_Hi.AppKitOrUIKitWindow: SwiftUIX_Hi.AppKitOrUIKitWindow? {
         get {
-            __sourceAppKitOrUIKitWindow as? AppKitOrUIKitWindow
+            __sourceSwiftUIX_Hi.AppKitOrUIKitWindow as? SwiftUIX_Hi.AppKitOrUIKitWindow
         } set {
-            __sourceAppKitOrUIKitWindow = newValue
+            __sourceSwiftUIX_Hi.AppKitOrUIKitWindow = newValue
         }
     }
 }
@@ -110,7 +110,7 @@ extension _CoordinateSpaceRelative where Value == CGPoint {
         
         return Self(
             storage: storage,
-            _sourceAppKitOrUIKitWindow: __sourceAppKitOrUIKitWindow
+            _sourceSwiftUIX_Hi.AppKitOrUIKitWindow: __sourceSwiftUIX_Hi.AppKitOrUIKitWindow
         )
     }
     
@@ -141,7 +141,7 @@ extension _CoordinateSpaceRelative where Value == CGRect {
         get {
             _CoordinateSpaceRelative<CGPoint>(
                 storage: storage.mapValues({ $0.origin }),
-                _sourceAppKitOrUIKitWindow: self._sourceAppKitOrUIKitWindow
+                _sourceSwiftUIX_Hi.AppKitOrUIKitWindow: self._sourceSwiftUIX_Hi.AppKitOrUIKitWindow
             )
         }
     }
@@ -152,7 +152,7 @@ extension _CoordinateSpaceRelative where Value == CGRect {
 
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS)
 #if os(macOS)
-extension AppKitOrUIKitWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitWindow {
     public var _coordinateSpaceRelativeFrame: _CoordinateSpaceRelative<CGRect> {
         var frame = frame
         
@@ -164,7 +164,7 @@ extension AppKitOrUIKitWindow {
     }
 }
 #else
-extension AppKitOrUIKitWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitWindow {
     public var _coordinateSpaceRelativeFrame: _CoordinateSpaceRelative<CGRect> {
         fatalError("unimplemented")
     }

@@ -65,7 +65,7 @@ extension _PlatformTableCellView {
         }
         
         var _bestIntrinsicContentSizeEstimate: CGSize {
-            var result = parent?._cheapCache?.lastContentSize ?? CGSize(width: AppKitOrUIKitView.noIntrinsicMetric, height: AppKitOrUIKitView.noIntrinsicMetric)
+            var result = parent?._cheapCache?.lastContentSize ?? CGSize(width: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric, height: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric)
             
             if let parent {
                 if parent.frame.size.isRegularAndNonZero {
@@ -82,7 +82,7 @@ extension _PlatformTableCellView {
                 
         override var intrinsicContentSize: CGSize {
             guard let tableView = parent?.superview?.superview ?? parent?.superview else {
-                return CGSize(width: AppKitOrUIKitView.noIntrinsicMetric, height: AppKitOrUIKitView.noIntrinsicMetric)
+                return CGSize(width: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric, height: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric)
             }
             
             if contentHostingViewCoordinator.stateFlags.contains(.payloadDidJustUpdate) {

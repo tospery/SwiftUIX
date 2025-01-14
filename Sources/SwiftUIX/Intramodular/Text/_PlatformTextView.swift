@@ -9,7 +9,7 @@ import Swift
 import SwiftUI
 
 @_spi(Internal)
-public protocol _PlatformTextViewType: _AppKitOrUIKitRepresented, AppKitOrUIKitTextView {
+public protocol _PlatformTextViewType: _AppKitOrUIKitRepresented, SwiftUIX_Hi.AppKitOrUIKitTextView {
     associatedtype Label: View
     
     var _SwiftUIX_textViewConfiguration: _TextViewConfiguration { get }
@@ -44,7 +44,7 @@ public protocol _PlatformTextViewType: _AppKitOrUIKitRepresented, AppKitOrUIKitT
 /// The main `UITextView` subclass used by `TextView`.
 @available(iOS 13.0, macOS 11.0, tvOS 13.0, *)
 @_documentation(visibility: internal)
-open class _PlatformTextView<Label: View>: AppKitOrUIKitTextView, NSLayoutManagerDelegate, NSTextStorageDelegate {
+open class _PlatformTextView<Label: View>: SwiftUIX_Hi.AppKitOrUIKitTextView, NSLayoutManagerDelegate, NSTextStorageDelegate {
     public var representatableStateFlags: _AppKitOrUIKitRepresentableStateFlags = []
     public var representableCache: _AppKitOrUIKitRepresentableCache = nil
     public var representableUpdater = EmptyObservableObject()
@@ -59,7 +59,7 @@ open class _PlatformTextView<Label: View>: AppKitOrUIKitTextView, NSLayoutManage
     }
     
     @_spi(Internal)
-    public internal(set) var customAppKitOrUIKitClassConfiguration: TextView<Label>._CustomAppKitOrUIKitClassConfiguration!
+    public internal(set) var customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration: TextView<Label>._CustomSwiftUIX_Hi.AppKitOrUIKitClassConfiguration!
     
     public var _textEditorProxyBase: _TextEditorProxy._Base?
     
@@ -189,8 +189,8 @@ open class _PlatformTextView<Label: View>: AppKitOrUIKitTextView, NSLayoutManage
             }
             
             let desiredHorizontalContentHuggingPriority = preferredMaximumDimensions.width == nil
-                ? AppKitOrUIKitLayoutPriority.defaultLow
-                : AppKitOrUIKitLayoutPriority.defaultHigh
+                ? SwiftUIX_Hi.AppKitOrUIKitLayoutPriority.defaultLow
+                : SwiftUIX_Hi.AppKitOrUIKitLayoutPriority.defaultHigh
             
             if contentHuggingPriority(for: .horizontal) != desiredHorizontalContentHuggingPriority {
                 setContentHuggingPriority(
@@ -200,8 +200,8 @@ open class _PlatformTextView<Label: View>: AppKitOrUIKitTextView, NSLayoutManage
             }
             
             let desiredVerticalContentHuggingPriority = preferredMaximumDimensions.height == nil
-                ? AppKitOrUIKitLayoutPriority.defaultLow
-                : AppKitOrUIKitLayoutPriority.defaultHigh
+                ? SwiftUIX_Hi.AppKitOrUIKitLayoutPriority.defaultLow
+                : SwiftUIX_Hi.AppKitOrUIKitLayoutPriority.defaultHigh
             
             if contentHuggingPriority(for: .vertical) != desiredVerticalContentHuggingPriority {
                 setContentHuggingPriority(
@@ -225,7 +225,7 @@ open class _PlatformTextView<Label: View>: AppKitOrUIKitTextView, NSLayoutManage
     override open var intrinsicContentSize: CGSize {
         if let _fixedSize = configuration._fixedSize {
             if _fixedSize.value == (false, false) {
-                return CGSize(width: AppKitOrUIKitView.noIntrinsicMetric, height: AppKitOrUIKitView.noIntrinsicMetric)
+                return CGSize(width: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric, height: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric)
             }
         }
         
@@ -302,7 +302,7 @@ open class _PlatformTextView<Label: View>: AppKitOrUIKitTextView, NSLayoutManage
             self._textEditorProxyBase = context.environment._textViewProxyBinding.wrappedValue?.wrappedValue._base
         } 
         
-        _PlatformTextView<Label>.updateAppKitOrUIKitTextView(
+        _PlatformTextView<Label>.updateSwiftUIX_Hi.AppKitOrUIKitTextView(
             self,
             data: data,
             configuration: configuration,
@@ -602,7 +602,7 @@ open class _PlatformTextView<Label: View>: AppKitOrUIKitTextView, NSLayoutManage
         shouldGenerateGlyphs glyphs: UnsafePointer<CGGlyph>,
         properties: UnsafePointer<NSLayoutManager.GlyphProperty>,
         characterIndexes: UnsafePointer<Int>,
-        font: AppKitOrUIKitFont,
+        font: SwiftUIX_Hi.AppKitOrUIKitFont,
         forGlyphRange range: NSRange
     ) -> Int {
         return 0
@@ -672,7 +672,7 @@ open class _PlatformTextView<Label: View>: AppKitOrUIKitTextView, NSLayoutManage
 @available(iOS 13.0, macOS 11.0, tvOS 13.0, *)
 extension _PlatformTextView {
     func _sizeThatFits(
-        proposal: AppKitOrUIKitLayoutSizeProposal
+        proposal: SwiftUIX_Hi.AppKitOrUIKitLayoutSizeProposal
     ) -> CGSize? {
         guard let targetWidth = proposal.replacingUnspecifiedDimensions(by: .zero).targetWidth else {
             assertionFailure()

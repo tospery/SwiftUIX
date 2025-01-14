@@ -8,8 +8,8 @@ import Swift
 import SwiftUI
 
 /// A zero-size view for when `EmptyView` just doesn't work.
-fileprivate struct _ZeroSizeView: AppKitOrUIKitViewRepresentable {
-    final class AppKitOrUIKitViewType: AppKitOrUIKitView {
+fileprivate struct _ZeroSizeView: SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
+    final class SwiftUIX_Hi.AppKitOrUIKitViewType: SwiftUIX_Hi.AppKitOrUIKitView {
         public override var intrinsicContentSize: CGSize {
             .zero
         }
@@ -66,10 +66,10 @@ fileprivate struct _ZeroSizeView: AppKitOrUIKitViewRepresentable {
         
     }
     
-    func makeAppKitOrUIKitView(
+    func makeSwiftUIX_Hi.AppKitOrUIKitView(
         context: Context
-    ) -> AppKitOrUIKitViewType {
-        let view = AppKitOrUIKitViewType()
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
+        let view = SwiftUIX_Hi.AppKitOrUIKitViewType()
         
         #if os(iOS)
         view.isAccessibilityElement = false
@@ -86,8 +86,8 @@ fileprivate struct _ZeroSizeView: AppKitOrUIKitViewRepresentable {
         return view
     }
     
-    func updateAppKitOrUIKitView(
-        _ view: AppKitOrUIKitViewType,
+    func updateSwiftUIX_Hi.AppKitOrUIKitView(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) {
         view.frame.size = .zero
@@ -96,7 +96,7 @@ fileprivate struct _ZeroSizeView: AppKitOrUIKitViewRepresentable {
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
     func sizeThatFits(
         _ proposal: ProposedViewSize,
-        view: AppKitOrUIKitViewType,
+        view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) -> CGSize? {
         .zero

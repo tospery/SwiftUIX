@@ -29,7 +29,7 @@ public func _withoutAnimation<T>(
 @usableFromInline
 var _SwiftUIX_AppKitOrUIKitAnimationIsDisabled: Bool = false
 
-public func _withoutAppKitOrUIKitAnimation<Result>(
+public func _withoutSwiftUIX_Hi.AppKitOrUIKitAnimation<Result>(
     _ flag: Bool = true,
     _ body: () -> Result
 ) -> Result {

@@ -36,7 +36,7 @@ public struct CocoaScrollViewConfiguration<Content: View>: ExpressibleByNilLiter
     
     var onRefresh: (() -> Void)?
     var isRefreshing: Bool?
-    var refreshControlTintColor: AppKitOrUIKitColor?
+    var refreshControlTintColor: SwiftUIX_Hi.AppKitOrUIKitColor?
     
     private var _keyboardDismissMode: Any?
     

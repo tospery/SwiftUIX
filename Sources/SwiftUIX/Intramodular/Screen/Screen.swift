@@ -58,7 +58,7 @@ public class Screen: ObservableObject {
     var orientationObserver: NSObjectProtocol?
         
     #if  os(iOS) || os(macOS) || os(tvOS)
-    var appKitOrUIKitScreen: AppKitOrUIKitScreen?
+    var appKitOrUIKitScreen: SwiftUIX_Hi.AppKitOrUIKitScreen?
     #endif
     
     private init() {
@@ -85,7 +85,7 @@ public class Screen: ObservableObject {
 
 #if  os(iOS) || os(macOS) || os(tvOS)
 extension Screen {
-    public convenience init(_ screen: AppKitOrUIKitScreen?) {
+    public convenience init(_ screen: SwiftUIX_Hi.AppKitOrUIKitScreen?) {
         self.init()
         
         #if os(macOS)
@@ -139,7 +139,7 @@ extension Screen: Hashable {
         if let appKitOrUIKitScreen {
             hasher.combine(ObjectIdentifier(appKitOrUIKitScreen))
         } else {
-            hasher.combine(ObjectIdentifier((AppKitOrUIKitScreen.main as Optional<AppKitOrUIKitScreen>)!)) // FIXME: !!!
+            hasher.combine(ObjectIdentifier((SwiftUIX_Hi.AppKitOrUIKitScreen.main as Optional<SwiftUIX_Hi.AppKitOrUIKitScreen>)!)) // FIXME: !!!
         }
         #else
         hasher.combine(ObjectIdentifier(self)) // FIXME: !!!

@@ -10,7 +10,7 @@ import UIKit
 
 /// A modifier that can be applied to a view, exposing access to the parent `UIViewController`.
 @usableFromInline
-struct AppKitOrUIKitViewControllerConfigurator: UIViewControllerRepresentable {
+struct SwiftUIX_Hi.AppKitOrUIKitViewControllerConfigurator: UIViewControllerRepresentable {
     @usableFromInline
     struct Configuration {
         @usableFromInline
@@ -76,7 +76,7 @@ struct AppKitOrUIKitViewControllerConfigurator: UIViewControllerRepresentable {
 extension UIViewController {
     /// Configures this view controller with a given configuration.
     @inlinable
-    func configure(with configuration: AppKitOrUIKitViewControllerConfigurator.Configuration) {
+    func configure(with configuration: SwiftUIX_Hi.AppKitOrUIKitViewControllerConfigurator.Configuration) {
         #if os(iOS) || targetEnvironment(macCatalyst)
         if let newValue = configuration.hidesBottomBarWhenPushed {
             hidesBottomBarWhenPushed = newValue
@@ -90,9 +90,9 @@ extension View {
     /// Configures this view's parent `UIViewController`.
     @inlinable
     func configureUIViewController(
-        _ transform: (inout AppKitOrUIKitViewControllerConfigurator.Configuration) -> Void
+        _ transform: (inout SwiftUIX_Hi.AppKitOrUIKitViewControllerConfigurator.Configuration) -> Void
     ) -> some View {
-        background(AppKitOrUIKitViewControllerConfigurator().configure(transform))
+        background(SwiftUIX_Hi.AppKitOrUIKitViewControllerConfigurator().configure(transform))
     }
 }
 

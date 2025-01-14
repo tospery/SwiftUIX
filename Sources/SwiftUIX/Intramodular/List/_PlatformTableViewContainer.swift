@@ -16,7 +16,7 @@ open class _PlatformTableViewContainer<Configuration: _CocoaListConfigurationTyp
     }
     
     override open var intrinsicContentSize: NSSize {
-        CGSize(width: AppKitOrUIKitView.noIntrinsicMetric, height: AppKitOrUIKitView.noIntrinsicMetric)
+        CGSize(width: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric, height: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric)
     }
     
     private lazy var _tableView: _PlatformTableView<Configuration> = {
@@ -80,7 +80,7 @@ open class _PlatformTableViewContainer<Configuration: _CocoaListConfigurationTyp
     private func _setUp() {
         automaticallyAdjustsContentInsets = false
         backgroundColor = .clear
-        contentInsets = AppKitOrUIKitEdgeInsets(.zero)
+        contentInsets = SwiftUIX_Hi.AppKitOrUIKitEdgeInsets(.zero)
         wantsLayer = true
         
         isHorizontalContentSizeConstraintActive = false
@@ -228,7 +228,7 @@ extension _PlatformTableViewContainer {
         }
 
         override open var intrinsicContentSize: NSSize {
-            CGSize(width: AppKitOrUIKitView.noIntrinsicMetric, height: AppKitOrUIKitView.noIntrinsicMetric)
+            CGSize(width: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric, height: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric)
         }
                 
         override init(frame frameRect: NSRect) {
@@ -309,7 +309,7 @@ extension NSScrollView {
             return
         }
         
-        _withoutAppKitOrUIKitAnimation {
+        _withoutSwiftUIX_Hi.AppKitOrUIKitAnimation {
             let newScrollOrigin = NSPoint(
                 x: savedRelativeScrollPosition.x,
                 y: documentView.bounds.maxY - bounds.height - savedRelativeScrollPosition.y

@@ -70,7 +70,7 @@ public struct PopoverPresentationLink<Destination: View, Label: View>: Presentat
     private var popoverContent: some View {
         destination
             .environment(environmentInsertions)
-            ._resolveAppKitOrUIKitViewControllerIfAvailable()
+            ._resolveSwiftUIX_Hi.AppKitOrUIKitViewControllerIfAvailable()
     }
 }
 

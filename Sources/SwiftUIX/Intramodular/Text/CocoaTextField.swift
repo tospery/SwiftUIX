@@ -27,7 +27,7 @@ public struct CocoaTextField<Label: View>: View {
         var textRect: Rect?
         var editingRect: Rect?
         var clearButtonRect: Rect?
-        var clearButtonImage: AppKitOrUIKitImage?
+        var clearButtonImage: SwiftUIX_Hi.AppKitOrUIKitImage?
 
         var isInitialFirstResponder: Bool?
         var isFirstResponder: Bool?
@@ -198,7 +198,7 @@ fileprivate struct _CocoaTextField<Label: View>: UIViewRepresentable {
             uiView.borderStyle = configuration.borderStyle
             uiView.clearButtonMode = configuration.clearButtonMode ?? .never
             uiView.enablesReturnKeyAutomatically = configuration.enablesReturnKeyAutomatically ?? false
-            uiView.font = try? configuration.uiFont ?? context.environment.font?.toAppKitOrUIKitFont() ?? uiView.font
+            uiView.font = try? configuration.uiFont ?? context.environment.font?.toSwiftUIX_Hi.AppKitOrUIKitFont() ?? uiView.font
             uiView.isSecureTextEntry = configuration.secureTextEntry ?? false
             uiView.isUserInteractionEnabled = context.environment.isEnabled
             uiView.keyboardType = configuration.keyboardType
@@ -223,7 +223,7 @@ fileprivate struct _CocoaTextField<Label: View>: UIViewRepresentable {
                 uiView.attributedPlaceholder = NSAttributedString(
                     string: placeholder,
                     attributes: [
-                        .font: try? configuration.uiFont ?? context.environment.font?.toAppKitOrUIKitFont() ?? uiView.font,
+                        .font: try? configuration.uiFont ?? context.environment.font?.toSwiftUIX_Hi.AppKitOrUIKitFont() ?? uiView.font,
                         .paragraphStyle: NSMutableParagraphStyle().then {
                             $0.alignment = .init(context.environment.multilineTextAlignment)
                         }
@@ -467,7 +467,7 @@ extension CocoaTextField {
         then({ $0.configuration.clearButtonMode = clearButtonMode })
     }
 
-    public func clearButtonImage(_ clearButtonImage: AppKitOrUIKitImage) -> Self {
+    public func clearButtonImage(_ clearButtonImage: SwiftUIX_Hi.AppKitOrUIKitImage) -> Self {
         then({ $0.configuration.clearButtonImage = clearButtonImage })
     }
     
@@ -604,13 +604,13 @@ extension PlatformTextField {
     
     var _SwiftUIX_inputView: AnyView? {
         get {
-            return (inputView as? AppKitOrUIKitHostingView<InputHostingView>)?.rootView.content
+            return (inputView as? SwiftUIX_Hi.AppKitOrUIKitHostingView<InputHostingView>)?.rootView.content
         } set {
             if let newValue {
-                if let hostingView = inputView as? AppKitOrUIKitHostingView<InputHostingView> {
+                if let hostingView = inputView as? SwiftUIX_Hi.AppKitOrUIKitHostingView<InputHostingView> {
                     hostingView.rootView = InputHostingView(content: newValue)
                 } else {
-                    let hostingView = AppKitOrUIKitHostingView(
+                    let hostingView = SwiftUIX_Hi.AppKitOrUIKitHostingView(
                         rootView: InputHostingView(content: newValue)
                     )
                     
@@ -637,13 +637,13 @@ extension PlatformTextField {
     
     var _SwiftUIX_inputAccessoryView: AnyView? {
         get {
-            return (inputAccessoryView as? AppKitOrUIKitHostingView<InputAccessoryHostingView>)?.rootView.content
+            return (inputAccessoryView as? SwiftUIX_Hi.AppKitOrUIKitHostingView<InputAccessoryHostingView>)?.rootView.content
         } set {
             if let newValue {
-                if let hostingView = inputAccessoryView as? AppKitOrUIKitHostingView<InputAccessoryHostingView> {
+                if let hostingView = inputAccessoryView as? SwiftUIX_Hi.AppKitOrUIKitHostingView<InputAccessoryHostingView> {
                     hostingView.rootView = InputAccessoryHostingView(content: newValue)
                 } else {
-                    let hostingView = AppKitOrUIKitHostingView(
+                    let hostingView = SwiftUIX_Hi.AppKitOrUIKitHostingView(
                         rootView: InputAccessoryHostingView(content: newValue)
                     )
                     

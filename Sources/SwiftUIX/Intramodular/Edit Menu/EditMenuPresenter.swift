@@ -26,17 +26,17 @@ private struct EditMenuPresenter: ViewModifier {
             }
     }
     
-    struct _BackgroundPresenterView: AppKitOrUIKitViewRepresentable {
+    struct _BackgroundPresenterView: SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
         @Binding var isVisible: Bool
         
         let attachmentAnchor: UnitPoint?
         let editMenuItems: () -> [EditMenuItem]
         
-        func makeAppKitOrUIKitView(context: Context) -> AppKitOrUIKitViewType {
-            AppKitOrUIKitViewType()
+        func makeSwiftUIX_Hi.AppKitOrUIKitView(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
+            SwiftUIX_Hi.AppKitOrUIKitViewType()
         }
         
-        func updateAppKitOrUIKitView(_ view: AppKitOrUIKitViewType, context: Context) {
+        func updateSwiftUIX_Hi.AppKitOrUIKitView(_ view: SwiftUIX_Hi.AppKitOrUIKitViewType, context: Context) {
             view.isVisible = $isVisible
             view.attachmentAnchor = attachmentAnchor
             view.editMenuItems = editMenuItems
@@ -106,7 +106,7 @@ extension View {
 // MARK: - Auxiliary
 
 extension EditMenuPresenter._BackgroundPresenterView {
-    class AppKitOrUIKitViewType: UIView {
+    class SwiftUIX_Hi.AppKitOrUIKitViewType: UIView {
         var isVisible: Binding<Bool>?
         var attachmentAnchor: UnitPoint?
         var editMenuItems: () -> [EditMenuItem] = { [] }

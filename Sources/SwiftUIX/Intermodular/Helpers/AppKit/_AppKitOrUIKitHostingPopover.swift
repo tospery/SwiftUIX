@@ -11,7 +11,7 @@ import Combine
 import Swift
 import SwiftUI
 
-public protocol _AppKitOrUIKitHostingPopoverType: _AnyAppKitOrUIKitHostingPopover {
+public protocol _AppKitOrUIKitHostingPopoverType: _AnySwiftUIX_Hi.AppKitOrUIKitHostingPopover {
     @_spi(Internal)
     var _SwiftUIX_hostingPopoverPreferences: _AppKitOrUIKitHostingPopoverPreferences { get set }
     
@@ -27,7 +27,7 @@ public protocol _AppKitOrUIKitHostingPopoverType: _AnyAppKitOrUIKitHostingPopove
 
 #if os(iOS) || os(tvOS) || os(visionOS)
 @_documentation(visibility: internal)
-open class _AnyAppKitOrUIKitHostingPopover: NSObject, _AppKitOrUIKitHostingPopoverType {
+open class _AnySwiftUIX_Hi.AppKitOrUIKitHostingPopover: NSObject, _AppKitOrUIKitHostingPopoverType {
     public var _SwiftUIX_hostingPopoverPreferences: _AppKitOrUIKitHostingPopoverPreferences = nil
     
     public var isDetached: Bool {
@@ -56,7 +56,7 @@ open class _AnyAppKitOrUIKitHostingPopover: NSObject, _AppKitOrUIKitHostingPopov
 }
 #elseif os(macOS)
 @_documentation(visibility: internal)
-open class _AnyAppKitOrUIKitHostingPopover: NSPopover, _AppKitOrUIKitHostingPopoverType {
+open class _AnySwiftUIX_Hi.AppKitOrUIKitHostingPopover: NSPopover, _AppKitOrUIKitHostingPopoverType {
     public var _SwiftUIX_hostingPopoverPreferences: _AppKitOrUIKitHostingPopoverPreferences = nil
 
     open func _SwiftUIX_layoutImmediately() {
@@ -95,16 +95,16 @@ public struct _AppKitOrUIKitHostingPopoverConfiguration: ExpressibleByNilLiteral
 #if os(macOS)
 /// An AppKit popover that hosts SwiftUI view hierarchy.
 @_documentation(visibility: internal)
-open class NSHostingPopover<Content: View>: _AnyAppKitOrUIKitHostingPopover, NSPopoverDelegate, ObservableObject {
+open class NSHostingPopover<Content: View>: _AnySwiftUIX_Hi.AppKitOrUIKitHostingPopover, NSPopoverDelegate, ObservableObject {
     typealias _ContentWrappingView = _AppKitOrUIKitHostingWindowContent<Content>
     typealias _ContentViewControllerType = CocoaHostingController<_ContentWrappingView>
     
     public let configuration: _AppKitOrUIKitHostingPopoverConfiguration
     
     private weak var _rightfulKeyWindow: NSWindow?
-    private weak var _rightfulFirstResponder: AppKitOrUIKitResponder?
+    private weak var _rightfulFirstResponder: SwiftUIX_Hi.AppKitOrUIKitResponder?
     
-    public private(set) var _detachedWindow: AppKitOrUIKitHostingWindow<Content>?
+    public private(set) var _detachedWindow: SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>?
     
     private var _contentViewController: _ContentViewControllerType {
         if let contentViewController = contentViewController {
@@ -354,7 +354,7 @@ open class NSHostingPopover<Content: View>: _AnyAppKitOrUIKitHostingPopover, NSP
         _SwiftUIX_detachWindow()
     }
     
-    public func _SwiftUIX_detachWindow() -> AppKitOrUIKitHostingWindow<Content>? {
+    public func _SwiftUIX_detachWindow() -> SwiftUIX_Hi.AppKitOrUIKitHostingWindow<Content>? {
         if let _detachedWindow {
             return _detachedWindow
         } else {
@@ -364,7 +364,7 @@ open class NSHostingPopover<Content: View>: _AnyAppKitOrUIKitHostingPopover, NSP
             
             let content = contentViewController.mainView.content
             
-            let window = AppKitOrUIKitHostingWindow(
+            let window = SwiftUIX_Hi.AppKitOrUIKitHostingWindow(
                 rootView: content,
                 style: .default
             )
@@ -407,7 +407,7 @@ open class NSHostingPopover<Content: View>: _AnyAppKitOrUIKitHostingPopover, NSP
             _contentViewController._SwiftUIX_layoutIfNeeded()
             
             var size = _contentViewController.sizeThatFits(
-                AppKitOrUIKitLayoutSizeProposal(fixedSize: (true, true)),
+                SwiftUIX_Hi.AppKitOrUIKitLayoutSizeProposal(fixedSize: (true, true)),
                 layoutImmediately: true
             )
             

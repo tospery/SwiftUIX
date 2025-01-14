@@ -50,7 +50,7 @@ class UIHostingPageViewController<Page: View>: UIPageViewController, _opaque_UIH
                 } else {
                     if let viewControllers = viewControllers?.compactMap({ $0 as? PageContentController }), let firstViewController = viewControllers.first, !viewControllers.isEmpty {
                         for viewController in viewControllers {
-                            _withoutAppKitOrUIKitAnimation(!(viewController === firstViewController)) {
+                            _withoutSwiftUIX_Hi.AppKitOrUIKitAnimation(!(viewController === firstViewController)) {
                                 viewController.mainView.page = content.content(content.data[viewController.mainView.index])
                             }
                         }

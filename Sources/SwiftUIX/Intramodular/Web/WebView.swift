@@ -94,8 +94,8 @@ struct _WebViewContainer: View {
     }
 }
 
-struct _WebView: AppKitOrUIKitViewRepresentable {
-    public typealias AppKitOrUIKitViewType = _SwiftUIX_WKWebView
+struct _WebView: SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
+    public typealias SwiftUIX_Hi.AppKitOrUIKitViewType = _SwiftUIX_WKWebView
     
     struct Configuration: Hashable {
         @_documentation(visibility: internal)
@@ -125,8 +125,8 @@ public enum Source: Hashable, Sendable {
     
     @ObservedObject var coordinator: Coordinator
     
-    func makeAppKitOrUIKitView(context: Context) -> AppKitOrUIKitViewType {
-        let view = AppKitOrUIKitViewType()
+    func makeSwiftUIX_Hi.AppKitOrUIKitView(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
+        let view = SwiftUIX_Hi.AppKitOrUIKitViewType()
         
         view._SwiftUIX_configuration = configuration
         
@@ -142,7 +142,7 @@ public enum Source: Hashable, Sendable {
         return view
     }
     
-    func updateAppKitOrUIKitView(_ view: AppKitOrUIKitViewType, context: Context) {
+    func updateSwiftUIX_Hi.AppKitOrUIKitView(_ view: SwiftUIX_Hi.AppKitOrUIKitViewType, context: Context) {
         view._SwiftUIX_configuration = configuration
         
         switch configuration.source {
@@ -155,8 +155,8 @@ public enum Source: Hashable, Sendable {
         }
     }
     
-    static func dismantleAppKitOrUIKitView(
-        _ view: AppKitOrUIKitViewType,
+    static func dismantleSwiftUIX_Hi.AppKitOrUIKitView(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         coordinator: Coordinator
     ) {
         coordinator.webView = nil
@@ -259,7 +259,7 @@ final class _SwiftUIX_WKWebView: WKWebView, WKNavigationDelegate {
             setValue(false, forKey: "drawsBackground")
         }
         
-        if let foregroundColor = configuration.foregroundStyle?.toAppKitOrUIKitColor() {
+        if let foregroundColor = configuration.foregroundStyle?.toSwiftUIX_Hi.AppKitOrUIKitColor() {
             changeTextColor(to: foregroundColor.toCSSColor())
         }
     }
@@ -362,7 +362,7 @@ extension WKWebView {
 // MARK: - Auxiliary
 
 #if os(iOS) || os(tvOS)
-extension AppKitOrUIKitColor {
+extension SwiftUIX_Hi.AppKitOrUIKitColor {
     func toCSSColor() -> String {
         var red: CGFloat = 0
         var green: CGFloat = 0

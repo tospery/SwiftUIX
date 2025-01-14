@@ -32,7 +32,7 @@ public enum Name: Hashable, @unchecked Sendable {
     @_documentation(visibility: internal)
 public enum Payload: Hashable {
         /// An AppKit or UIKit image.
-        case appKitOrUIKitImage(AppKitOrUIKitImage)
+        case appKitOrUIKitImage(SwiftUIX_Hi.AppKitOrUIKitImage)
         /// A named image.
         case named(Name)
     }
@@ -104,12 +104,12 @@ extension _AnyImage {
     }
     
     /// Returns the AppKit or UIKit representation of the image.
-    public var appKitOrUIKitImage: AppKitOrUIKitImage? {
+    public var appKitOrUIKitImage: SwiftUIX_Hi.AppKitOrUIKitImage? {
         switch payload {
             case .appKitOrUIKitImage(let image):
                 return image
             case .named(let name):
-                return AppKitOrUIKitImage(named: name)
+                return SwiftUIX_Hi.AppKitOrUIKitImage(named: name)
         }
     }
 }
@@ -127,7 +127,7 @@ extension _AnyImage {
     
     /// Initializes an _AnyImage from JPEG data.
     public init?(jpegData: Data) {
-        self.init(AppKitOrUIKitImage(_SwiftUIX_jpegData: jpegData))
+        self.init(SwiftUIX_Hi.AppKitOrUIKitImage(_SwiftUIX_jpegData: jpegData))
     }
 }
 
@@ -135,7 +135,7 @@ extension _AnyImage {
 
 extension _AnyImage {
     /// Initializes an _AnyImage from an optional AppKit or UIKit image.
-    public init?(_ image: AppKitOrUIKitImage?) {
+    public init?(_ image: SwiftUIX_Hi.AppKitOrUIKitImage?) {
         guard let image else {
             return nil
         }
@@ -144,7 +144,7 @@ extension _AnyImage {
     }
     
     /// Initializes an _AnyImage from an AppKit or UIKit image.
-    public init(_ image: AppKitOrUIKitImage) {
+    public init(_ image: SwiftUIX_Hi.AppKitOrUIKitImage) {
         self.init(payload: .appKitOrUIKitImage(image))
     }
     
@@ -252,8 +252,8 @@ extension _AnyImage: View {
 // MARK: - Auxiliary
 
 #if os(iOS) || os(tvOS) || os(watchOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitImage {
-    /// Initializes an AppKitOrUIKitImage with the given _AnyImage.Name.
+extension SwiftUIX_Hi.AppKitOrUIKitImage {
+    /// Initializes an SwiftUIX_Hi.AppKitOrUIKitImage with the given _AnyImage.Name.
     public convenience init?(named name: _AnyImage.Name) {
         switch name {
             case .bundleResource(let name, let bundle):
@@ -264,8 +264,8 @@ extension AppKitOrUIKitImage {
     }
 }
 #elseif os(macOS)
-extension AppKitOrUIKitImage {
-    /// Initializes an AppKitOrUIKitImage with the given _AnyImage.Name.
+extension SwiftUIX_Hi.AppKitOrUIKitImage {
+    /// Initializes an SwiftUIX_Hi.AppKitOrUIKitImage with the given _AnyImage.Name.
     public convenience init?(named name: _AnyImage.Name) {
         switch name {
             case .bundleResource(let name, let bundle):

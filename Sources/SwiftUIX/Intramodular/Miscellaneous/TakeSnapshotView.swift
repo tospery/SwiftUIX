@@ -80,7 +80,7 @@ extension TakeSnapshotView {
 
 extension View {
     @MainActor
-    func _renderAsImage() -> AppKitOrUIKitImage? {
+    func _renderAsImage() -> SwiftUIX_Hi.AppKitOrUIKitImage? {
         let hostingController = CocoaHostingController(mainView: self.edgesIgnoringSafeArea(.all))
         
         let view = hostingController.view

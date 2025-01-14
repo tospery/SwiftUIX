@@ -9,11 +9,11 @@ import SwiftUI
 @available(macCatalystApplicationExtension, unavailable)
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
-extension AppKitOrUIKitViewController {
+extension SwiftUIX_Hi.AppKitOrUIKitViewController {
     @available(macCatalystApplicationExtension, unavailable)
     @available(iOSApplicationExtension, unavailable)
     @available(tvOSApplicationExtension, unavailable)
-    public var _SwiftUIX_firstResponderController: AppKitOrUIKitViewController? {
+    public var _SwiftUIX_firstResponderController: SwiftUIX_Hi.AppKitOrUIKitViewController? {
         guard let firstResponder = _SwiftUIX_findFirstResponder() else {
             return nil
         }
@@ -28,7 +28,7 @@ extension AppKitOrUIKitViewController {
     }
     
     public func _SwiftUIX_makeFirstResponder(
-        _ responder: AppKitOrUIKitResponder?
+        _ responder: SwiftUIX_Hi.AppKitOrUIKitResponder?
     ) -> Bool {
         if let responder {
             if responder === self {
@@ -57,14 +57,14 @@ extension AppKitOrUIKitViewController {
 @available(macCatalystApplicationExtension, unavailable)
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
-extension AppKitOrUIKitViewController {
-    public var _SwiftUIX_firstResponderController: AppKitOrUIKitViewController? {
+extension SwiftUIX_Hi.AppKitOrUIKitViewController {
+    public var _SwiftUIX_firstResponderController: SwiftUIX_Hi.AppKitOrUIKitViewController? {
         _SwiftUIX_nearestFirstResponder as? NSViewController
     }
     
     @discardableResult
     public func _SwiftUIX_makeFirstResponder(
-        _ responder: AppKitOrUIKitResponder?
+        _ responder: SwiftUIX_Hi.AppKitOrUIKitResponder?
     ) -> Bool {
         guard let window = view.window else {
             return false

@@ -149,7 +149,7 @@ extension Color {
         }
     }
 
-    private static var appKitOrUIKitColorConversionCache: [Color: AppKitOrUIKitColor] = [:]
+    private static var appKitOrUIKitColorConversionCache: [Color: SwiftUIX_Hi.AppKitOrUIKitColor] = [:]
 
     public func _toUIColor() -> UIColor? {
         #if os(iOS)
@@ -169,8 +169,8 @@ extension Color {
             ?? toUIColor3()
     }
 
-    public func toUIColor(colorScheme: ColorScheme? = nil) -> AppKitOrUIKitColor? {
-        let result: AppKitOrUIKitColor
+    public func toUIColor(colorScheme: ColorScheme? = nil) -> SwiftUIX_Hi.AppKitOrUIKitColor? {
+        let result: SwiftUIX_Hi.AppKitOrUIKitColor
         
         if let cachedResult = Self.appKitOrUIKitColorConversionCache[self] {
             result = cachedResult
@@ -204,7 +204,7 @@ extension Color {
 
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
 extension Color {
-    public func toAppKitOrUIKitColor() -> AppKitOrUIKitColor? {
+    public func toSwiftUIX_Hi.AppKitOrUIKitColor() -> SwiftUIX_Hi.AppKitOrUIKitColor? {
         #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
         return toUIColor()
         #elseif os(macOS)

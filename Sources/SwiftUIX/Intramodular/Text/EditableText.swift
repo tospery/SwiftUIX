@@ -90,7 +90,7 @@ public enum Activation {
     }
 
     public var body: some View {
-        withAppKitOrUIKitViewController { controller in
+        withSwiftUIX_Hi.AppKitOrUIKitViewController { controller in
             #if !os(macOS)
             if let editMode, respectEditMode {
                 editModeRespectingContent(editMode: editMode)

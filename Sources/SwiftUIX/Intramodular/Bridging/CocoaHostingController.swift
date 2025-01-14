@@ -23,7 +23,7 @@ public struct CocoaHostingControllerConfiguration {
 }
 
 @_documentation(visibility: internal)
-open class CocoaHostingController<Content: View>: AppKitOrUIKitHostingController<CocoaHostingControllerContent<Content>>, _CocoaHostingControllerOrView, CocoaViewController {
+open class CocoaHostingController<Content: View>: SwiftUIX_Hi.AppKitOrUIKitHostingController<CocoaHostingControllerContent<Content>>, _CocoaHostingControllerOrView, CocoaViewController {
     public var _configuration: CocoaHostingControllerConfiguration = .init() {
         didSet {
             rootView.parentConfiguration = _configuration
@@ -142,10 +142,10 @@ open class CocoaHostingController<Content: View>: AppKitOrUIKitHostingController
         return action()
     }
     
-    public func _configureSizingOptions(for type: AppKitOrUIKitResponder.Type) {
+    public func _configureSizingOptions(for type: SwiftUIX_Hi.AppKitOrUIKitResponder.Type) {
         #if os(macOS)
         switch type {
-            case is AppKitOrUIKitWindow.Type:
+            case is SwiftUIX_Hi.AppKitOrUIKitWindow.Type:
                 if #available(macOS 13.0, *) {
                     sizingOptions = [.intrinsicContentSize, .preferredContentSize]
                 }
@@ -245,7 +245,7 @@ open class CocoaHostingController<Content: View>: AppKitOrUIKitHostingController
             return
         }
         
-        let size = sizeThatFits(in: AppKitOrUIKitView.layoutFittingCompressedSize)
+        let size = sizeThatFits(in: SwiftUIX_Hi.AppKitOrUIKitView.layoutFittingCompressedSize)
 
         #if os(macOS)
         if !size.isAreaZero {
@@ -294,7 +294,7 @@ open class CocoaHostingController<Content: View>: AppKitOrUIKitHostingController
         
         #if os(iOS) && canImport(CoreTelephony)
         if let window = view.window, window.canResizeToFitContent, view.frame.size.isAreaZero || view.frame.size == Screen.size {
-            window.frame.size = self.sizeThatFits(AppKitOrUIKitLayoutSizeProposal(targetSize: Screen.main.bounds.size))
+            window.frame.size = self.sizeThatFits(SwiftUIX_Hi.AppKitOrUIKitLayoutSizeProposal(targetSize: Screen.main.bounds.size))
             
             _didResizeParentWindowOnce = true
         }
@@ -317,7 +317,7 @@ extension CocoaHostingController {
     }
 }
 
-extension AppKitOrUIKitHostingController {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingController {
     /// https://twitter.com/b3ll/status/1193747288302075906
     public func _disableSafeAreaInsets() {
         #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)

@@ -15,7 +15,7 @@ public enum FocusRingType: UInt {
 // MARK: - Auxiliary
 
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitView {
+extension SwiftUIX_Hi.AppKitOrUIKitView {
     var _focusRingType: FocusRingType {
         get {
             (self.value(forKey: "focusRingType") as? UInt).flatMap(FocusRingType.init) ?? .default

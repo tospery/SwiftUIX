@@ -467,7 +467,7 @@ final class CocoaHostingCollectionViewController<
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
-        if let itemSize = (collectionViewLayout as? AppKitOrUIKitCollectionViewFlowLayout)?.itemSize, itemSize != AppKitOrUIKitCollectionViewFlowLayout.automaticSize {
+        if let itemSize = (collectionViewLayout as? SwiftUIX_Hi.AppKitOrUIKitCollectionViewFlowLayout)?.itemSize, itemSize != SwiftUIX_Hi.AppKitOrUIKitCollectionViewFlowLayout.automaticSize {
             return itemSize
         }
         
@@ -490,7 +490,7 @@ final class CocoaHostingCollectionViewController<
         layout collectionViewLayout: UICollectionViewLayout,
         minimumLineSpacingForSectionAt section: Int
     ) -> CGFloat {
-        (collectionViewLayout as? AppKitOrUIKitCollectionViewFlowLayout)?.minimumLineSpacing ?? .zero
+        (collectionViewLayout as? SwiftUIX_Hi.AppKitOrUIKitCollectionViewFlowLayout)?.minimumLineSpacing ?? .zero
     }
     
     public func collectionView(
@@ -498,7 +498,7 @@ final class CocoaHostingCollectionViewController<
         layout collectionViewLayout: UICollectionViewLayout,
         minimumInteritemSpacingForSectionAt section: Int
     ) -> CGFloat {
-        (collectionViewLayout as? AppKitOrUIKitCollectionViewFlowLayout)?.minimumInteritemSpacing ?? .zero
+        (collectionViewLayout as? SwiftUIX_Hi.AppKitOrUIKitCollectionViewFlowLayout)?.minimumInteritemSpacing ?? .zero
     }
 
     public func collectionView(
@@ -710,7 +710,7 @@ extension CocoaHostingCollectionViewController {
         let targetCollectionViewSize = collectionView.frame.size
         var baseContentSize = collectionView.contentSize
         
-        if let collectionViewLayout = collectionView.collectionViewLayout as? AppKitOrUIKitCollectionViewFlowLayout {
+        if let collectionViewLayout = collectionView.collectionViewLayout as? SwiftUIX_Hi.AppKitOrUIKitCollectionViewFlowLayout {
             if collectionViewLayout.scrollDirection == .vertical {
                 if (baseContentSize.width == 0 && targetCollectionViewSize.width > 0) || targetCollectionViewSize != collectionView.frame.size {
                     baseContentSize.width = targetCollectionViewSize.width - collectionView.adjustedContentInset.horizontal
@@ -723,8 +723,8 @@ extension CocoaHostingCollectionViewController {
         }
         
         let contentSize = CGSize(
-            width: (baseContentSize.width - ((collectionView.collectionViewLayout as? AppKitOrUIKitCollectionViewFlowLayout)?.sectionInset.horizontal ?? 0)) - collectionView.contentInset.horizontal,
-            height: (baseContentSize.height - ((collectionView.collectionViewLayout as? AppKitOrUIKitCollectionViewFlowLayout)?.sectionInset.vertical ?? 0)) - collectionView.contentInset.vertical
+            width: (baseContentSize.width - ((collectionView.collectionViewLayout as? SwiftUIX_Hi.AppKitOrUIKitCollectionViewFlowLayout)?.sectionInset.horizontal ?? 0)) - collectionView.contentInset.horizontal,
+            height: (baseContentSize.height - ((collectionView.collectionViewLayout as? SwiftUIX_Hi.AppKitOrUIKitCollectionViewFlowLayout)?.sectionInset.vertical ?? 0)) - collectionView.contentInset.vertical
         )
         
         var result = OptionalDimensions(
@@ -733,11 +733,11 @@ extension CocoaHostingCollectionViewController {
         )
         
         if !_scrollViewConfiguration.axes.contains(.vertical) || result.width == 0 {
-            result.width = AppKitOrUIKitView.layoutFittingExpandedSize.width
+            result.width = SwiftUIX_Hi.AppKitOrUIKitView.layoutFittingExpandedSize.width
         }
         
         if !_scrollViewConfiguration.axes.contains(.horizontal) || result.height == 0 {
-            result.height = AppKitOrUIKitView.layoutFittingExpandedSize.height
+            result.height = SwiftUIX_Hi.AppKitOrUIKitView.layoutFittingExpandedSize.height
         }
         
         return result
@@ -745,7 +745,7 @@ extension CocoaHostingCollectionViewController {
 }
 
 extension CocoaHostingCollectionViewController {
-    class _AppKitOrUIKitCollectionView: AppKitOrUIKitCollectionView, UICollectionViewDelegateFlowLayout {
+    class _AppKitOrUIKitCollectionView: SwiftUIX_Hi.AppKitOrUIKitCollectionView, UICollectionViewDelegateFlowLayout {
         weak var parent: CocoaHostingCollectionViewController?
         
         init(parent: CocoaHostingCollectionViewController) {
@@ -772,7 +772,7 @@ extension CocoaHostingCollectionViewController {
             sizeForItemAt indexPath: IndexPath
         ) -> CGSize {
             guard let parent = parent else {
-                return AppKitOrUIKitCollectionViewFlowLayout.automaticSize
+                return SwiftUIX_Hi.AppKitOrUIKitCollectionViewFlowLayout.automaticSize
             }
             
             return parent.collectionView(
@@ -788,7 +788,7 @@ extension CocoaHostingCollectionViewController {
             referenceSizeForHeaderInSection section: Int
         ) -> CGSize {
             guard let parent = parent else {
-                return AppKitOrUIKitCollectionViewFlowLayout.automaticSize
+                return SwiftUIX_Hi.AppKitOrUIKitCollectionViewFlowLayout.automaticSize
             }
             
             return parent.collectionView(
@@ -804,7 +804,7 @@ extension CocoaHostingCollectionViewController {
             referenceSizeForFooterInSection section: Int
         ) -> CGSize {
             guard let parent = parent else {
-                return AppKitOrUIKitCollectionViewFlowLayout.automaticSize
+                return SwiftUIX_Hi.AppKitOrUIKitCollectionViewFlowLayout.automaticSize
             }
             
             return parent.collectionView(

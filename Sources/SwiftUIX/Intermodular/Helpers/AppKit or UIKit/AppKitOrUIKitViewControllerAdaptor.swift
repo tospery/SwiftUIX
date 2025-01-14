@@ -7,41 +7,41 @@
 import SwiftUI
 
 @_documentation(visibility: internal)
-public struct AppKitOrUIKitViewControllerAdaptor<AppKitOrUIKitViewControllerType: AppKitOrUIKitViewController>: AppKitOrUIKitViewControllerRepresentable {
+public struct SwiftUIX_Hi.AppKitOrUIKitViewControllerAdaptor<SwiftUIX_Hi.AppKitOrUIKitViewControllerType: SwiftUIX_Hi.AppKitOrUIKitViewController>: SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable {
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-    public typealias UIViewControllerType = AppKitOrUIKitViewControllerType
+    public typealias UIViewControllerType = SwiftUIX_Hi.AppKitOrUIKitViewControllerType
 #elseif os(macOS)
-    public typealias NSViewControllerType = AppKitOrUIKitViewControllerType
+    public typealias NSViewControllerType = SwiftUIX_Hi.AppKitOrUIKitViewControllerType
 #endif
     
-    private let makeAppKitOrUIKitViewControllerImpl: (Context) -> AppKitOrUIKitViewControllerType
-    private let updateAppKitOrUIKitViewControllerImpl: (AppKitOrUIKitViewControllerType, Context) -> ()
+    private let makeSwiftUIX_Hi.AppKitOrUIKitViewControllerImpl: (Context) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType
+    private let updateSwiftUIX_Hi.AppKitOrUIKitViewControllerImpl: (SwiftUIX_Hi.AppKitOrUIKitViewControllerType, Context) -> ()
     
     public init(
-        _ makeController: @autoclosure @escaping () -> AppKitOrUIKitViewControllerType
+        _ makeController: @autoclosure @escaping () -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType
     ) {
-        self.makeAppKitOrUIKitViewControllerImpl = { _ in makeController() }
-        self.updateAppKitOrUIKitViewControllerImpl = { _, _ in }
+        self.makeSwiftUIX_Hi.AppKitOrUIKitViewControllerImpl = { _ in makeController() }
+        self.updateSwiftUIX_Hi.AppKitOrUIKitViewControllerImpl = { _, _ in }
     }
     
     public init(
-        _ makeController: @escaping () -> AppKitOrUIKitViewControllerType
+        _ makeController: @escaping () -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType
     ) {
-        self.makeAppKitOrUIKitViewControllerImpl = { _ in makeController() }
-        self.updateAppKitOrUIKitViewControllerImpl = { _, _ in }
+        self.makeSwiftUIX_Hi.AppKitOrUIKitViewControllerImpl = { _ in makeController() }
+        self.updateSwiftUIX_Hi.AppKitOrUIKitViewControllerImpl = { _, _ in }
     }
     
-    public func makeAppKitOrUIKitViewController(
+    public func makeSwiftUIX_Hi.AppKitOrUIKitViewController(
         context: Context
-    ) -> AppKitOrUIKitViewControllerType {
-        makeAppKitOrUIKitViewControllerImpl(context)
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType {
+        makeSwiftUIX_Hi.AppKitOrUIKitViewControllerImpl(context)
     }
     
-    public func updateAppKitOrUIKitViewController(
-        _ uiViewController: AppKitOrUIKitViewControllerType,
+    public func updateSwiftUIX_Hi.AppKitOrUIKitViewController(
+        _ uiViewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         context: Context
     ) {
-        updateAppKitOrUIKitViewControllerImpl(uiViewController, context)
+        updateSwiftUIX_Hi.AppKitOrUIKitViewControllerImpl(uiViewController, context)
     }
 }
 

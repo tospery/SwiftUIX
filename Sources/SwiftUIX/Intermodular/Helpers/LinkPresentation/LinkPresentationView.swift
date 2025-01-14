@@ -210,8 +210,8 @@ struct _LinkPresentationView<Placeholder: View>: Identifiable, View {
     #endif
 }
 
-struct _LPLinkViewRepresentable<Placeholder: View>: AppKitOrUIKitViewRepresentable, Equatable {
-    public typealias AppKitOrUIKitViewType = MutableAppKitOrUIKitViewWrapper<LPLinkView>
+struct _LPLinkViewRepresentable<Placeholder: View>: SwiftUIX_Hi.AppKitOrUIKitViewRepresentable, Equatable {
+    public typealias SwiftUIX_Hi.AppKitOrUIKitViewType = MutableSwiftUIX_Hi.AppKitOrUIKitViewWrapper<LPLinkView>
     
     var url: URL?
     var metadata: LPLinkMetadata?
@@ -227,7 +227,7 @@ struct _LPLinkViewRepresentable<Placeholder: View>: AppKitOrUIKitViewRepresentab
         self._proposedMinHeight = proposedMinHeight
     }
     
-    func makeAppKitOrUIKitView(context: Context) -> AppKitOrUIKitViewType {
+    func makeSwiftUIX_Hi.AppKitOrUIKitView(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
         DispatchQueue.main.async {
             self.proposedMinHeight = nil
         }
@@ -243,7 +243,7 @@ struct _LPLinkViewRepresentable<Placeholder: View>: AppKitOrUIKitViewRepresentab
         }
     }
     
-    func updateAppKitOrUIKitView(_ view: AppKitOrUIKitViewType, context: Context) {
+    func updateSwiftUIX_Hi.AppKitOrUIKitView(_ view: SwiftUIX_Hi.AppKitOrUIKitViewType, context: Context) {
         if let metadata = metadata {
             let wasMetadataPresent = view.base?.metadata.title != nil
             
@@ -259,7 +259,7 @@ struct _LPLinkViewRepresentable<Placeholder: View>: AppKitOrUIKitViewRepresentab
         self.proposeMinimumHeight(for: view)
     }
     
-    private func proposeMinimumHeight(for view: AppKitOrUIKitViewType) {
+    private func proposeMinimumHeight(for view: SwiftUIX_Hi.AppKitOrUIKitViewType) {
         guard view.frame.minimumDimensionLength != 0 else {
             return
         }

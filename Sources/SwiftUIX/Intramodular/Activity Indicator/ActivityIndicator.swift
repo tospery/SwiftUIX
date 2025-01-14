@@ -32,7 +32,7 @@ public enum Style {
     #endif
     
     #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-    private var tintAppKitOrUIKitColor: AppKitOrUIKitColor?
+    private var tintSwiftUIX_Hi.AppKitOrUIKitColor: SwiftUIX_Hi.AppKitOrUIKitColor?
     #endif
     
     public init() {
@@ -55,8 +55,8 @@ extension ActivityIndicator: UIViewRepresentable {
     public func updateUIView(_ uiView: UIViewType, context: Context) {
         _assignIfNotEqual(.init(style), to: &uiView.style)
 
-        uiView.color = tintAppKitOrUIKitColor ?? context.environment.tintColor?.toUIColor()
-        uiView.tintColor = tintAppKitOrUIKitColor ?? context.environment.tintColor?.toUIColor()
+        uiView.color = tintSwiftUIX_Hi.AppKitOrUIKitColor ?? context.environment.tintColor?.toUIColor()
+        uiView.tintColor = tintSwiftUIX_Hi.AppKitOrUIKitColor ?? context.environment.tintColor?.toUIColor()
         
         if !context.environment.isEnabled && uiView.isAnimating {
             uiView.stopAnimating()
@@ -74,8 +74,8 @@ extension ActivityIndicator: UIViewRepresentable {
     }
     
     @_disfavoredOverload
-    public func tintColor(_ color: AppKitOrUIKitColor?) -> Self {
-        then({ $0.tintAppKitOrUIKitColor = color })
+    public func tintColor(_ color: SwiftUIX_Hi.AppKitOrUIKitColor?) -> Self {
+        then({ $0.tintSwiftUIX_Hi.AppKitOrUIKitColor = color })
     }
 }
 

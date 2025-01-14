@@ -219,7 +219,7 @@ class _PlatformTableCellView<Configuration: _CocoaListConfigurationType>: NSTabl
         
         self.payload = payload
        
-        _withoutAppKitOrUIKitAnimation {
+        _withoutSwiftUIX_Hi.AppKitOrUIKitAnimation {
             if let contentHostingView = _contentHostingView {
                 _updateContentHostingView(contentHostingView, payload: payload)
             } else {

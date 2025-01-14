@@ -9,7 +9,7 @@ import SwiftUI
 @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 extension ImageRenderer {
     @MainActor
-    public var appKitOrUIKitImage: AppKitOrUIKitImage? {
+    public var appKitOrUIKitImage: SwiftUIX_Hi.AppKitOrUIKitImage? {
         self.nsImage
     }
 }
@@ -17,7 +17,7 @@ extension ImageRenderer {
 @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
 extension ImageRenderer {
     @MainActor
-    public var appKitOrUIKitImage: AppKitOrUIKitImage? {
+    public var appKitOrUIKitImage: SwiftUIX_Hi.AppKitOrUIKitImage? {
         self.uiImage
     }
 }

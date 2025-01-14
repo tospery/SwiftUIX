@@ -8,7 +8,7 @@ import Swift
 import SwiftUI
 
 extension CocoaHostingCollectionViewController: _CollectionViewProxyBase {
-    var appKitOrUIKitCollectionView: AppKitOrUIKitCollectionView {
+    var appKitOrUIKitCollectionView: SwiftUIX_Hi.AppKitOrUIKitCollectionView {
         collectionView
     }
     
@@ -220,7 +220,7 @@ extension CocoaHostingCollectionViewController: _CollectionViewProxyBase {
         )
     }
     
-    func _snapshot() -> AppKitOrUIKitImage? {
+    func _snapshot() -> SwiftUIX_Hi.AppKitOrUIKitImage? {
         let originalBounds = collectionView.bounds
         
         collectionView.bounds = .init(origin: .zero, size: collectionView.insetAdjustedContentSize)

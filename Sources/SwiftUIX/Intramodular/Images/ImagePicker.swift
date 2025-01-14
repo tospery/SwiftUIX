@@ -45,7 +45,7 @@ public struct ImagePicker: UIViewControllerRepresentable {
     @Environment(\.presentationManager) var presentationManager
     
     let info: Binding<[UIImagePickerController.InfoKey: Any]?>?
-    let image: Binding<AppKitOrUIKitImage?>?
+    let image: Binding<SwiftUIX_Hi.AppKitOrUIKitImage?>?
     let data: Binding<Data?>?
     
     let encoding: Image.Encoding?
@@ -138,7 +138,7 @@ extension ImagePicker {
     ///   - encoding: The image encoding to use.
     ///   - onCancel: An action to trigger when the image picker cancels.
     public init(
-        image: Binding<AppKitOrUIKitImage?>,
+        image: Binding<SwiftUIX_Hi.AppKitOrUIKitImage?>,
         encoding: Image.Encoding? = nil,
         onCancel: (() -> Void)? = nil
     ) {

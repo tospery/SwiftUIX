@@ -12,7 +12,7 @@ final class _PlatformTableView<Configuration: _CocoaListConfigurationType>: NSTa
     let listRepresentable: _CocoaList<Configuration>.Coordinator
         
     override var intrinsicContentSize: NSSize {
-        CGSize(width: AppKitOrUIKitView.noIntrinsicMetric, height: AppKitOrUIKitView.noIntrinsicMetric)
+        CGSize(width: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric, height: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric)
     }
         
     override var usesAutomaticRowHeights: Bool {

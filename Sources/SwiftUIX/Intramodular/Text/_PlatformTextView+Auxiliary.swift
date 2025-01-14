@@ -7,7 +7,7 @@
 import SwiftUI
 
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     func _SwiftUIX_replaceTextStorage(_ textStorage: NSTextStorage) {
         let layoutManager = NSLayoutManager()
         
@@ -19,7 +19,7 @@ extension AppKitOrUIKitTextView {
     }
 }
 #elseif os(macOS)
-extension AppKitOrUIKitTextView {
+extension SwiftUIX_Hi.AppKitOrUIKitTextView {
     func _SwiftUIX_replaceTextStorage(
         _ textStorage: NSTextStorage
     ) {

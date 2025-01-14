@@ -24,7 +24,7 @@ private struct HideNavigationBar: ViewModifier {
                     #endif
                 }
             }
-            .onAppKitOrUIKitViewControllerResolution {
+            .onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution {
                 guard isVisible else {
                     return
                 }

@@ -16,7 +16,7 @@ public struct RoundedRhombus: Shape {
     }
     
     public func path(in rect: CGRect) -> Path {
-        let result = AppKitOrUIKitBezierPath()
+        let result = SwiftUIX_Hi.AppKitOrUIKitBezierPath()
         
         let points = [
             CGPoint(x: rect.midX, y: rect.minY),

@@ -89,15 +89,15 @@ extension OptionalDimensions {
         intrinsicContentSize: CGSize
     ) {
         self.init(
-            width: (intrinsicContentSize.width == AppKitOrUIKitView.noIntrinsicMetric || intrinsicContentSize.width == CGFloat.greatestFiniteMagnitude) ? nil : intrinsicContentSize.width,
-            height: (intrinsicContentSize.height == AppKitOrUIKitView.noIntrinsicMetric || intrinsicContentSize.height == CGFloat.greatestFiniteMagnitude) ? nil : intrinsicContentSize.height
+            width: (intrinsicContentSize.width == SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric || intrinsicContentSize.width == CGFloat.greatestFiniteMagnitude) ? nil : intrinsicContentSize.width,
+            height: (intrinsicContentSize.height == SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric || intrinsicContentSize.height == CGFloat.greatestFiniteMagnitude) ? nil : intrinsicContentSize.height
         )
     }
     
-    public func toAppKitOrUIKitIntrinsicContentSize() -> CGSize {
+    public func toSwiftUIX_Hi.AppKitOrUIKitIntrinsicContentSize() -> CGSize {
         CGSize(
-            width: width ?? AppKitOrUIKitView.noIntrinsicMetric,
-            height: height ?? AppKitOrUIKitView.noIntrinsicMetric
+            width: width ?? SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric,
+            height: height ?? SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric
         )
     }
 }

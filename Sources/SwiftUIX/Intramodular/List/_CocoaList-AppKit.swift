@@ -280,7 +280,7 @@ extension _PlatformTableView {
         }
         
         override var intrinsicContentSize: NSSize {
-            CGSize(width: AppKitOrUIKitView.noIntrinsicMetric, height: AppKitOrUIKitView.noIntrinsicMetric)
+            CGSize(width: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric, height: SwiftUIX_Hi.AppKitOrUIKitView.noIntrinsicMetric)
         }
         
         override var fittingSize: NSSize {
@@ -389,7 +389,7 @@ extension _CocoaList.Coordinator {
             return
         }
         
-        _withoutAppKitOrUIKitAnimation(self.stateFlags.contains(.isFirstRun)) {
+        _withoutSwiftUIX_Hi.AppKitOrUIKitAnimation(self.stateFlags.contains(.isFirstRun)) {
             stateFlags.remove(.dataChanged)
             
             guard !stateFlags.contains(.didJustReload) else {

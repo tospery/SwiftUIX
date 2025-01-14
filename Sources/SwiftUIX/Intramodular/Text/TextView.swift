@@ -25,7 +25,7 @@ public struct TextView<Label: View>: View {
     var label: Label
     var data: _TextViewDataBinding
     var textViewConfiguration: _TextViewConfiguration
-    var customAppKitOrUIKitClassConfiguration = _CustomAppKitOrUIKitClassConfiguration()
+    var customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration = _CustomSwiftUIX_Hi.AppKitOrUIKitClassConfiguration()
     
     @State var representableUpdater = EmptyObservableObject()
     
@@ -53,7 +53,7 @@ public struct TextView<Label: View>: View {
                     updater: representableUpdater,
                     data: data,
                     textViewConfiguration: textViewConfiguration,
-                    customAppKitOrUIKitClassConfiguration: customAppKitOrUIKitClassConfiguration
+                    customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration: customSwiftUIX_Hi.AppKitOrUIKitClassConfiguration
                 )
             }
         }

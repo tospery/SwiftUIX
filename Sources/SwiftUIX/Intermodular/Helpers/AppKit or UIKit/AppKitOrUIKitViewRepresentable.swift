@@ -20,37 +20,37 @@ public protocol _AppKitOrUIKitViewRepresentableContext<Coordinator> {
 
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
 public protocol AppKitOrUIKitViewRepresentable: _AppKitOrUIKitRepresentable, UIViewRepresentable {
-    associatedtype AppKitOrUIKitViewType = UIViewType where AppKitOrUIKitViewType == UIViewType
+    associatedtype AppKitOrUIKitViewType = UIViewType where SwiftUIX_Hi.AppKitOrUIKitViewType == UIViewType
     
     @MainActor
-    func makeAppKitOrUIKitView(context: Context) -> AppKitOrUIKitViewType
+    func makeAppKitOrUIKitView(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewType
     
     @MainActor
-    func updateAppKitOrUIKitView(_ view: AppKitOrUIKitViewType, context: Context)
+    func updateAppKitOrUIKitView(_ view: SwiftUIX_Hi.AppKitOrUIKitViewType, context: Context)
     
     @MainActor
-    static func dismantleAppKitOrUIKitView(_ view: AppKitOrUIKitViewType, coordinator: Coordinator)
+    static func dismantleSwiftUIX_Hi.AppKitOrUIKitView(_ view: SwiftUIX_Hi.AppKitOrUIKitViewType, coordinator: Coordinator)
     
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
     @MainActor
     func sizeThatFits(
         _ proposal: ProposedViewSize,
-        view: AppKitOrUIKitViewType,
+        view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) -> CGSize?
 }
 
-public protocol AppKitOrUIKitViewControllerRepresentable: _AppKitOrUIKitRepresentable, UIViewControllerRepresentable {
-    associatedtype AppKitOrUIKitViewControllerType = UIViewControllerType where AppKitOrUIKitViewControllerType == UIViewControllerType
+public protocol SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable: _AppKitOrUIKitRepresentable, UIViewControllerRepresentable {
+    associatedtype SwiftUIX_Hi.AppKitOrUIKitViewControllerType = UIViewControllerType where SwiftUIX_Hi.AppKitOrUIKitViewControllerType == UIViewControllerType
     
     @MainActor
-    func makeAppKitOrUIKitViewController(context: Context) -> AppKitOrUIKitViewControllerType
+    func makeSwiftUIX_Hi.AppKitOrUIKitViewController(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType
     @MainActor
-    func updateAppKitOrUIKitViewController(_ viewController: AppKitOrUIKitViewControllerType, context: Context)
+    func updateSwiftUIX_Hi.AppKitOrUIKitViewController(_ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType, context: Context)
     
     @MainActor
-    static func dismantleAppKitOrUIKitViewController(
-        _ view: AppKitOrUIKitViewControllerType,
+    static func dismantleSwiftUIX_Hi.AppKitOrUIKitViewController(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         coordinator: Coordinator
     )
     
@@ -58,47 +58,47 @@ public protocol AppKitOrUIKitViewControllerRepresentable: _AppKitOrUIKitRepresen
     @MainActor
     func sizeThatFits(
         _ proposal: ProposedViewSize,
-        viewController: AppKitOrUIKitViewControllerType,
+        viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         context: Context
     ) -> CGSize?
 }
 #elseif os(macOS)
-public protocol AppKitOrUIKitViewRepresentable: _AppKitOrUIKitRepresentable, NSViewRepresentable {
-    associatedtype AppKitOrUIKitViewType where AppKitOrUIKitViewType == NSViewType
+public protocol SwiftUIX_Hi.AppKitOrUIKitViewRepresentable: _AppKitOrUIKitRepresentable, NSViewRepresentable {
+    associatedtype SwiftUIX_Hi.AppKitOrUIKitViewType where SwiftUIX_Hi.AppKitOrUIKitViewType == NSViewType
     
     @MainActor
-    func makeAppKitOrUIKitView(context: Context) -> AppKitOrUIKitViewType
+    func makeSwiftUIX_Hi.AppKitOrUIKitView(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewType
     @MainActor
-    func updateAppKitOrUIKitView(_ view: AppKitOrUIKitViewType, context: Context)
+    func updateSwiftUIX_Hi.AppKitOrUIKitView(_ view: SwiftUIX_Hi.AppKitOrUIKitViewType, context: Context)
     
     @MainActor
-    static func dismantleAppKitOrUIKitView(_ view: AppKitOrUIKitViewType, coordinator: Coordinator)
+    static func dismantleSwiftUIX_Hi.AppKitOrUIKitView(_ view: SwiftUIX_Hi.AppKitOrUIKitViewType, coordinator: Coordinator)
     
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
     @MainActor
     func sizeThatFits(
         _ proposal: ProposedViewSize,
-        view: AppKitOrUIKitViewType,
+        view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) -> CGSize?
 }
 
-public protocol AppKitOrUIKitViewControllerRepresentable: _AppKitOrUIKitRepresentable, NSViewControllerRepresentable {
-    associatedtype AppKitOrUIKitViewControllerType = NSViewControllerType where AppKitOrUIKitViewControllerType == NSViewControllerType
+public protocol SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable: _AppKitOrUIKitRepresentable, NSViewControllerRepresentable {
+    associatedtype SwiftUIX_Hi.AppKitOrUIKitViewControllerType = NSViewControllerType where SwiftUIX_Hi.AppKitOrUIKitViewControllerType == NSViewControllerType
     
     @MainActor
-    func makeAppKitOrUIKitViewController(context: Context) -> AppKitOrUIKitViewControllerType
+    func makeSwiftUIX_Hi.AppKitOrUIKitViewController(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType
     @MainActor
-    func updateAppKitOrUIKitViewController(_ viewController: AppKitOrUIKitViewControllerType, context: Context)
+    func updateSwiftUIX_Hi.AppKitOrUIKitViewController(_ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType, context: Context)
     
     @MainActor
-    static func dismantleAppKitOrUIKitViewController(_ view: AppKitOrUIKitViewControllerType, coordinator: Coordinator)
+    static func dismantleSwiftUIX_Hi.AppKitOrUIKitViewController(_ view: SwiftUIX_Hi.AppKitOrUIKitViewControllerType, coordinator: Coordinator)
     
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
     @MainActor
     func sizeThatFits(
         _ proposal: ProposedViewSize,
-        viewController: AppKitOrUIKitViewControllerType,
+        viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         context: Context
     ) -> CGSize?
 }
@@ -107,24 +107,24 @@ public protocol AppKitOrUIKitViewControllerRepresentable: _AppKitOrUIKitRepresen
 // MARK: - Implementation
 
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitViewRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
     @MainActor
     public func sizeThatFits(
         _ proposal: ProposedViewSize,
-        view: AppKitOrUIKitViewType,
+        view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) -> CGSize? {
         nil
     }
 }
 
-extension AppKitOrUIKitViewControllerRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable {
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
     @MainActor
     public func sizeThatFits(
         _ proposal: ProposedViewSize,
-        viewController: AppKitOrUIKitViewControllerType,
+        viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         context: Context
     ) -> CGSize? {
         nil
@@ -137,38 +137,38 @@ extension UIViewRepresentableContext: _AppKitOrUIKitViewRepresentableContext {
     
 }
 
-extension AppKitOrUIKitViewRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
     public typealias Context = UIViewRepresentableContext<Self>
     
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
     @MainActor
     public func sizeThatFits(
         _ proposal: ProposedViewSize,
-        uiView: AppKitOrUIKitViewType,
+        uiView: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) -> CGSize? {
         self.sizeThatFits(proposal, view: uiView, context: context)
     }
 }
 
-extension AppKitOrUIKitViewRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
     @MainActor
     public func makeUIView(
         context: Context
-    ) -> AppKitOrUIKitViewType {
-        makeAppKitOrUIKitView(context: context)
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
+        makeSwiftUIX_Hi.AppKitOrUIKitView(context: context)
     }
     
     @MainActor
     public func updateUIView(
-        _ view: AppKitOrUIKitViewType,
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) {
         let represented = view as? _AppKitOrUIKitRepresented
         
         represented?.representatableStateFlags.insert(.updateInProgress)
         
-        updateAppKitOrUIKitView(view, context: context)
+        updateSwiftUIX_Hi.AppKitOrUIKitView(view, context: context)
         
         represented?.representatableStateFlags.remove(.updateInProgress)
         
@@ -179,31 +179,31 @@ extension AppKitOrUIKitViewRepresentable {
     
     @MainActor
     public static func dismantleUIView(
-        _ view: AppKitOrUIKitViewType,
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         coordinator: Coordinator
     ) {
         let represented = view as? _AppKitOrUIKitRepresented
         
-        dismantleAppKitOrUIKitView(view, coordinator: coordinator)
+        dismantleSwiftUIX_Hi.AppKitOrUIKitView(view, coordinator: coordinator)
         
         represented?.representatableStateFlags.insert(.dismantled)
     }
 }
 
-extension AppKitOrUIKitViewRepresentable where AppKitOrUIKitViewType: _AppKitOrUIKitRepresented {
+extension SwiftUIX_Hi.AppKitOrUIKitViewRepresentable where SwiftUIX_Hi.AppKitOrUIKitViewType: _AppKitOrUIKitRepresented {
     @MainActor
-    public func makeUIView(context: Context) -> AppKitOrUIKitViewType {
-        makeAppKitOrUIKitView(context: context)
+    public func makeUIView(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
+        makeSwiftUIX_Hi.AppKitOrUIKitView(context: context)
     }
     
     @MainActor
     public func updateUIView(
-        _ view: AppKitOrUIKitViewType,
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) {
         view.representatableStateFlags.insert(.updateInProgress)
         
-        updateAppKitOrUIKitView(view, context: context)
+        updateSwiftUIX_Hi.AppKitOrUIKitView(view, context: context)
         
         view.representatableStateFlags.remove(.updateInProgress)
         
@@ -214,16 +214,16 @@ extension AppKitOrUIKitViewRepresentable where AppKitOrUIKitViewType: _AppKitOrU
     
     @MainActor
     public static func dismantleUIView(
-        _ view: AppKitOrUIKitViewType,
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         coordinator: Coordinator
     ) {
-        dismantleAppKitOrUIKitView(view, coordinator: coordinator)
+        dismantleSwiftUIX_Hi.AppKitOrUIKitView(view, coordinator: coordinator)
         
         view.representatableStateFlags.insert(.dismantled)
     }
 }
 
-extension AppKitOrUIKitViewControllerRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable {
     public typealias Context = UIViewControllerRepresentableContext<Self>
 
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
@@ -241,47 +241,47 @@ extension AppKitOrUIKitViewControllerRepresentable {
     }
 }
 
-extension AppKitOrUIKitViewControllerRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable {
     @MainActor
     public func makeUIViewController(
         context: Context
-    ) -> AppKitOrUIKitViewControllerType {
-        makeAppKitOrUIKitViewController(context: context)
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType {
+        makeSwiftUIX_Hi.AppKitOrUIKitViewController(context: context)
     }
     
     @MainActor
     public func updateUIViewController(
-        _ viewController: AppKitOrUIKitViewControllerType,
+        _ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         context: Context
     ) {
-        updateAppKitOrUIKitViewController(viewController, context: context)
+        updateSwiftUIX_Hi.AppKitOrUIKitViewController(viewController, context: context)
     }
     
     @MainActor
     public static func dismantleUIViewController(
-        _ viewController: AppKitOrUIKitViewControllerType,
+        _ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         coordinator: Coordinator
     ) {
-        dismantleAppKitOrUIKitViewController(viewController, coordinator: coordinator)
+        dismantleSwiftUIX_Hi.AppKitOrUIKitViewController(viewController, coordinator: coordinator)
     }
 }
 
-extension AppKitOrUIKitViewControllerRepresentable where AppKitOrUIKitViewControllerType: _AppKitOrUIKitRepresented {
+extension SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable where SwiftUIX_Hi.AppKitOrUIKitViewControllerType: _AppKitOrUIKitRepresented {
     @MainActor
     public func makeUIViewController(
         context: Context
-    ) -> AppKitOrUIKitViewControllerType {
-        makeAppKitOrUIKitViewController(context: context)
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType {
+        makeSwiftUIX_Hi.AppKitOrUIKitViewController(context: context)
     }
     
     @MainActor
     public func updateUIViewController(
-        _ viewController: AppKitOrUIKitViewControllerType,
+        _ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         context: Context
     ) {
         viewController.representatableStateFlags.insert(.updateInProgress)
         
-        updateAppKitOrUIKitViewController(viewController, context: context)
+        updateSwiftUIX_Hi.AppKitOrUIKitViewController(viewController, context: context)
         
         viewController.representatableStateFlags.remove(.updateInProgress)
         
@@ -292,10 +292,10 @@ extension AppKitOrUIKitViewControllerRepresentable where AppKitOrUIKitViewContro
     
     @MainActor
     public static func dismantleUIViewController(
-        _ viewController: AppKitOrUIKitViewControllerType,
+        _ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         coordinator: Coordinator
     ) {
-        dismantleAppKitOrUIKitViewController(viewController, coordinator: coordinator)
+        dismantleSwiftUIX_Hi.AppKitOrUIKitViewController(viewController, coordinator: coordinator)
         
         viewController.representatableStateFlags.insert(.dismantled)
     }
@@ -306,29 +306,29 @@ extension NSViewRepresentableContext: _AppKitOrUIKitViewRepresentableContext {
     
 }
 
-extension AppKitOrUIKitViewRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
     public typealias Context = NSViewRepresentableContext<Self>
         
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
     @MainActor
     public func sizeThatFits(
         _ proposal: ProposedViewSize,
-        nsView: AppKitOrUIKitViewType,
+        nsView: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) -> CGSize? {
         self.sizeThatFits(proposal, view: nsView, context: context)
     }
 }
 
-extension AppKitOrUIKitViewRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
     @MainActor
-    public func makeNSView(context: Context) -> AppKitOrUIKitViewType {
-        makeAppKitOrUIKitView(context: context)
+    public func makeNSView(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
+        makeSwiftUIX_Hi.AppKitOrUIKitView(context: context)
     }
     
     @MainActor
     public func updateNSView(
-        _ view: AppKitOrUIKitViewType, 
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType, 
         context: Context
     ) {
         weak var _view = view
@@ -341,7 +341,7 @@ extension AppKitOrUIKitViewRepresentable {
         
         represented?.representatableStateFlags.insert(.updateInProgress)
 
-        updateAppKitOrUIKitView(view, context: context)
+        updateSwiftUIX_Hi.AppKitOrUIKitView(view, context: context)
         
         represented?.representatableStateFlags.remove(.updateInProgress)
         
@@ -352,33 +352,33 @@ extension AppKitOrUIKitViewRepresentable {
     
     @MainActor
     public static func dismantleNSView(
-        _ view: AppKitOrUIKitViewType,
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         coordinator: Coordinator
     ) {
         let represented = view as? _AppKitOrUIKitRepresented
         
-        dismantleAppKitOrUIKitView(view, coordinator: coordinator)
+        dismantleSwiftUIX_Hi.AppKitOrUIKitView(view, coordinator: coordinator)
         
         represented?.representatableStateFlags.insert(.dismantled)
     }
 }
 
-extension AppKitOrUIKitViewRepresentable where AppKitOrUIKitViewType: _AppKitOrUIKitRepresented {
+extension SwiftUIX_Hi.AppKitOrUIKitViewRepresentable where SwiftUIX_Hi.AppKitOrUIKitViewType: _AppKitOrUIKitRepresented {
     @MainActor
     public func makeNSView(
         context: Context
-    ) -> AppKitOrUIKitViewType {
-        makeAppKitOrUIKitView(context: context)
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
+        makeSwiftUIX_Hi.AppKitOrUIKitView(context: context)
     }
     
     @MainActor
     public func updateNSView(
-        _ view: AppKitOrUIKitViewType,
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) {
         view.representatableStateFlags.insert(.updateInProgress)
         
-        updateAppKitOrUIKitView(view, context: context)
+        updateSwiftUIX_Hi.AppKitOrUIKitView(view, context: context)
         
         view.representatableStateFlags.remove(.updateInProgress)
         
@@ -389,16 +389,16 @@ extension AppKitOrUIKitViewRepresentable where AppKitOrUIKitViewType: _AppKitOrU
 
     @MainActor
     public static func dismantleNSView(
-        _ view: AppKitOrUIKitViewType,
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         coordinator: Coordinator
     ) {
-        dismantleAppKitOrUIKitView(view, coordinator: coordinator)
+        dismantleSwiftUIX_Hi.AppKitOrUIKitView(view, coordinator: coordinator)
         
         view.representatableStateFlags.insert(.dismantled)
     }
 }
 
-extension AppKitOrUIKitViewControllerRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable {
     public typealias Context = NSViewControllerRepresentableContext<Self>
     
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
@@ -416,47 +416,47 @@ extension AppKitOrUIKitViewControllerRepresentable {
     }
 }
 
-extension AppKitOrUIKitViewControllerRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable {
     @MainActor
     public func makeNSViewController(
         context: Context
-    ) -> AppKitOrUIKitViewControllerType {
-        makeAppKitOrUIKitViewController(context: context)
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType {
+        makeSwiftUIX_Hi.AppKitOrUIKitViewController(context: context)
     }
     
     @MainActor
     public func updateNSViewController(
-        _ viewController: AppKitOrUIKitViewControllerType,
+        _ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         context: Context
     ) {
-        updateAppKitOrUIKitViewController(viewController, context: context)
+        updateSwiftUIX_Hi.AppKitOrUIKitViewController(viewController, context: context)
     }
     
     @MainActor
     public static func dismantleNSViewController(
-        _ viewController: AppKitOrUIKitViewControllerType,
+        _ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         coordinator: Coordinator
     ) {
-        dismantleAppKitOrUIKitViewController(viewController, coordinator: coordinator)
+        dismantleSwiftUIX_Hi.AppKitOrUIKitViewController(viewController, coordinator: coordinator)
     }
 }
 
-extension AppKitOrUIKitViewControllerRepresentable where AppKitOrUIKitViewControllerType: _AppKitOrUIKitRepresented {
+extension SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable where SwiftUIX_Hi.AppKitOrUIKitViewControllerType: _AppKitOrUIKitRepresented {
     @MainActor
     public func makeNSViewController(
         context: Context
-    ) -> AppKitOrUIKitViewControllerType {
-        makeAppKitOrUIKitViewController(context: context)
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType {
+        makeSwiftUIX_Hi.AppKitOrUIKitViewController(context: context)
     }
     
     @MainActor
     public func updateNSViewController(
-        _ viewController: AppKitOrUIKitViewControllerType,
+        _ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         context: Context
     ) {
         viewController.representatableStateFlags.insert(.updateInProgress)
 
-        updateAppKitOrUIKitViewController(viewController, context: context)
+        updateSwiftUIX_Hi.AppKitOrUIKitViewController(viewController, context: context)
         
         viewController.representatableStateFlags.remove(.updateInProgress)
         
@@ -467,10 +467,10 @@ extension AppKitOrUIKitViewControllerRepresentable where AppKitOrUIKitViewContro
     
     @MainActor
     public static func dismantleNSViewController(
-        _ viewController: AppKitOrUIKitViewControllerType,
+        _ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         coordinator: Coordinator
     ) {
-        dismantleAppKitOrUIKitViewController(viewController, coordinator: coordinator)
+        dismantleSwiftUIX_Hi.AppKitOrUIKitViewController(viewController, coordinator: coordinator)
         
         viewController.representatableStateFlags.insert(.dismantled)
     }
@@ -478,20 +478,20 @@ extension AppKitOrUIKitViewControllerRepresentable where AppKitOrUIKitViewContro
 #endif
 
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitViewRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
     @MainActor
-    public static func dismantleAppKitOrUIKitView(
-        _ view: AppKitOrUIKitViewType,
+    public static func dismantleSwiftUIX_Hi.AppKitOrUIKitView(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         coordinator: Coordinator
     ) {
         
     }
 }
 
-extension AppKitOrUIKitViewControllerRepresentable {
+extension SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable {
     @MainActor
-    public static func dismantleAppKitOrUIKitViewController(
-        _ view: AppKitOrUIKitViewControllerType,
+    public static func dismantleSwiftUIX_Hi.AppKitOrUIKitViewController(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewControllerType,
         coordinator: Coordinator
     ) {
         
@@ -502,7 +502,7 @@ extension AppKitOrUIKitViewControllerRepresentable {
 // MARK: - Auxiliary
 
 @_documentation(visibility: internal)
-public struct _SwiftUIX_EditableAppKitOrUIKitViewRepresentableContext: _AppKitOrUIKitViewRepresentableContext {
+public struct _SwiftUIX_EditableSwiftUIX_Hi.AppKitOrUIKitViewRepresentableContext: _AppKitOrUIKitViewRepresentableContext {
     public var coordinator: Void = ()
     public var transaction: Transaction
     public var environment: EnvironmentValues
@@ -522,7 +522,7 @@ public struct _SwiftUIX_EditableAppKitOrUIKitViewRepresentableContext: _AppKitOr
 }
 
 extension _AppKitOrUIKitViewRepresentableContext {
-    public func _editable() -> _SwiftUIX_EditableAppKitOrUIKitViewRepresentableContext {
+    public func _editable() -> _SwiftUIX_EditableSwiftUIX_Hi.AppKitOrUIKitViewRepresentableContext {
         .init(self)
     }
 }

@@ -8,8 +8,8 @@ import SwiftUI
 
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
 
-protocol _CollectionViewProxyBase: AppKitOrUIKitViewController {
-    var appKitOrUIKitCollectionView: AppKitOrUIKitCollectionView { get }
+protocol _CollectionViewProxyBase: SwiftUIX_Hi.AppKitOrUIKitViewController {
+    var appKitOrUIKitCollectionView: SwiftUIX_Hi.AppKitOrUIKitCollectionView { get }
     
     var collectionViewContentSize: CGSize { get }
     
@@ -33,7 +33,7 @@ protocol _CollectionViewProxyBase: AppKitOrUIKitViewController {
     
     func selection<ID: Hashable>(for id: ID) -> Binding<Bool>
     
-    func _snapshot() -> AppKitOrUIKitImage?
+    func _snapshot() -> SwiftUIX_Hi.AppKitOrUIKitImage?
 }
 
 /// A proxy value allowing the collection views within a view hierarchy to be manipulated programmatically.
@@ -41,7 +41,7 @@ protocol _CollectionViewProxyBase: AppKitOrUIKitViewController {
 public struct CollectionViewProxy: Hashable {
     weak var base: _CollectionViewProxyBase?
     
-    public var appKitOrUIKitCollectionView: AppKitOrUIKitCollectionView? {
+    public var appKitOrUIKitCollectionView: SwiftUIX_Hi.AppKitOrUIKitCollectionView? {
         base?.appKitOrUIKitCollectionView
     }
     
@@ -111,7 +111,7 @@ public struct CollectionViewProxy: Hashable {
         base?.deselect(id)
     }
     
-    public func _snapshot() -> AppKitOrUIKitImage? {
+    public func _snapshot() -> SwiftUIX_Hi.AppKitOrUIKitImage? {
         _assertResolutionOfCollectionView()
         
         return base?._snapshot()

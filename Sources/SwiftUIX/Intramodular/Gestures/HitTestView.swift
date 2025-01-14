@@ -7,8 +7,8 @@ import SwiftUI
 
 #if os(iOS) || os(macOS) || os(tvOS) || targetEnvironment(macCatalyst)
 
-private struct _HitTestViewOverlay: AppKitOrUIKitViewRepresentable {
-    class AppKitOrUIKitViewType: AppKitOrUIKitView {
+private struct _HitTestViewOverlay: SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
+    class SwiftUIX_Hi.AppKitOrUIKitViewType: SwiftUIX_Hi.AppKitOrUIKitView {
         var hitTest: ((CGPoint) -> Bool)? = nil
                 
         #if os(macOS)
@@ -33,7 +33,7 @@ private struct _HitTestViewOverlay: AppKitOrUIKitViewRepresentable {
         }
         #endif
         
-        override func hitTest(_ point: CGPoint, with event: AppKitOrUIKitEvent?) -> AppKitOrUIKitView? {
+        override func hitTest(_ point: CGPoint, with event: SwiftUIX_Hi.AppKitOrUIKitEvent?) -> SwiftUIX_Hi.AppKitOrUIKitView? {
             (self.hitTest?(point) ?? true) ? super.hitTest(point, with: event) : nil
         }
     }
@@ -44,8 +44,8 @@ private struct _HitTestViewOverlay: AppKitOrUIKitViewRepresentable {
         self.hitTest = hitTest
     }
     
-    func makeAppKitOrUIKitView(context: Context) -> AppKitOrUIKitViewType {
-        AppKitOrUIKitViewType().then {
+    func makeSwiftUIX_Hi.AppKitOrUIKitView(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
+        SwiftUIX_Hi.AppKitOrUIKitViewType().then {
             #if os(macOS)
             $0.allowedTouchTypes = [.direct]
             #endif
@@ -53,7 +53,7 @@ private struct _HitTestViewOverlay: AppKitOrUIKitViewRepresentable {
         }
     }
     
-    func updateAppKitOrUIKitView(_ view: AppKitOrUIKitViewType, context: Context) {
+    func updateSwiftUIX_Hi.AppKitOrUIKitView(_ view: SwiftUIX_Hi.AppKitOrUIKitViewType, context: Context) {
         view.hitTest = hitTest
     }
 }

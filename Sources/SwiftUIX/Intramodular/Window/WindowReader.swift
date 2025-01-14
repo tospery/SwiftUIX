@@ -11,10 +11,10 @@ import SwiftUI
 @available(tvOSApplicationExtension, unavailable)
 @_documentation(visibility: internal)
 public struct WindowProxy {
-    weak var window: AppKitOrUIKitHostingWindowProtocol?
+    weak var window: SwiftUIX_Hi.AppKitOrUIKitHostingWindowProtocol?
     
     @MainActor
-    public var _appKitOrUIKitWindow: AppKitOrUIKitWindow? {
+    public var _appKitOrUIKitWindow: SwiftUIX_Hi.AppKitOrUIKitWindow? {
         window
     }
     
@@ -34,7 +34,7 @@ public struct WindowProxy {
         }
         
 #if os(iOS) || os(tvOS)
-        let currentGreatestWindowLevel = (AppKitOrUIKitWindow._firstKeyInstance?.windowLevel ?? UIWindow.Level.alert)
+        let currentGreatestWindowLevel = (SwiftUIX_Hi.AppKitOrUIKitWindow._firstKeyInstance?.windowLevel ?? UIWindow.Level.alert)
         
         window.windowLevel = UIWindow.Level(rawValue: currentGreatestWindowLevel.rawValue + 1)
 #elseif os(macOS)
@@ -90,7 +90,7 @@ public struct WindowReader<Content: View>: View {
 @available(macCatalystApplicationExtension, unavailable)
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
-extension AppKitOrUIKitHostingWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingWindow {
     public func bringToFront() {
         level = .screenSaver
         orderFrontRegardless()
@@ -105,7 +105,7 @@ extension AppKitOrUIKitHostingWindow {
 @available(macCatalystApplicationExtension, unavailable)
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
-extension AppKitOrUIKitHostingWindow {
+extension SwiftUIX_Hi.AppKitOrUIKitHostingWindow {
     public func bringToFront() {
         
     }

@@ -441,7 +441,7 @@ extension CocoaHostingCollectionViewCell {
         contentHostingController.view.setNeedsLayout()
         contentHostingController.view.layoutIfNeeded()
         
-        _withAppKitOrUIKitAnimation(.default) {
+        _withSwiftUIX_Hi.AppKitOrUIKitAnimation(.default) {
             parentViewController.collectionView.layoutIfNeeded()
         }
 
@@ -545,13 +545,13 @@ extension CocoaCollectionElementHostingController {
     ) {
         if cell.shouldUseCachedContentHostingController {
             if parent != nil {
-                _withoutAppKitOrUIKitAnimation {
+                _withoutSwiftUIX_Hi.AppKitOrUIKitAnimation {
                     willMove(toParent: nil)
                     view.removeFromSuperview()
                     removeFromParent()
                 }
             } else {
-                _withoutAppKitOrUIKitAnimation {
+                _withoutSwiftUIX_Hi.AppKitOrUIKitAnimation {
                     view.removeFromSuperview()
                 }
             }

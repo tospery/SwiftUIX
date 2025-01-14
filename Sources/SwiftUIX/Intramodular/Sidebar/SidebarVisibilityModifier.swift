@@ -12,7 +12,7 @@ private struct SidebarVisibilityModifier: ViewModifier {
 
     func body(content: Content) -> some View {
         content.background {
-            AppKitOrUIKitSidebarIntrospector(isSidebarInitiallyVisible: isSidebarInitiallyVisible)
+            SwiftUIX_Hi.AppKitOrUIKitSidebarIntrospector(isSidebarInitiallyVisible: isSidebarInitiallyVisible)
         }
     }
 }
@@ -43,22 +43,22 @@ extension View {
 
 @available(iOS 14.0, *)
 extension SidebarVisibilityModifier {
-    struct AppKitOrUIKitSidebarIntrospector: UIViewControllerRepresentable {
+    struct SwiftUIX_Hi.AppKitOrUIKitSidebarIntrospector: UIViewControllerRepresentable {
         var isSidebarInitiallyVisible: Bool
 
-        func makeUIViewController(context: Context) -> AppKitOrUIKitViewControllerType {
+        func makeUIViewController(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType {
             .init(isSidebarInitiallyVisible: isSidebarInitiallyVisible)
         }
 
-        func updateUIViewController(_ uiViewController: AppKitOrUIKitViewControllerType, context: Context) {
+        func updateUIViewController(_ uiViewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType, context: Context) {
             uiViewController.isSidebarInitiallyVisible = isSidebarInitiallyVisible
         }
     }
 }
 
 @available(iOS 14.0, *)
-extension SidebarVisibilityModifier.AppKitOrUIKitSidebarIntrospector {
-    class AppKitOrUIKitViewControllerType: UIViewController {
+extension SidebarVisibilityModifier.SwiftUIX_Hi.AppKitOrUIKitSidebarIntrospector {
+    class SwiftUIX_Hi.AppKitOrUIKitViewControllerType: UIViewController {
         var isSidebarInitiallyVisible: Bool
 
         var didApplyInitialSidebarConfiguration: Bool = false

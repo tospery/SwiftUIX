@@ -14,7 +14,7 @@ public struct SearchBar: DefaultTextInputType {
     
     fileprivate var searchTokens: Binding<[SearchToken]>?
     
-    var customAppKitOrUIKitClass: AppKitOrUIKitSearchBar.Type?
+    var customSwiftUIX_Hi.AppKitOrUIKitClass: SwiftUIX_Hi.AppKitOrUIKitSearchBar.Type?
         
     private let onEditingChanged: (Bool) -> Void
     private let onCommit: () -> Void
@@ -23,12 +23,12 @@ public struct SearchBar: DefaultTextInputType {
     
     private var placeholder: String?
     
-    private var appKitOrUIKitFont: AppKitOrUIKitFont?
-    private var appKitOrUIKitForegroundColor: AppKitOrUIKitColor?
+    private var appKitOrUIKitFont: SwiftUIX_Hi.AppKitOrUIKitFont?
+    private var appKitOrUIKitForegroundColor: SwiftUIX_Hi.AppKitOrUIKitColor?
     #if os(iOS) || os(visionOS) || targetEnvironment(macCatalyst)
     private var appKitOrUIKitSearchFieldBackgroundColor: UIColor?
     private var searchBarStyle: UISearchBar.Style = .minimal
-    private var iconImageConfiguration: [UISearchBar.Icon: AppKitOrUIKitImage] = [:]
+    private var iconImageConfiguration: [UISearchBar.Icon: SwiftUIX_Hi.AppKitOrUIKitImage] = [:]
     #endif
     
     private var showsCancelButton: Bool?
@@ -130,7 +130,7 @@ extension SearchBar: UIViewRepresentable {
             uiView.searchTextField.autocorrectionType = environment.disableAutocorrection.map({ $0 ? .no : .yes }) ?? .default
             
             if (appKitOrUIKitFont != nil || environment.font != nil) {
-                if let font = try? appKitOrUIKitFont ?? environment.font?.toAppKitOrUIKitFont() {
+                if let font = try? appKitOrUIKitFont ?? environment.font?.toSwiftUIX_Hi.AppKitOrUIKitFont() {
                     uiView.searchTextField.font = font
                 }
             }
@@ -355,8 +355,8 @@ extension SearchBar: NSViewRepresentable {
 @available(iOSApplicationExtension, unavailable)
 @available(tvOSApplicationExtension, unavailable)
 extension SearchBar {
-    public func customAppKitOrUIKitClass(_ cls: AppKitOrUIKitSearchBar.Type) -> Self {
-        then({ $0.customAppKitOrUIKitClass = cls })
+    public func customSwiftUIX_Hi.AppKitOrUIKitClass(_ cls: SwiftUIX_Hi.AppKitOrUIKitSearchBar.Type) -> Self {
+        then({ $0.customSwiftUIX_Hi.AppKitOrUIKitClass = cls })
     }
 }
 
@@ -396,16 +396,16 @@ extension SearchBar {
     #endif
 
     /// Sets the default font for text in the view.
-    public func font(_ font: AppKitOrUIKitFont?) -> Self {
+    public func font(_ font: SwiftUIX_Hi.AppKitOrUIKitFont?) -> Self {
         then({ $0.appKitOrUIKitFont = font })
     }
 
     /// Sets the default font for text in the view.
     public func font<F: FontFamily>(_ font: F, size: CGFloat) -> Self {
-        self.font(AppKitOrUIKitFont(name: font.rawValue, size: size))
+        self.font(SwiftUIX_Hi.AppKitOrUIKitFont(name: font.rawValue, size: size))
     }
 
-    public func foregroundColor(_ foregroundColor: AppKitOrUIKitColor?) -> Self {
+    public func foregroundColor(_ foregroundColor: SwiftUIX_Hi.AppKitOrUIKitColor?) -> Self {
         then({ $0.appKitOrUIKitForegroundColor = foregroundColor })
     }
     
@@ -428,7 +428,7 @@ extension SearchBar {
         then({ $0.searchBarStyle = searchBarStyle })
     }
     
-    public func iconImage(_ icon: UISearchBar.Icon, _ image: AppKitOrUIKitImage) -> Self {
+    public func iconImage(_ icon: UISearchBar.Icon, _ image: SwiftUIX_Hi.AppKitOrUIKitImage) -> Self {
         then({ $0.iconImageConfiguration[icon] = image })
     }
     

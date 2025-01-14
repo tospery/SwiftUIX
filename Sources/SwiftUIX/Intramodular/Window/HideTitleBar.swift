@@ -10,7 +10,7 @@ fileprivate struct HideTitleBar: ViewModifier {
     
     func body(content: Content) -> some View {
         #if os(iOS) || os(macOS) || os(tvOS) || targetEnvironment(macCatalyst)
-        withAppKitOrUIKitViewController { viewController in
+        withSwiftUIX_Hi.AppKitOrUIKitViewController { viewController in
             content
                 .onAppear(perform: { updateTitlebar(for: viewController) })
                 .onChange(of: viewController, perform: { updateTitlebar(for: $0) })
@@ -23,7 +23,7 @@ fileprivate struct HideTitleBar: ViewModifier {
     }
     
     #if os(iOS) || os(macOS) || os(tvOS) || targetEnvironment(macCatalyst)
-    private func updateTitlebar(for viewController: AppKitOrUIKitViewController?) {
+    private func updateTitlebar(for viewController: SwiftUIX_Hi.AppKitOrUIKitViewController?) {
         #if os(macOS)
         guard let window = viewController?.view.window else {
             return
@@ -61,6 +61,6 @@ extension View {
     /// See https://developer.apple.com/documentation/uikit/mac_catalyst/removing_the_title_bar_in_your_mac_app_built_with_mac_catalyst for more details.
     @available(watchOS, unavailable)
     public func titleBarHidden(_ hidden: Bool) -> some View {
-        modifier(HideTitleBar(isHidden: hidden))._resolveAppKitOrUIKitViewControllerIfAvailable()
+        modifier(HideTitleBar(isHidden: hidden))._resolveSwiftUIX_Hi.AppKitOrUIKitViewControllerIfAvailable()
     }
 }

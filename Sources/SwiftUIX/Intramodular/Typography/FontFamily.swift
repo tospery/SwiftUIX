@@ -70,14 +70,14 @@ extension View {
 extension CocoaTextField {
     /// Sets the default font for text in the view.
     public func font<F: FontFamily>(_ font: F, size: CGFloat) -> Self {
-        self.font(AppKitOrUIKitFont(name: font.rawValue, size: size))
+        self.font(SwiftUIX_Hi.AppKitOrUIKitFont(name: font.rawValue, size: size))
     }
 }
 
 extension TextView {
     /// Sets the default font for text in the view.
     public func font<F: FontFamily>(_ font: F, size: CGFloat) -> Self {
-        self.font(AppKitOrUIKitFont(name: font.rawValue, size: size))
+        self.font(SwiftUIX_Hi.AppKitOrUIKitFont(name: font.rawValue, size: size))
     }
 }
 #endif
@@ -90,11 +90,11 @@ fileprivate struct SetFontWithLineHeight<F: FontFamily>: ViewModifier {
     let fontSize: CGFloat
     let lineHeight: CGFloat
     
-    @State private var cachedAppKitOrUIKitFont: AppKitOrUIKitFont?
+    @State private var cachedSwiftUIX_Hi.AppKitOrUIKitFont: SwiftUIX_Hi.AppKitOrUIKitFont?
     @State private var cachedLineSpacing: CGFloat?
     
-    private var appKitOrUIKitFont: AppKitOrUIKitFont? {
-        cachedAppKitOrUIKitFont ?? AppKitOrUIKitFont(name: font.rawValue, size: fontSize)
+    private var appKitOrUIKitFont: SwiftUIX_Hi.AppKitOrUIKitFont? {
+        cachedSwiftUIX_Hi.AppKitOrUIKitFont ?? SwiftUIX_Hi.AppKitOrUIKitFont(name: font.rawValue, size: fontSize)
     }
     
     private var lineSpacing: CGFloat? {
@@ -113,7 +113,7 @@ fileprivate struct SetFontWithLineHeight<F: FontFamily>: ViewModifier {
                 .padding(.vertical, lineSpacing / 2)
                 .onAppear {
                     withoutAnimation {
-                        cachedAppKitOrUIKitFont = appKitOrUIKitFont
+                        cachedSwiftUIX_Hi.AppKitOrUIKitFont = appKitOrUIKitFont
                         cachedLineSpacing = lineSpacing
                     }
                 }

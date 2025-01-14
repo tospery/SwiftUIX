@@ -32,15 +32,15 @@ extension Font {
         }
     }
     
-    private static var _appKitOrUIKitConversionCache: [Font: AppKitOrUIKitFont] = [:]
+    private static var _appKitOrUIKitConversionCache: [Font: SwiftUIX_Hi.AppKitOrUIKitFont] = [:]
     
     @available(macOS 11.0, *)
-    public func toAppKitOrUIKitFont() throws -> AppKitOrUIKitFont {
+    public func toSwiftUIX_Hi.AppKitOrUIKitFont() throws -> SwiftUIX_Hi.AppKitOrUIKitFont {
         if let result = Self._appKitOrUIKitConversionCache[self] {
             return result
         }
         
-        var font: AppKitOrUIKitFont?
+        var font: SwiftUIX_Hi.AppKitOrUIKitFont?
         
         Mirror.inspect(self) { label, value in
             guard label == "provider" else {
@@ -56,23 +56,23 @@ extension Font {
                     return assertionFailure("Could not create font provider")
                 }
                 
-                font = provider.toAppKitOrUIKitFont()
+                font = provider.toSwiftUIX_Hi.AppKitOrUIKitFont()
             }
         }
         
         font = font ?? getTextStyle()
-            .flatMap({ $0.toAppKitOrUIKitFontTextStyle() })
-            .map(AppKitOrUIKitFont.preferredFont(forTextStyle:))
+            .flatMap({ $0.toSwiftUIX_Hi.AppKitOrUIKitFontTextStyle() })
+            .map(SwiftUIX_Hi.AppKitOrUIKitFont.preferredFont(forTextStyle:))
         
         Self._appKitOrUIKitConversionCache[self] = font
         
         return try font.unwrap()
     }
     
-    @available(*, deprecated, renamed: "toAppKitOrUIKitFont()")
+    @available(*, deprecated, renamed: "toSwiftUIX_Hi.AppKitOrUIKitFont()")
     @available(macOS 11.0, *)
-    public func toUIFont() -> AppKitOrUIKitFont? {
-        try? toAppKitOrUIKitFont()
+    public func toUIFont() -> SwiftUIX_Hi.AppKitOrUIKitFont? {
+        try? toSwiftUIX_Hi.AppKitOrUIKitFont()
     }
 }
 
@@ -87,7 +87,7 @@ extension Font {
                 return .body
             }
             
-            let fontMetrics = UIFontMetrics(forTextStyle: textStyle.toAppKitOrUIKitFontTextStyle() ?? .body)
+            let fontMetrics = UIFontMetrics(forTextStyle: textStyle.toSwiftUIX_Hi.AppKitOrUIKitFontTextStyle() ?? .body)
             
             return Font(fontMetrics.scaledFont(for: font))
         }
@@ -104,7 +104,7 @@ extension Font {
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS)
 extension Font {
     public func scaled(by ratio: CGFloat) -> Self {
-        (try? toAppKitOrUIKitFont().scaled(by: ratio)).map({ Font($0) }) ?? self
+        (try? toSwiftUIX_Hi.AppKitOrUIKitFont().scaled(by: ratio)).map({ Font($0) }) ?? self
     }
 }
 #endif
@@ -131,27 +131,27 @@ private enum _SwiftUIFontProvider {
     }
     
     @available(macOS 11.0, *)
-    func toAppKitOrUIKitFont() -> AppKitOrUIKitFont? {
+    func toSwiftUIX_Hi.AppKitOrUIKitFont() -> SwiftUIX_Hi.AppKitOrUIKitFont? {
         switch self {
             case let .named(name, size, textStyle):
                 if textStyle != .body {
                     assert(textStyle == nil, "unimplemented")
                 }
                 
-                return AppKitOrUIKitFont(name: name, size: size)
+                return SwiftUIX_Hi.AppKitOrUIKitFont(name: name, size: size)
             case let .system(size, weight, _):
-                let weight: AppKitOrUIKitFont.Weight = weight?.toAppKitOrUIKitFontWeight() ?? .regular
+                let weight: SwiftUIX_Hi.AppKitOrUIKitFont.Weight = weight?.toSwiftUIX_Hi.AppKitOrUIKitFontWeight() ?? .regular
                 
-                return AppKitOrUIKitFont.systemFont(
+                return SwiftUIX_Hi.AppKitOrUIKitFont.systemFont(
                     ofSize: size,
                     weight: weight
                 )
             case let .textStyle(textStyle, _, _):
                 return textStyle
-                    .toAppKitOrUIKitFontTextStyle()
-                    .map(AppKitOrUIKitFont.preferredFont(forTextStyle:))
+                    .toSwiftUIX_Hi.AppKitOrUIKitFontTextStyle()
+                    .map(SwiftUIX_Hi.AppKitOrUIKitFont.preferredFont(forTextStyle:))
             case let .platform(font):
-                return font as AppKitOrUIKitFont
+                return font as SwiftUIX_Hi.AppKitOrUIKitFont
         }
     }
     
@@ -262,7 +262,7 @@ private enum _SwiftUIFontProvider {
 }
 
 extension SwiftUI.Font.Weight {
-    fileprivate func toAppKitOrUIKitFontWeight() -> AppKitOrUIKitFont.Weight? {
+    fileprivate func toSwiftUIX_Hi.AppKitOrUIKitFontWeight() -> SwiftUIX_Hi.AppKitOrUIKitFont.Weight? {
         var rawValue: CGFloat? = nil
         
         Mirror.inspect(self) { label, value in

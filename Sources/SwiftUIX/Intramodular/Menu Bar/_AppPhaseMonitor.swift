@@ -28,7 +28,7 @@ public enum Phase {
     }
     
     private func setupNotification() {
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidFinishLaunching), name: AppKitOrUIKitApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidFinishLaunching), name: SwiftUIX_Hi.AppKitOrUIKitApplication.didBecomeActiveNotification, object: nil)
     }
     
     @objc private func applicationDidFinishLaunching() {
@@ -36,11 +36,11 @@ public enum Phase {
     }
     
     private func swizzleApplicationDidFinishLaunching() {
-        let originalSelector = #selector(AppKitOrUIKitApplicationDelegate.applicationDidFinishLaunching(_:))
+        let originalSelector = #selector(SwiftUIX_Hi.AppKitOrUIKitApplicationDelegate.applicationDidFinishLaunching(_:))
         let swizzledSelector = #selector(swizzled_applicationDidFinishLaunching(_:))
         
-        guard let originalMethod = class_getInstanceMethod(AppKitOrUIKitApplication.self, originalSelector),
-              let swizzledMethod = class_getInstanceMethod(AppKitOrUIKitApplication.self, swizzledSelector) else {
+        guard let originalMethod = class_getInstanceMethod(SwiftUIX_Hi.AppKitOrUIKitApplication.self, originalSelector),
+              let swizzledMethod = class_getInstanceMethod(SwiftUIX_Hi.AppKitOrUIKitApplication.self, swizzledSelector) else {
             return
         }
         
@@ -60,7 +60,7 @@ public enum Phase {
         
         swizzled_applicationDidFinishLaunching(notification)
         
-        NotificationCenter.default.post(name: AppKitOrUIKitApplication.didBecomeActiveNotification, object: nil)
+        NotificationCenter.default.post(name: SwiftUIX_Hi.AppKitOrUIKitApplication.didBecomeActiveNotification, object: nil)
     }
 }
 

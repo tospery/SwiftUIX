@@ -6,16 +6,16 @@
 
 import SwiftUI
 
-fileprivate struct AppKitOrUIKitViewControllerResolver: AppKitOrUIKitViewControllerRepresentable {
-    class AppKitOrUIKitViewControllerType: AppKitOrUIKitViewController {
-        var onInsertion: (AppKitOrUIKitViewController) -> Void = { _ in }
-        var onAppear: (AppKitOrUIKitViewController) -> Void = { _ in }
-        var onDisappear: (AppKitOrUIKitViewController) -> Void = { _ in }
-        var onRemoval: (AppKitOrUIKitViewController) -> Void = { _ in }
+fileprivate struct SwiftUIX_Hi.AppKitOrUIKitViewControllerResolver: SwiftUIX_Hi.AppKitOrUIKitViewControllerRepresentable {
+    class SwiftUIX_Hi.AppKitOrUIKitViewControllerType: SwiftUIX_Hi.AppKitOrUIKitViewController {
+        var onInsertion: (SwiftUIX_Hi.AppKitOrUIKitViewController) -> Void = { _ in }
+        var onAppear: (SwiftUIX_Hi.AppKitOrUIKitViewController) -> Void = { _ in }
+        var onDisappear: (SwiftUIX_Hi.AppKitOrUIKitViewController) -> Void = { _ in }
+        var onRemoval: (SwiftUIX_Hi.AppKitOrUIKitViewController) -> Void = { _ in }
         
-        private weak var resolvedParent: AppKitOrUIKitViewController?
+        private weak var resolvedParent: SwiftUIX_Hi.AppKitOrUIKitViewController?
         
-        private func resolveIfNecessary(withParent parent: AppKitOrUIKitViewController?) {
+        private func resolveIfNecessary(withParent parent: SwiftUIX_Hi.AppKitOrUIKitViewController?) {
             guard let parent = parent, resolvedParent == nil else {
                 return
             }
@@ -34,7 +34,7 @@ fileprivate struct AppKitOrUIKitViewControllerResolver: AppKitOrUIKitViewControl
         }
         
         #if os(iOS) || os(tvOS)
-        override func didMove(toParent parent: AppKitOrUIKitViewController?) {
+        override func didMove(toParent parent: SwiftUIX_Hi.AppKitOrUIKitViewController?) {
             super.didMove(toParent: parent)
             
             if let parent = parent {
@@ -100,20 +100,20 @@ fileprivate struct AppKitOrUIKitViewControllerResolver: AppKitOrUIKitViewControl
         }
     }
     
-    var onInsertion: (AppKitOrUIKitViewController) -> Void
-    var onAppear: (AppKitOrUIKitViewController) -> Void
-    var onDisappear: (AppKitOrUIKitViewController) -> Void
-    var onRemoval: (AppKitOrUIKitViewController) -> Void
+    var onInsertion: (SwiftUIX_Hi.AppKitOrUIKitViewController) -> Void
+    var onAppear: (SwiftUIX_Hi.AppKitOrUIKitViewController) -> Void
+    var onDisappear: (SwiftUIX_Hi.AppKitOrUIKitViewController) -> Void
+    var onRemoval: (SwiftUIX_Hi.AppKitOrUIKitViewController) -> Void
     
-    func makeAppKitOrUIKitViewController(context: Context) -> AppKitOrUIKitViewControllerType {
+    func makeSwiftUIX_Hi.AppKitOrUIKitViewController(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewControllerType {
         #if os(iOS) || os(tvOS) || os(visionOS)
-        AppKitOrUIKitViewControllerType()
+        SwiftUIX_Hi.AppKitOrUIKitViewControllerType()
         #elseif os(macOS)
-        AppKitOrUIKitViewControllerType(nibName: nil, bundle: nil)
+        SwiftUIX_Hi.AppKitOrUIKitViewControllerType(nibName: nil, bundle: nil)
         #endif
     }
     
-    func updateAppKitOrUIKitViewController(_ viewController: AppKitOrUIKitViewControllerType, context: Context) {
+    func updateSwiftUIX_Hi.AppKitOrUIKitViewController(_ viewController: SwiftUIX_Hi.AppKitOrUIKitViewControllerType, context: Context) {
         viewController.onInsertion = onInsertion
         viewController.onAppear = onAppear
         viewController.onDisappear = onDisappear
@@ -127,11 +127,11 @@ extension View {
     /// Resolve the nearest `UIViewController` or `NSViewController` in the view hierarchy.
     ///
     /// This usually tends to be SwiftUI's platform-specific adaptor.
-    public func onAppKitOrUIKitViewControllerResolution(
-        perform action: @escaping (AppKitOrUIKitViewController) -> ()
+    public func onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution(
+        perform action: @escaping (SwiftUIX_Hi.AppKitOrUIKitViewController) -> ()
     ) -> some View {
         background(
-            AppKitOrUIKitViewControllerResolver(
+            SwiftUIX_Hi.AppKitOrUIKitViewControllerResolver(
                 onInsertion: action,
                 onAppear: { _ in },
                 onDisappear: { _ in },
@@ -143,14 +143,14 @@ extension View {
     }
     
     @_disfavoredOverload
-    public func onAppKitOrUIKitViewControllerResolution(
-        perform resolutionAction: @escaping (AppKitOrUIKitViewController) -> () = { _ in },
-        onAppear: @escaping (AppKitOrUIKitViewController) -> () = { _ in },
-        onDisappear: @escaping (AppKitOrUIKitViewController) -> () = { _ in },
-        onRemoval deresolutionAction: @escaping (AppKitOrUIKitViewController) -> () = { _ in }
+    public func onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution(
+        perform resolutionAction: @escaping (SwiftUIX_Hi.AppKitOrUIKitViewController) -> () = { _ in },
+        onAppear: @escaping (SwiftUIX_Hi.AppKitOrUIKitViewController) -> () = { _ in },
+        onDisappear: @escaping (SwiftUIX_Hi.AppKitOrUIKitViewController) -> () = { _ in },
+        onRemoval deresolutionAction: @escaping (SwiftUIX_Hi.AppKitOrUIKitViewController) -> () = { _ in }
     ) -> some View {
         background(
-            AppKitOrUIKitViewControllerResolver(
+            SwiftUIX_Hi.AppKitOrUIKitViewControllerResolver(
                 onInsertion: resolutionAction,
                 onAppear: onAppear,
                 onDisappear: onDisappear,
@@ -165,17 +165,17 @@ extension View {
 #if os(iOS) ||  os(macOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
 @MainActor
 @ViewBuilder
-public func withAppKitOrUIKitViewController<Content: View>(
-    @ViewBuilder _ content: @escaping (AppKitOrUIKitViewController?) -> Content
+public func withSwiftUIX_Hi.AppKitOrUIKitViewController<Content: View>(
+    @ViewBuilder _ content: @escaping (SwiftUIX_Hi.AppKitOrUIKitViewController?) -> Content
 ) -> some View {
     if #available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *) {
-        _WithAppKitOrUIKitViewController(content: content)
+        _WithSwiftUIX_Hi.AppKitOrUIKitViewController(content: content)
     } else {
-        withInlineState(initialValue: _SwiftUIX_ObservableWeakReferenceBox<AppKitOrUIKitViewController>(nil)) { viewControllerBox in
+        withInlineState(initialValue: _SwiftUIX_ObservableWeakReferenceBox<SwiftUIX_Hi.AppKitOrUIKitViewController>(nil)) { viewControllerBox in
             withInlineObservedObject(viewControllerBox.wrappedValue) { box in
                 content(box.value)
             }
-            .onAppKitOrUIKitViewControllerResolution { viewController in
+            .onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution { viewController in
                 if viewController !== viewControllerBox.wrappedValue.value {
                     viewControllerBox.wrappedValue.value = viewController
                 }
@@ -206,14 +206,14 @@ extension NSViewController {
 #endif
 
 @available(iOS 14.0, macOS 11.0, tvOS 14.0, watchOS 7.0, *)
-private struct _WithAppKitOrUIKitViewController<Content: View>: View {
-    let content: (AppKitOrUIKitViewController?) -> Content
+private struct _WithSwiftUIX_Hi.AppKitOrUIKitViewController<Content: View>: View {
+    let content: (SwiftUIX_Hi.AppKitOrUIKitViewController?) -> Content
 
-    @StateObject private var appKitOrUIKitViewControllerBox = _SwiftUIX_ObservableWeakReferenceBox<AppKitOrUIKitViewController>(nil)
+    @StateObject private var appKitOrUIKitViewControllerBox = _SwiftUIX_ObservableWeakReferenceBox<SwiftUIX_Hi.AppKitOrUIKitViewController>(nil)
 
     var body: some View {
         content(appKitOrUIKitViewControllerBox.value)
-            .onAppKitOrUIKitViewControllerResolution { viewController in
+            .onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution { viewController in
                 if viewController !== appKitOrUIKitViewControllerBox.value {
                     DispatchQueue.main.async {
                         appKitOrUIKitViewControllerBox.value = viewController
@@ -223,11 +223,11 @@ private struct _WithAppKitOrUIKitViewController<Content: View>: View {
     }
 }
 
-private struct _ResolveAppKitOrUIKitViewController: ViewModifier {
-    @State var _appKitOrUIKitViewControllerBox = _SwiftUIX_ObservableWeakReferenceBox<AppKitOrUIKitViewController>(nil)
+private struct _ResolveSwiftUIX_Hi.AppKitOrUIKitViewController: ViewModifier {
+    @State var _appKitOrUIKitViewControllerBox = _SwiftUIX_ObservableWeakReferenceBox<SwiftUIX_Hi.AppKitOrUIKitViewController>(nil)
     @State var presentationCoordinatorBox = _SwiftUIX_ObservableWeakReferenceBox<CocoaPresentationCoordinator>(nil)
 
-    init(_ appKitOrUIKitViewController: AppKitOrUIKitViewController?) {
+    init(_ appKitOrUIKitViewController: SwiftUIX_Hi.AppKitOrUIKitViewController?) {
         self._appKitOrUIKitViewControllerBox = .init(appKitOrUIKitViewController)
     }
 
@@ -246,7 +246,7 @@ private struct _ResolveAppKitOrUIKitViewController: ViewModifier {
         }
         .modifier(_UseCocoaPresentationCoordinator(coordinator: presentationCoordinatorBox))
         .environment(\._appKitOrUIKitViewControllerBox, _appKitOrUIKitViewControllerBox)
-        .onAppKitOrUIKitViewControllerResolution { [weak _appKitOrUIKitViewControllerBox, weak presentationCoordinatorBox] viewController in
+        .onSwiftUIX_Hi.AppKitOrUIKitViewControllerResolution { [weak _appKitOrUIKitViewControllerBox, weak presentationCoordinatorBox] viewController in
             guard let _appKitOrUIKitViewControllerBox = _appKitOrUIKitViewControllerBox, let presentationCoordinatorBox = presentationCoordinatorBox else {
                 return
             }
@@ -271,7 +271,7 @@ private struct _ResolveAppKitOrUIKitViewController: ViewModifier {
     #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
     private struct ProvideNavigator: ViewModifier {
         struct Navigator: SwiftUIX.Navigator {
-            weak var base: AppKitOrUIKitViewController?
+            weak var base: SwiftUIX_Hi.AppKitOrUIKitViewController?
 
             private var nearestNavigator: _UINavigationControllerNavigatorAdaptorBox? {
                 base?.nearestNavigationController.map(_UINavigationControllerNavigatorAdaptorBox.init(navigationController:))
@@ -290,7 +290,7 @@ private struct _ResolveAppKitOrUIKitViewController: ViewModifier {
             }
         }
 
-        @ObservedObject var _appKitOrUIKitViewControllerBox: _SwiftUIX_ObservableWeakReferenceBox<AppKitOrUIKitViewController>
+        @ObservedObject var _appKitOrUIKitViewControllerBox: _SwiftUIX_ObservableWeakReferenceBox<SwiftUIX_Hi.AppKitOrUIKitViewController>
 
         func body(content: Content) -> some View {
             content.environment(\.navigator, Navigator(base: _appKitOrUIKitViewControllerBox.value))
@@ -303,16 +303,16 @@ private struct _ResolveAppKitOrUIKitViewController: ViewModifier {
 
 extension View {
     #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-    public func _resolveAppKitOrUIKitViewController(
-        with viewController: AppKitOrUIKitViewController?
+    public func _resolveSwiftUIX_Hi.AppKitOrUIKitViewController(
+        with viewController: SwiftUIX_Hi.AppKitOrUIKitViewController?
     ) -> some View {
-        modifier(_ResolveAppKitOrUIKitViewController(viewController))
+        modifier(_ResolveSwiftUIX_Hi.AppKitOrUIKitViewController(viewController))
     }
     #endif
 
-    public func _resolveAppKitOrUIKitViewControllerIfAvailable() -> some View {
+    public func _resolveSwiftUIX_Hi.AppKitOrUIKitViewControllerIfAvailable() -> some View {
         #if os(iOS) || os(macOS) || os(tvOS) || targetEnvironment(macCatalyst)
-        modifier(_ResolveAppKitOrUIKitViewController())
+        modifier(_ResolveSwiftUIX_Hi.AppKitOrUIKitViewController())
         #else
         self
         #endif

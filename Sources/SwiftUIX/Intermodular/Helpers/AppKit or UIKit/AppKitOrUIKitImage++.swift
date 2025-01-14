@@ -6,10 +6,10 @@ import SwiftUI
 
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
 
-extension AppKitOrUIKitImage {
+extension SwiftUIX_Hi.AppKitOrUIKitImage {
     public func _SwiftUIX_resizeImage(
         targetSize: CGSize
-    ) -> AppKitOrUIKitImage {
+    ) -> SwiftUIX_Hi.AppKitOrUIKitImage {
         let size = self.size
         let widthRatio = targetSize.width / size.width
         let heightRatio = targetSize.height / size.height
@@ -33,7 +33,7 @@ extension AppKitOrUIKitImage {
     }
 }
 
-extension AppKitOrUIKitImage {
+extension SwiftUIX_Hi.AppKitOrUIKitImage {
     public func _SwiftUIX_getPixelGrid() -> [[Int]] {
         guard let cgImage: CGImage = self._SwiftUIX_cgImage else {
             fatalError()

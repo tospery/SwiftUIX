@@ -34,7 +34,7 @@ extension UIView {
 }
 
 extension UIViewController {
-    public func _SwiftUIX_findFirstResponder() -> AppKitOrUIKitResponder? {
+    public func _SwiftUIX_findFirstResponder() -> SwiftUIX_Hi.AppKitOrUIKitResponder? {
         guard !isFirstResponder else {
             return self
         }

@@ -38,7 +38,7 @@ public enum _CocoaHostingViewConfigurationFlag {
 }
 
 @_documentation(visibility: internal)
-open class _CocoaHostingView<Content: View>: AppKitOrUIKitHostingView<CocoaHostingControllerContent<Content>>, _CocoaHostingControllerOrView {
+open class _CocoaHostingView<Content: View>: SwiftUIX_Hi.AppKitOrUIKitHostingView<CocoaHostingControllerContent<Content>>, _CocoaHostingControllerOrView {
     public typealias MainView = Content
     public typealias RootView = CocoaHostingControllerContent<Content>
     

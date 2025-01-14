@@ -5,7 +5,7 @@
 import SwiftUI
 
 #if os(iOS) || os(macOS) || os(tvOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitBezierPath {
+extension SwiftUIX_Hi.AppKitOrUIKitBezierPath {
     public convenience init(
         roundedRect rect: CGRect,
         byRoundingCorners corners: [RectangleCorner],
@@ -83,13 +83,13 @@ extension AppKitOrUIKitBezierPath {
 #endif
 
 #if os(iOS) || os(tvOS)
-extension AppKitOrUIKitBezierPath {
+extension SwiftUIX_Hi.AppKitOrUIKitBezierPath {
     var _cgPath: CGPath {
         cgPath
     }
 }
 #elseif os(macOS)
-extension AppKitOrUIKitBezierPath {
+extension SwiftUIX_Hi.AppKitOrUIKitBezierPath {
     var _cgPath: CGPath {
         let path = CGMutablePath()
         var points = [CGPoint](repeating: .zero, count: 3)

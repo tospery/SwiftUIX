@@ -231,27 +231,27 @@ extension Color {
     /// The color for the main background of your interface.
     public static var systemBackground: Color {
         #if os(macOS)
-        return Color(AppKitOrUIKitColor.windowBackgroundColor)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.windowBackgroundColor)
         #else
-        return Color(AppKitOrUIKitColor.systemBackground)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.systemBackground)
         #endif
     }
     
     /// The color for content layered on top of the main background.
     public static var secondarySystemBackground: Color {
         #if os(macOS)
-        return Color(AppKitOrUIKitColor.controlBackgroundColor)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.controlBackgroundColor)
         #else
-        return Color(AppKitOrUIKitColor.secondarySystemBackground)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.secondarySystemBackground)
         #endif
     }
     
     /// The color for content layered on top of secondary backgrounds.
     public static var tertiarySystemBackground: Color {
         #if os(macOS)
-        return Color(AppKitOrUIKitColor.textBackgroundColor)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.textBackgroundColor)
         #else 
-        return Color(AppKitOrUIKitColor.tertiarySystemBackground)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.tertiarySystemBackground)
         #endif
     }
 }
@@ -261,17 +261,17 @@ extension Color {
 extension Color {
     /// The color for the main background of your grouped interface.
     public static var systemGroupedBackground: Color {
-        Color(AppKitOrUIKitColor.systemGroupedBackground)
+        Color(SwiftUIX_Hi.AppKitOrUIKitColor.systemGroupedBackground)
     }
     
     /// The color for content layered on top of the main background of your grouped interface.
     public static var secondarySystemGroupedBackground: Color {
-        Color(AppKitOrUIKitColor.secondarySystemGroupedBackground)
+        Color(SwiftUIX_Hi.AppKitOrUIKitColor.secondarySystemGroupedBackground)
     }
     
     /// The color for content layered on top of secondary backgrounds of your grouped interface.
     public static var tertiarySystemGroupedBackground: Color {
-        Color(AppKitOrUIKitColor.tertiarySystemGroupedBackground)
+        Color(SwiftUIX_Hi.AppKitOrUIKitColor.tertiarySystemGroupedBackground)
     }
 }
 #endif
@@ -283,9 +283,9 @@ extension Color {
     /// Example: The track of a slider.
     public static var systemFill: Color {
         #if os(macOS)
-        return Color(AppKitOrUIKitColor.textBackgroundColor)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.textBackgroundColor)
         #else
-        return Color(AppKitOrUIKitColor.systemFill)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.systemFill)
         #endif
     }
     
@@ -294,9 +294,9 @@ extension Color {
     /// Example: The background of a switch.
     public static var secondarySystemFill: Color {
         #if os(macOS)
-        return Color(AppKitOrUIKitColor.windowBackgroundColor)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.windowBackgroundColor)
         #else
-        return Color(AppKitOrUIKitColor.secondarySystemFill)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.secondarySystemFill)
         #endif
     }
         
@@ -305,9 +305,9 @@ extension Color {
     /// Examples: Input fields, search bars, buttons.
     public static var tertiarySystemFill: Color {
         #if os(macOS)
-        return Color(AppKitOrUIKitColor.underPageBackgroundColor)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.underPageBackgroundColor)
         #else
-        return Color(AppKitOrUIKitColor.tertiarySystemFill)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.tertiarySystemFill)
         #endif
     }
     
@@ -317,9 +317,9 @@ extension Color {
     @available(macOS, unavailable)
     public static var quaternarySystemFill: Color {
         #if os(macOS)
-        return Color(AppKitOrUIKitColor.scrubberTexturedBackground) // FIXME: This crashes for some reason.
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.scrubberTexturedBackground) // FIXME: This crashes for some reason.
         #else
-        return Color(AppKitOrUIKitColor.quaternarySystemFill)
+        return Color(SwiftUIX_Hi.AppKitOrUIKitColor.quaternarySystemFill)
         #endif
     }
 }
@@ -338,9 +338,9 @@ extension Color {
         dark: @escaping @autoclosure () -> Color
     ) -> Color {
         Color(
-            AppKitOrUIKitColor.adaptable(
-                light: AppKitOrUIKitColor(light()),
-                dark: AppKitOrUIKitColor(dark())
+            SwiftUIX_Hi.AppKitOrUIKitColor.adaptable(
+                light: SwiftUIX_Hi.AppKitOrUIKitColor(light()),
+                dark: SwiftUIX_Hi.AppKitOrUIKitColor(dark())
             )
         )
     }
@@ -353,8 +353,8 @@ extension Color {
     @available(iOS 14.0, tvOS 14.0, watchOS 7.0, *)
     public func colorInvert() -> Color {
         Color(
-            AppKitOrUIKitColor { _ in
-                AppKitOrUIKitColor(self).invertedColor()
+            SwiftUIX_Hi.AppKitOrUIKitColor { _ in
+                SwiftUIX_Hi.AppKitOrUIKitColor(self).invertedColor()
             }
         )
     }
@@ -471,12 +471,12 @@ extension Color {
 // MARK: - Auxiliary
 
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-fileprivate extension AppKitOrUIKitColor {
+fileprivate extension SwiftUIX_Hi.AppKitOrUIKitColor {
     class func adaptable(
-        light: @escaping @autoclosure () -> AppKitOrUIKitColor,
-        dark: @escaping @autoclosure () -> AppKitOrUIKitColor
-    ) -> AppKitOrUIKitColor {
-        AppKitOrUIKitColor { traitCollection in
+        light: @escaping @autoclosure () -> SwiftUIX_Hi.AppKitOrUIKitColor,
+        dark: @escaping @autoclosure () -> SwiftUIX_Hi.AppKitOrUIKitColor
+    ) -> SwiftUIX_Hi.AppKitOrUIKitColor {
+        SwiftUIX_Hi.AppKitOrUIKitColor { traitCollection in
             switch traitCollection.userInterfaceStyle {
                 case .light:
                     return light()
@@ -502,12 +502,12 @@ fileprivate extension AppKitOrUIKitColor {
     }
 }
 #elseif os(macOS)
-fileprivate extension AppKitOrUIKitColor {
+fileprivate extension SwiftUIX_Hi.AppKitOrUIKitColor {
     class func adaptable(
-        light: @escaping @autoclosure () -> AppKitOrUIKitColor,
-        dark: @escaping @autoclosure () -> AppKitOrUIKitColor
-    ) -> AppKitOrUIKitColor {
-        AppKitOrUIKitColor(name: nil) { appearance in
+        light: @escaping @autoclosure () -> SwiftUIX_Hi.AppKitOrUIKitColor,
+        dark: @escaping @autoclosure () -> SwiftUIX_Hi.AppKitOrUIKitColor
+    ) -> SwiftUIX_Hi.AppKitOrUIKitColor {
+        SwiftUIX_Hi.AppKitOrUIKitColor(name: nil) { appearance in
             if appearance.isDarkMode {
                 return dark()
             } else {
@@ -525,26 +525,26 @@ fileprivate extension AppKitOrUIKitColor {
 #endif
 
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitColor {
-    func invertedColor() -> AppKitOrUIKitColor {
+extension SwiftUIX_Hi.AppKitOrUIKitColor {
+    func invertedColor() -> SwiftUIX_Hi.AppKitOrUIKitColor {
         var alpha: CGFloat = 1.0
         
         var red: CGFloat = 0.0, green: CGFloat = 0.0, blue: CGFloat = 0.0
         
         if self.getRed(&red, green: &green, blue: &blue, alpha: &alpha) {
-            return AppKitOrUIKitColor(red: 1.0 - red, green: 1.0 - green, blue: 1.0 - blue, alpha: alpha)
+            return SwiftUIX_Hi.AppKitOrUIKitColor(red: 1.0 - red, green: 1.0 - green, blue: 1.0 - blue, alpha: alpha)
         }
         
         var hue: CGFloat = 0.0, saturation: CGFloat = 0.0, brightness: CGFloat = 0.0
         
         if self.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
-            return AppKitOrUIKitColor(hue: 1.0 - hue, saturation: 1.0 - saturation, brightness: 1.0 - brightness, alpha: alpha)
+            return SwiftUIX_Hi.AppKitOrUIKitColor(hue: 1.0 - hue, saturation: 1.0 - saturation, brightness: 1.0 - brightness, alpha: alpha)
         }
         
         var white: CGFloat = 0.0
         
         if self.getWhite(&white, alpha: &alpha) {
-            return AppKitOrUIKitColor(white: 1.0 - white, alpha: alpha)
+            return SwiftUIX_Hi.AppKitOrUIKitColor(white: 1.0 - white, alpha: alpha)
         }
         
         return self

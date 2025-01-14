@@ -37,7 +37,7 @@ open class UIHostingScrollView<Content: View>: UIScrollView, UIScrollViewDelegat
             result = super.intrinsicContentSize
         }
         
-        return result.toAppKitOrUIKitIntrinsicContentSize()
+        return result.toSwiftUIX_Hi.AppKitOrUIKitIntrinsicContentSize()
     }
     
     public var rootView: Content {
@@ -101,10 +101,10 @@ open class UIHostingScrollView<Content: View>: UIScrollView, UIScrollViewDelegat
         
         let maximumContentSize: CGSize = .init(
             width: configuration.axes.contains(.horizontal)
-                ? AppKitOrUIKitView.layoutFittingCompressedSize.width
+                ? SwiftUIX_Hi.AppKitOrUIKitView.layoutFittingCompressedSize.width
                 : frame.width,
             height: configuration.axes.contains(.vertical)
-                ? AppKitOrUIKitView.layoutFittingCompressedSize.height
+                ? SwiftUIX_Hi.AppKitOrUIKitView.layoutFittingCompressedSize.height
                 : frame.height
         )
         

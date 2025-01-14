@@ -8,11 +8,11 @@ import SwiftUI
 
 @_documentation(visibility: internal)
 public struct _AppKitOrUIKitViewAnimation: Equatable  {
-    public let options: AppKitOrUIKitView.AnimationOptions?
+    public let options: SwiftUIX_Hi.AppKitOrUIKitView.AnimationOptions?
     public let duration: CGFloat?
     
     init(
-        options: AppKitOrUIKitView.AnimationOptions?,
+        options: SwiftUIX_Hi.AppKitOrUIKitView.AnimationOptions?,
         duration: CGFloat?
     ) {
         self.options = options
@@ -20,7 +20,7 @@ public struct _AppKitOrUIKitViewAnimation: Equatable  {
     }
     
     public init(
-        options: AppKitOrUIKitView.AnimationOptions,
+        options: SwiftUIX_Hi.AppKitOrUIKitView.AnimationOptions,
         duration: CGFloat
     ) {
         self.options = options

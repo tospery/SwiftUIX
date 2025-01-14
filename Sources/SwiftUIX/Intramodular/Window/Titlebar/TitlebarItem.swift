@@ -91,7 +91,7 @@ extension TitlebarItem {
             
             #if targetEnvironment(macCatalyst)
             case let .systemSymbol(name):
-                result.image = AppKitOrUIKitImage(systemName: name.rawValue)
+                result.image = SwiftUIX_Hi.AppKitOrUIKitImage(systemName: name.rawValue)
             case let .systemItem(item): do {
                 result = NSToolbarItem(
                     itemIdentifier: .init(rawValue: id),

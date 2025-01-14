@@ -7,7 +7,7 @@ import Swift
 #if canImport(AppKit)
 
 @_documentation(visibility: internal)
-public enum AppKitOrUIKitBackgroundFetchResult {
+public enum SwiftUIX_Hi.AppKitOrUIKitBackgroundFetchResult {
     case newData
     case noData
     case failed
@@ -16,7 +16,7 @@ public enum AppKitOrUIKitBackgroundFetchResult {
 #elseif canImport(WatchKit)
 
 @_documentation(visibility: internal)
-public enum AppKitOrUIKitBackgroundFetchResult {
+public enum SwiftUIX_Hi.AppKitOrUIKitBackgroundFetchResult {
     case newData
     case noData
     case failed
@@ -26,6 +26,6 @@ public enum AppKitOrUIKitBackgroundFetchResult {
 
 import UIKit
 
-public typealias AppKitOrUIKitBackgroundFetchResult = UIBackgroundFetchResult
+public typealias SwiftUIX_Hi.AppKitOrUIKitBackgroundFetchResult = UIBackgroundFetchResult
 
 #endif

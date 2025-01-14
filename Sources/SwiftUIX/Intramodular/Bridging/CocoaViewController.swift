@@ -8,7 +8,7 @@ import SwiftUI
 
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
 
-public protocol _CocoaHostingControllerOrView: AppKitOrUIKitResponder {
+public protocol _CocoaHostingControllerOrView: SwiftUIX_Hi.AppKitOrUIKitResponder {
     var _SwiftUIX_cancellables: [AnyCancellable] { get set }
     var _configuration: CocoaHostingControllerConfiguration { get set }
     var _hostingViewConfigurationFlags: Set<_CocoaHostingViewConfigurationFlag> { get }
@@ -21,7 +21,7 @@ public protocol _CocoaHostingControllerOrView: AppKitOrUIKitResponder {
     ) -> Result
 }
 
-public protocol CocoaViewController: AppKitOrUIKitViewController {
+public protocol CocoaViewController: SwiftUIX_Hi.AppKitOrUIKitViewController {
     func _namedViewDescription(for _: AnyHashable) -> _NamedViewDescription?
     func _setNamedViewDescription(_: _NamedViewDescription?, for _: AnyHashable)
     func _disableSafeAreaInsetsIfNecessary()

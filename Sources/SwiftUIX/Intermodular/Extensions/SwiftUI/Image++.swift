@@ -18,7 +18,7 @@ public enum _SwiftUIX_Encoding {
         }
     }
     
-    public init(image: AppKitOrUIKitImage) {
+    public init(image: SwiftUIX_Hi.AppKitOrUIKitImage) {
         #if os(macOS)
         self.init(nsImage: image)
         #else
@@ -26,7 +26,7 @@ public enum _SwiftUIX_Encoding {
         #endif
     }
     
-    public init?(image: AppKitOrUIKitImage?) {
+    public init?(image: SwiftUIX_Hi.AppKitOrUIKitImage?) {
         guard let image else {
             return nil
         }

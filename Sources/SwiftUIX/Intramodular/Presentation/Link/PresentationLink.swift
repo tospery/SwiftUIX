@@ -127,7 +127,7 @@ public struct PresentationLink<Destination: View, Label: View>: PresentationLink
                                 : nil
                         )
                     )
-                    ._resolveAppKitOrUIKitViewControllerIfAvailable()
+                    ._resolveSwiftUIX_Hi.AppKitOrUIKitViewControllerIfAvailable()
                 } else {
                     Button(
                         action: togglePresentation,

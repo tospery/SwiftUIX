@@ -41,7 +41,7 @@ public struct FullScreenCoverLink<Destination: View, Label: View>: PresentationL
         Button(toggle: $isPresented, label: { label })
             .fullScreenCover(isPresented: $isPresented, onDismiss: onDismiss) {
                 destination
-                    ._resolveAppKitOrUIKitViewControllerIfAvailable()
+                    ._resolveSwiftUIX_Hi.AppKitOrUIKitViewControllerIfAvailable()
             }
     }
 }

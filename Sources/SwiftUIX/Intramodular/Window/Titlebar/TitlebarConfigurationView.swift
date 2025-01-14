@@ -17,8 +17,8 @@ public enum _WindowToolbarStyle {
 }
 
 @_documentation(visibility: internal)
-public struct TitlebarConfigurationView<Content: View>: AppKitOrUIKitViewRepresentable {
-    public typealias AppKitOrUIKitViewType = AppKitOrUIKitView
+public struct TitlebarConfigurationView<Content: View>: SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
+    public typealias SwiftUIX_Hi.AppKitOrUIKitViewType = SwiftUIX_Hi.AppKitOrUIKitView
     
     @State var identifier: String
     
@@ -32,7 +32,7 @@ public struct TitlebarConfigurationView<Content: View>: AppKitOrUIKitViewReprese
         self.content = content()
     }
     
-    private class HostingView<T: View>: AppKitOrUIKitHostingView<T> {
+    private class HostingView<T: View>: SwiftUIX_Hi.AppKitOrUIKitHostingView<T> {
         weak var toolbar: NSToolbar?
         
         func updateToolbar() {
@@ -70,7 +70,7 @@ public struct TitlebarConfigurationView<Content: View>: AppKitOrUIKitViewReprese
         #endif
     }
     
-    public func makeAppKitOrUIKitView(context: Context) -> AppKitOrUIKitViewType {
+    public func makeSwiftUIX_Hi.AppKitOrUIKitView(context: Context) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
         let rootView = content.onPreferenceChange(TitlebarConfigurationViewItemsPreferenceKey.self) { items in
             context.coordinator.items = items?.map({ $0.toNSToolbarItem() })
         }
@@ -80,7 +80,7 @@ public struct TitlebarConfigurationView<Content: View>: AppKitOrUIKitViewReprese
         }
     }
     
-    public func updateAppKitOrUIKitView(_ view: AppKitOrUIKitViewType, context: Context) {
+    public func updateSwiftUIX_Hi.AppKitOrUIKitView(_ view: SwiftUIX_Hi.AppKitOrUIKitViewType, context: Context) {
         _assignIfNotEqual(false, to: &context.coordinator.toolbar.allowsUserCustomization)
     }
     

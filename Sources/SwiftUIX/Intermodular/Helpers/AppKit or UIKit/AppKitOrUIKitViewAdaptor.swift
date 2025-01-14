@@ -7,35 +7,35 @@
 import SwiftUI
 
 @_documentation(visibility: internal)
-public struct AppKitOrUIKitViewAdaptor<Base: AppKitOrUIKitView>: AppKitOrUIKitViewRepresentable {
+public struct SwiftUIX_Hi.AppKitOrUIKitViewAdaptor<Base: SwiftUIX_Hi.AppKitOrUIKitView>: SwiftUIX_Hi.AppKitOrUIKitViewRepresentable {
 #if os(iOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
     public typealias UIViewType = Base
 #elseif os(macOS)
     public typealias NSViewType = Base
 #endif
     
-    public typealias AppKitOrUIKitViewType = Base
+    public typealias SwiftUIX_Hi.AppKitOrUIKitViewType = Base
     
-    fileprivate let _makeView: (Context) -> AppKitOrUIKitViewType
-    fileprivate let _updateView: (AppKitOrUIKitViewType, Context) -> ()
-    fileprivate let _sizeThatFits: ((_SwiftUIX_ProposedSize, AppKitOrUIKitViewType, Context) -> CGSize?)?
+    fileprivate let _makeView: (Context) -> SwiftUIX_Hi.AppKitOrUIKitViewType
+    fileprivate let _updateView: (SwiftUIX_Hi.AppKitOrUIKitViewType, Context) -> ()
+    fileprivate let _sizeThatFits: ((_SwiftUIX_ProposedSize, SwiftUIX_Hi.AppKitOrUIKitViewType, Context) -> CGSize?)?
     
     public init(
-        _ makeView: @escaping () -> AppKitOrUIKitViewType
+        _ makeView: @escaping () -> SwiftUIX_Hi.AppKitOrUIKitViewType
     ) {
         self._makeView = { _ in makeView() }
         self._updateView = { _, _ in }
         self._sizeThatFits = nil
     }
     
-    public func makeAppKitOrUIKitView(
+    public func makeSwiftUIX_Hi.AppKitOrUIKitView(
         context: Context
-    ) -> AppKitOrUIKitViewType {
+    ) -> SwiftUIX_Hi.AppKitOrUIKitViewType {
         _makeView(context)
     }
     
-    public func updateAppKitOrUIKitView(
-        _ view: AppKitOrUIKitViewType,
+    public func updateSwiftUIX_Hi.AppKitOrUIKitView(
+        _ view: SwiftUIX_Hi.AppKitOrUIKitViewType,
         context: Context
     ) {
         _updateView(view, context)
@@ -43,7 +43,7 @@ public struct AppKitOrUIKitViewAdaptor<Base: AppKitOrUIKitView>: AppKitOrUIKitVi
 }
 
 #if os(macOS)
-extension AppKitOrUIKitViewAdaptor {
+extension SwiftUIX_Hi.AppKitOrUIKitViewAdaptor {
     @available(iOS 16.0, macOS 13.0, tvOS 16.0, watchOS 9.0, *)
     public func sizeThatFits(
         _ proposal: ProposedViewSize,

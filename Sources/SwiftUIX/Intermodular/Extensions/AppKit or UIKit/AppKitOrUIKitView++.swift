@@ -5,7 +5,7 @@
 import SwiftUI
 
 #if os(iOS) || os(tvOS) || os(visionOS)
-extension AppKitOrUIKitView {
+extension SwiftUIX_Hi.AppKitOrUIKitView {
     public func _SwiftUIX_setNeedsDisplay() {
         
     }
@@ -19,7 +19,7 @@ extension AppKitOrUIKitView {
     }
 }
 #elseif os(macOS)
-extension AppKitOrUIKitView {
+extension SwiftUIX_Hi.AppKitOrUIKitView {
     public func _SwiftUIX_setNeedsDisplay() {
         needsDisplay = true
     }
@@ -35,7 +35,7 @@ extension AppKitOrUIKitView {
 #endif
 
 #if os(iOS) || os(macOS) || os(tvOS) || os(visionOS) || targetEnvironment(macCatalyst)
-extension AppKitOrUIKitView {
+extension SwiftUIX_Hi.AppKitOrUIKitView {
     @usableFromInline
     var isHorizontalContentHuggingPriorityHigh: Bool {
         contentHuggingPriority(for: .horizontal) == .defaultHigh
@@ -53,20 +53,20 @@ extension AppKitOrUIKitView {
     }
 }
 
-extension AppKitOrUIKitView {
-    public func _SwiftUIX_findSubview<T: AppKitOrUIKitView>(
+extension SwiftUIX_Hi.AppKitOrUIKitView {
+    public func _SwiftUIX_findSubview<T: SwiftUIX_Hi.AppKitOrUIKitView>(
         ofKind kind: T.Type
     ) -> T? {
         findSubview(ofKind: kind)
     }
     
     public func _SwiftUIX_findSubview(
-        where predicate: (AppKitOrUIKitView) -> Bool
-    ) -> AppKitOrUIKitView? {
+        where predicate: (SwiftUIX_Hi.AppKitOrUIKitView) -> Bool
+    ) -> SwiftUIX_Hi.AppKitOrUIKitView? {
         findSubview(where: predicate)
     }
     
-    private func findSubview<T: AppKitOrUIKitView>(
+    private func findSubview<T: SwiftUIX_Hi.AppKitOrUIKitView>(
         ofKind kind: T.Type
     ) -> T? {
         guard !subviews.isEmpty else {
@@ -85,8 +85,8 @@ extension AppKitOrUIKitView {
     }
     
     private func findSubview(
-        where predicate: (AppKitOrUIKitView) -> Bool
-    ) -> AppKitOrUIKitView? {
+        where predicate: (SwiftUIX_Hi.AppKitOrUIKitView) -> Bool
+    ) -> SwiftUIX_Hi.AppKitOrUIKitView? {
         guard !subviews.isEmpty else {
             return nil
         }
