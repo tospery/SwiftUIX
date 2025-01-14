@@ -4,7 +4,7 @@ platform :ios, '16.0'
 use_frameworks!
 
 target 'SwiftUIX-Hi_Example' do
-  pod 'SwiftUIX-Hi', :path => '../'
+  pod 'SwiftUIX-Hi/Core', :path => '../'
 
 end
 

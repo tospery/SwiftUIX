@@ -4,6 +4,7 @@
 
 #if os(macOS)
 
+@_spi(Internal) import _SwiftUIX
 import AppKit
 import Swift
 import SwiftUI
